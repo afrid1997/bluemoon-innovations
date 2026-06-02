@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bluemoon Innovations — Innovation Studio, India</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --cream: #F7F5F0;
+  --ink:   #0D0D0D;
+  --blue:  #1B4FD8;
+  --muted: rgba(13,13,13,0.45);
+  --rule:  rgba(13,13,13,0.1);
+  --jost: 'Jost', sans-serif;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+body { font-family: var(--jost); background: var(--cream); color: var(--ink); overflow-x: hidden; }
+body.dark-hero { background: var(--cream); }
+
+/* ── CURSOR ─────────────────────────────────────────── */
+* { cursor: none !important; }
+#cur { position:fixed; width:32px; height:32px; border:1.5px solid rgba(27,79,216,0.55); border-radius:50%; pointer-events:none; z-index:99999; transform:translate(-50%,-50%); transition:transform .18s ease, background .18s ease, border-color .18s ease; will-change:left,top; }
+#dot { position:fixed; width:5px; height:5px; background:var(--blue); border-radius:50%; pointer-events:none; z-index:99999; transform:translate(-50%,-50%); transition:transform .08s ease; }
+#cur.hover { transform:translate(-50%,-50%) scale(2); background:rgba(27,79,216,0.06); border-color:var(--blue); }
+
+/* ── NAV ─────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 52px;
+  transition: background .3s ease, border-bottom .3s ease;
+}
+nav.scrolled {
+  background: rgba(247,245,240,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 14px;
+  text-decoration: none; color: var(--ink);
+}
+.nav-logo { height: 124px; width: auto; display: block; }
+.nav-brand-name { font-family: var(--serif); font-size: 14px; font-weight: 400; line-height: 1.35; letter-spacing: 0.04em; color: var(--ink); }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a { font-family: var(--jost); font-size: 13px; font-weight: 400; letter-spacing: 0.04em; color: var(--muted); text-decoration: none; transition: color .2s; }
+.nav-links a:hover { color: var(--ink); }
+.nav-links a.cta {
+  color: var(--ink);
+  border: 1px solid rgba(13,13,13,0.3);
+  padding: 8px 20px; border-radius: 2px;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.nav-links a.cta:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+
+/* ── HERO — LIGHT MODE ──────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  background: var(--cream);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 100px 40px 80px;
+  position: relative; overflow: hidden; gap: 0;
+}
+/* subtle blue shimmer dots on cream */
+.hero::before {
+  content: '';
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background-image:
+    radial-gradient(1.5px 1.5px at 7% 12%,  rgba(27,79,216,.12) 0%, transparent 100%),
+    radial-gradient(1px 1px at 18% 5%,   rgba(27,79,216,.07) 0%, transparent 100%),
+    radial-gradient(1px 1px at 32% 22%,  rgba(27,79,216,.06) 0%, transparent 100%),
+    radial-gradient(2px 2px at 45% 8%,   rgba(27,79,216,.10) 0%, transparent 100%),
+    radial-gradient(1px 1px at 61% 17%,  rgba(27,79,216,.05) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 77% 6%, rgba(27,79,216,.09) 0%, transparent 100%),
+    radial-gradient(1px 1px at 89% 24%,  rgba(27,79,216,.06) 0%, transparent 100%),
+    radial-gradient(1px 1px at 11% 44%,  rgba(27,79,216,.04) 0%, transparent 100%),
+    radial-gradient(1px 1px at 84% 61%,  rgba(27,79,216,.04) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 93% 79%, rgba(27,79,216,.07) 0%, transparent 100%),
+    radial-gradient(1px 1px at 27% 91%,  rgba(27,79,216,.04) 0%, transparent 100%),
+    radial-gradient(1px 1px at 4% 81%,   rgba(27,79,216,.04) 0%, transparent 100%);
+}
+/* soft blue glow under orbit */
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 900px; height: 500px;
+  left: 50%; top: 65%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse, rgba(27,79,216,.07) 0%, transparent 65%);
+  pointer-events: none; z-index: 0;
+  animation: hero-glow-pulse 7s ease-in-out infinite;
+}
+@keyframes hero-glow-pulse {
+  0%, 100% { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+  50%       { opacity: 0.5; transform: translate(-50%,-50%) scale(1.1); }
+}
+
+/* headline */
+.hero-text {
+  text-align: center;
+  position: relative; z-index: 2;
+  margin-bottom: 52px;
+}
+.hero-tag {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 26px;
+  display: flex; align-items: center; justify-content: center; gap: 14px;
+}
+.hero-tag::before, .hero-tag::after {
+  content: ''; display: inline-block; width: 36px; height: 1px; background: rgba(27,79,216,.35);
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(50px, 6.5vw, 92px);
+  font-weight: 300; line-height: 1.05;
+  letter-spacing: -0.025em; color: var(--ink);
+}
+.hero h1 em { font-style: italic; color: rgba(13,13,13,.28); }
+.hero-sub {
+  font-size: 13px; font-weight: 300; font-family: var(--mono);
+  color: rgba(13,13,13,.38); margin-top: 22px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+}
+
+/* ── ORBITAL STAGE ── */
+.hero-visual {
+  position: relative; z-index: 2;
+  width: min(1180px, 97vw);
+  height: min(780px, 88vw);
+  flex-shrink: 0;
+  margin-bottom: 56px;
+}
+
+/* ellipse orbit ring — flat tilted orbital plane */
+.orbit-ring {
+  position: absolute;
+  width: 96%; height: 32%;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(27,79,216,.3);
+  pointer-events: none;
+  box-shadow: 0 0 60px rgba(27,79,216,.07) inset, 0 0 120px rgba(27,79,216,.04) inset;
+}
+
+/* ── MOON — positioned by JS ── */
+.moon-el {
+  position: absolute;
+  width: 84px; height: 84px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 36% 30%, #daeeff 0%, #6aaef8 24%, #2568d9 54%, #0d2480 85%, #04102e 100%);
+  box-shadow:
+    0 0 24px rgba(27,79,216,1),
+    0 0 56px rgba(27,79,216,.65),
+    0 0 120px rgba(27,79,216,.40),
+    0 0 220px rgba(27,79,216,.20),
+    inset -14px -10px 26px rgba(0,5,44,.6);
+  z-index: 10;
+  transform: translate(-50%, -50%);
+  will-change: left, top;
+}
+.moon-el::before {
+  content: '';
+  position: absolute;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: rgba(8,18,80,.28);
+  top: 20px; left: 36px;
+  box-shadow: 9px 13px 0 -3px rgba(8,18,80,.2), -5px 28px 0 -3px rgba(8,18,80,.14);
+}
+
+/* ── CARD STACK ── */
+.cards-stack {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 755px; height: 472px;
+  transform: translate(-50%, -50%);
+  animation: stack-float 7s ease-in-out infinite;
+  z-index: 5;
+}
+@keyframes stack-float {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0px); }
+  50%       { transform: translate(-50%, -50%) translateY(-14px); }
+}
+
+.s-card {
+  position: absolute;
+  width: 755px; height: 472px;
+  border-radius: 16px;
+  top: 0; left: 0; overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,.22), 0 0 0 1px rgba(0,0,0,.06);
+  will-change: transform;
+  transition: transform .55s cubic-bezier(.2,0,0,1), opacity .55s ease;
+}
+.s-card:nth-child(1) { transform: rotate(0deg)   translate(0px,   0px)  scale(1);   z-index:6; opacity:1;   }
+.s-card:nth-child(2) { transform: rotate(4deg)   translate(32px,  10px) scale(.97); z-index:5; opacity:.97; }
+.s-card:nth-child(3) { transform: rotate(1deg)   translate(8px,   22px) scale(.94); z-index:4; opacity:.92; }
+.s-card:nth-child(4) { transform: rotate(-3deg)  translate(-24px, 40px) scale(.91); z-index:3; opacity:.85; }
+.s-card:nth-child(5) { transform: rotate(-7deg)  translate(-48px, 64px) scale(.86); z-index:2; opacity:.76; }
+.s-card:nth-child(6) { transform: rotate(-11deg) translate(-74px, 88px) scale(.82); z-index:1; opacity:.68; }
+.s-card-bg {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  display: block;
+}
+
+/* ── BROWSER FRAME ── */
+.s-browser {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column; background: #f0eeea;
+}
+.s-browser-chrome {
+  height: 32px; background: #E2E0DC;
+  display: flex; align-items: center; padding: 0 12px; gap: 6px;
+  flex-shrink: 0; border-bottom: 1px solid rgba(0,0,0,.08);
+}
+.s-bdot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+.s-burl {
+  flex: 1; height: 20px; background: white; border-radius: 10px;
+  margin-left: 8px; display: flex; align-items: center;
+  padding: 0 10px; font-family: var(--mono); font-size: 8.5px;
+  color: #555; letter-spacing: .03em; overflow: hidden; white-space: nowrap;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
+}
+.s-browser-body { flex: 1; overflow: hidden; position: relative; }
+.s-browser-body > img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
+
+/* ── iPHONE FRAME ── */
+.s-iphone-bg {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.s-iphone {
+  width: 148px; height: 302px;
+  border-radius: 30px; background: #0D0D0D;
+  border: 3px solid #363636;
+  box-shadow: 0 0 0 1px #222, inset 0 0 0 1px #484848, 0 20px 60px rgba(0,0,0,.95);
+  display: flex; flex-direction: column; overflow: hidden;
+  flex-shrink: 0; position: relative; z-index: 2;
+}
+.s-iphone-notch {
+  height: 22px; background: #0D0D0D;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.s-iphone-island {
+  width: 56px; height: 14px; background: #000;
+  border-radius: 7px; outline: 1.5px solid #1C1C1C;
+}
+.s-iphone-screen { flex: 1; overflow: hidden; }
+.s-iphone-footer {
+  height: 18px; display: flex; align-items: center;
+  justify-content: center; flex-shrink: 0;
+}
+.s-iphone-pill {
+  width: 50px; height: 4px;
+  background: rgba(255,255,255,.35); border-radius: 2px;
+}
+
+/* ── CARD OVERLAY ── */
+.s-card-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 36px 22px 18px;
+  background: linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.52) 52%, transparent 100%);
+}
+.s-card-topbar {
+  position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 8;
+  border-radius: 16px 16px 0 0;
+}
+.s-card-tag {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(255,255,255,.55); display: block; margin-bottom: 5px;
+}
+.s-card-title {
+  font-family: var(--serif); font-size: 28px; font-weight: 600;
+  color: #fff; line-height: 1;
+}
+
+/* hero buttons */
+.btn-ink {
+  display: inline-block; padding: 13px 28px;
+  background: var(--ink); color: var(--cream);
+  font-family: var(--jost); font-size: 13px; font-weight: 400;
+  letter-spacing: 0.06em; text-decoration: none; border: 1px solid var(--ink);
+  transition: background .2s, color .2s;
+}
+.btn-ink:hover { background: var(--blue); border-color: var(--blue); }
+.btn-outline {
+  display: inline-block; padding: 13px 28px;
+  background: transparent; color: var(--ink);
+  font-family: var(--jost); font-size: 13px; font-weight: 400;
+  letter-spacing: 0.06em; text-decoration: none; border: 1px solid rgba(13,13,13,0.25);
+  transition: border-color .2s, color .2s;
+}
+.btn-outline:hover { border-color: var(--ink); }
+
+.hero-actions {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  justify-content: center;
+  position: relative; z-index: 2;
+}
+.hero-actions .btn-outline {
+  border-color: rgba(13,13,13,.22);
+  color: rgba(13,13,13,.55);
+}
+.hero-actions .btn-outline:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+/* scroll hint */
+.hero-scroll {
+  position: absolute; bottom: 36px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column;
+  align-items: center; gap: 10px;
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(13,13,13,.25); z-index: 2;
+}
+.hero-scroll::after {
+  content: ''; display: block; width: 1px; height: 44px;
+  background: linear-gradient(to bottom, rgba(13,13,13,.15), transparent);
+}
+
+/* ── SECTIONS COMMON ──────────────────────────────────── */
+.label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--muted); }
+
+h2.display {
+  font-family: var(--serif);
+  font-size: clamp(40px, 4.5vw, 64px);
+  font-weight: 300; line-height: 1.1; letter-spacing: -0.02em;
+}
+h2.display em { font-style: italic; }
+.rule { height: 1px; background: var(--rule); }
+
+/* ── ABOUT ────────────────────────────────────────────── */
+.about { padding: 120px 52px; }
+.about-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+.about-body { padding-top: 8px; }
+.about-body p { font-size: 17px; font-weight: 300; line-height: 1.85; color: var(--muted); margin-top: 28px; }
+.about-body p strong { color: var(--ink); font-weight: 400; }
+.about-right { }
+.about-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+.fact {
+  background: var(--cream); padding: 32px 28px;
+}
+.fact-num { font-family: var(--serif); font-size: 44px; font-weight: 300; line-height: 1; color: var(--blue); margin-bottom: 8px; }
+.fact-label { font-size: 12px; font-weight: 300; color: var(--muted); line-height: 1.5; }
+
+/* ── PRODUCTS ─────────────────────────────────────────── */
+.products-section { padding: 0 52px 120px; }
+.products-header { padding: 80px 0 60px; border-top: 1px solid var(--rule); max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-end; }
+.products-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+
+.product-card {
+  background: var(--cream); padding: 40px 36px 36px;
+  text-decoration: none; color: var(--ink);
+  display: block; position: relative; overflow: hidden;
+  transition: transform .35s cubic-bezier(.2,0,0,1), box-shadow .35s ease;
+  transform-style: preserve-3d; will-change: transform;
+}
+.product-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--card-accent, #1B4FD8); opacity: 0;
+  transition: opacity .25s ease;
+}
+.product-card:hover::before { opacity: 1; }
+.product-card:hover { box-shadow: 0 20px 60px rgba(0,0,0,0.1); z-index: 2; }
+/* product card thumbnail */
+.p-thumb { height: 180px; overflow: hidden; position: relative; background: var(--thumb-bg, #EEEAE4); border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: center; }
+.p-thumb-inner { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--card-accent, var(--muted)); opacity: 0.5; }
+
+.p-num { font-family: var(--serif); font-size: 64px; font-weight: 300; color: var(--rule); line-height: 1; margin-bottom: 20px; transition: color .25s; }
+.product-card:hover .p-num { color: rgba(13,13,13,0.12); }
+.p-cat { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--card-accent, var(--muted)); margin-bottom: 14px; }
+.p-name { font-family: var(--serif); font-size: 26px; font-weight: 600; margin-bottom: 14px; line-height: 1.1; }
+.p-desc { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.7; margin-bottom: 28px; }
+.p-link { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--card-accent, var(--ink)); display: flex; align-items: center; gap: 8px; }
+.p-link::after { content: '→'; transition: transform .2s; }
+.product-card:hover .p-link::after { transform: translateX(4px); }
+
+/* ── SERVICES ─────────────────────────────────────────── */
+.services { background: var(--ink); color: var(--cream); padding: 120px 52px; }
+.services-inner { max-width: 1200px; margin: 0 auto; }
+.services .label { color: rgba(247,245,240,0.35); }
+.services .label::before { background: rgba(247,245,240,0.35); }
+.services h2.display { color: var(--cream); }
+.services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.07); margin-top: 64px; }
+.svc {
+  background: var(--ink); padding: 40px 32px;
+  border-top: 2px solid transparent;
+  transition: border-color .25s, background .25s;
+}
+.svc:hover { border-top-color: var(--blue); background: rgba(255,255,255,0.02); }
+.svc-icon { font-size: 28px; margin-bottom: 20px; }
+.svc-name { font-family: var(--serif); font-size: 20px; font-weight: 600; margin-bottom: 12px; color: var(--cream); }
+.svc-desc { font-size: 13px; font-weight: 300; color: rgba(247,245,240,0.5); line-height: 1.7; margin-bottom: 24px; }
+.svc-tools { display: flex; flex-wrap: wrap; gap: 6px; }
+.tool { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; padding: 4px 10px; border: 1px solid rgba(255,255,255,0.1); color: rgba(247,245,240,0.4); }
+
+/* nocode strip */
+.nocode-strip { background: rgba(255,255,255,0.03); border-top: 1px solid rgba(255,255,255,0.07); padding: 40px 0; margin-top: 1px; }
+.nocode-strip-inner { max-width: 1200px; margin: 0 auto; padding: 0 52px; display: flex; align-items: center; gap: 48px; }
+.nocode-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(247,245,240,0.3); white-space: nowrap; }
+.nocode-tools { display: flex; gap: 32px; flex-wrap: wrap; }
+.nocode-tool { font-size: 13px; font-weight: 300; color: rgba(247,245,240,0.45); transition: color .2s; }
+.nocode-tool:hover { color: var(--cream); }
+
+/* ── PROCESS OVERVIEW ────────────────────────────────── */
+.process-overview { padding: 120px 52px; background: #F0EDE6; }
+.process-overview-inner { max-width: 1200px; margin: 0 auto; }
+.process-overview-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 72px; gap: 40px;
+}
+.process-overview-header .process-cta-link {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--blue);
+  text-decoration: none; display: flex; align-items: center; gap: 10px;
+  white-space: nowrap; padding-bottom: 4px;
+  border-bottom: 1px solid rgba(27,79,216,.25);
+  transition: border-color .2s;
+}
+.process-overview-header .process-cta-link:hover { border-color: var(--blue); }
+.process-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+.ps-card {
+  background: #F0EDE6;
+  padding: 40px 36px 36px;
+  position: relative; overflow: hidden;
+  transition: background .3s;
+}
+.ps-card:hover { background: var(--cream); }
+.ps-card::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--blue); opacity: 0;
+  transition: opacity .25s;
+}
+.ps-card:hover::after { opacity: 1; }
+.ps-step-num {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+  color: var(--muted); margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.ps-step-num::after {
+  content: ''; flex: 1; height: 1px; background: var(--rule);
+}
+.ps-icon { color: var(--blue); margin-bottom: 18px; opacity: 0.75; transition: opacity .25s; }
+.ps-card:hover .ps-icon { opacity: 1; }
+.ps-icon svg { display: block; }
+.ps-title {
+  font-family: var(--serif); font-size: 22px; font-weight: 600;
+  line-height: 1.15; margin-bottom: 12px; color: var(--ink);
+}
+.ps-title em { font-style: italic; font-weight: 300; color: rgba(13,13,13,.4); }
+.ps-desc {
+  font-size: 13px; font-weight: 300; line-height: 1.75; color: var(--muted);
+}
+
+/* ── NUMBERS ──────────────────────────────────────────── */
+.numbers { padding: 120px 52px; }
+.numbers-inner { max-width: 1200px; margin: 0 auto; }
+.numbers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 60px; }
+.num-item { background: var(--cream); padding: 52px 36px; }
+.num-big { font-family: var(--serif); font-size: 72px; font-weight: 300; line-height: 1; letter-spacing: -0.02em; color: var(--ink); }
+.num-big span { color: var(--blue); }
+.num-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-top: 12px; }
+
+/* ── CAREERS ──────────────────────────────────────────── */
+.careers { padding: 120px 52px; background: #F0EDE6; }
+.careers-inner { max-width: 1200px; margin: 0 auto; }
+.career-card {
+  margin-top: 60px;
+  display: grid; grid-template-columns: 1fr auto; gap: 60px; align-items: center;
+  border: 1px solid var(--rule); background: var(--cream);
+  padding: 52px;
+}
+.career-open { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #3A7D44; display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
+.career-open::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #3A7D44; }
+.career-title { font-family: var(--serif); font-size: 36px; font-weight: 300; letter-spacing: -0.01em; margin-bottom: 16px; }
+.career-title em { font-style: italic; }
+.career-desc { font-size: 15px; font-weight: 300; color: var(--muted); line-height: 1.75; max-width: 560px; }
+.career-meta { display: flex; gap: 32px; margin-top: 28px; }
+.career-meta span { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+.career-right { text-align: right; }
+.stipend-num { font-family: var(--serif); font-size: 56px; font-weight: 300; letter-spacing: -0.02em; color: var(--ink); line-height: 1; }
+.stipend-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 4px; margin-bottom: 28px; }
+
+/* ── CONTACT ──────────────────────────────────────────── */
+.contact { background: var(--ink); color: var(--cream); padding: 120px 52px 80px; }
+.contact-inner { max-width: 1200px; margin: 0 auto; }
+.contact .label { color: rgba(247,245,240,0.35); }
+.contact .label::before { background: rgba(247,245,240,0.35); }
+.contact h2.display { color: var(--cream); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 72px; }
+.contact-left p { font-size: 15px; font-weight: 300; line-height: 1.8; color: rgba(247,245,240,0.55); margin-top: 20px; max-width: 420px; }
+.contact-actions { margin-top: 40px; display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-cream { display: inline-block; padding: 13px 28px; background: var(--cream); color: var(--ink); font-family: var(--jost); font-size: 13px; font-weight: 400; letter-spacing: 0.06em; text-decoration: none; border: 1px solid var(--cream); transition: background .2s, color .2s; }
+.btn-cream:hover { background: var(--blue); border-color: var(--blue); color: var(--cream); }
+.btn-outline-cream { display: inline-block; padding: 13px 28px; background: transparent; color: rgba(247,245,240,0.6); font-family: var(--jost); font-size: 13px; font-weight: 400; letter-spacing: 0.06em; text-decoration: none; border: 1px solid rgba(247,245,240,0.2); transition: border-color .2s, color .2s; }
+.btn-outline-cream:hover { border-color: var(--cream); color: var(--cream); }
+.btn-whatsapp { display: inline-block; padding: 13px 28px; background: #25D366; color: #fff; font-family: var(--jost); font-size: 13px; font-weight: 400; letter-spacing: 0.06em; text-decoration: none; border: 1px solid #25D366; transition: background .2s, border-color .2s; }
+.btn-whatsapp:hover { background: #1ebe5b; border-color: #1ebe5b; }
+.contact-info { }
+.info-row { padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,0.07); display: grid; grid-template-columns: 120px 1fr; gap: 20px; align-items: start; }
+.info-key { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(247,245,240,0.3); padding-top: 2px; }
+.info-val { font-size: 14px; font-weight: 300; color: rgba(247,245,240,0.7); line-height: 1.65; }
+.info-val a { color: var(--cream); text-decoration: none; border-bottom: 1px solid rgba(247,245,240,0.2); transition: border-color .2s; }
+.info-val a:hover { border-color: var(--cream); }
+
+/* footer */
+.footer-bar { max-width: 1200px; margin: 80px auto 0; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.footer-brand { font-family: var(--serif); font-size: 14px; font-weight: 300; color: rgba(247,245,240,0.4); letter-spacing: 0.08em; }
+.footer-copy { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: rgba(247,245,240,0.25); }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: rgba(247,245,240,0.35); text-decoration: none; text-transform: uppercase; transition: color .2s; }
+.footer-links a:hover { color: var(--cream); }
+
+/* ── SCROLL REVEAL ────────────────────────────────────── */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+.reveal-d1 { transition-delay: .1s; }
+.reveal-d2 { transition-delay: .2s; }
+.reveal-d3 { transition-delay: .3s; }
+.reveal-d4 { transition-delay: .4s; }
+.reveal-d5 { transition-delay: .5s; }
+.reveal-d6 { transition-delay: .6s; }
+
+/* ── RESPONSIVE ───────────────────────────────────────── */
+@media (max-width: 960px) {
+  nav { padding: 18px 24px; }
+  .nav-links { display: none; }
+  .hero { padding: 90px 20px 70px; }
+  .hero-visual { margin-bottom: 40px; }
+  .hero h1 { font-size: clamp(44px, 12vw, 72px); }
+  .moon-el { width: 56px; height: 56px; }
+  .cards-stack { width: 90vw; height: calc(90vw * 0.625); max-width: 500px; max-height: 312px; }
+  .s-card { width: 90vw; height: calc(90vw * 0.625); max-width: 500px; max-height: 312px; }
+  .s-card-title { font-size: 20px; }
+  .s-card-tag { font-size: 8px; }
+  .s-iphone { width: 100px; height: 204px; border-radius: 20px; }
+  .s-iphone-notch { height: 16px; }
+  .s-iphone-island { width: 40px; height: 10px; }
+  .s-iphone-footer { height: 14px; }
+  .s-browser-chrome { height: 24px; }
+  .s-bdot { width: 8px; height: 8px; }
+  .s-burl { font-size: 7px; height: 15px; }
+  .about, .products-section, .numbers, .careers, .contact { padding-left: 24px; padding-right: 24px; }
+  .about-inner { grid-template-columns: 1fr; gap: 60px; }
+  .products-grid { grid-template-columns: 1fr; }
+  .services { padding: 80px 24px 0; }
+  .services-grid { grid-template-columns: repeat(2,1fr); }
+  .nocode-strip-inner { padding: 0 24px; flex-direction: column; align-items: flex-start; gap: 20px; }
+  .numbers-grid { grid-template-columns: repeat(2,1fr); }
+  .process-steps-grid { grid-template-columns: 1fr; }
+  .process-overview { padding: 80px 24px; }
+  .process-overview-header { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .career-card { grid-template-columns: 1fr; gap: 32px; }
+  .career-right { text-align: left; }
+  .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  .footer-bar { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="dot"></div>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <a href="index.html" class="nav-brand">
+    <img src="images/logo.png" class="nav-logo" alt="Bluemoon Innovations">
+    <span class="nav-brand-name">Bluemoon<br>Innovations</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">Studio</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="process.html">Process</a></li>
+    <li><a href="#careers">Careers</a></li>
+    <li><a href="#contact" class="cta">Let's Build</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-tag">Innovation Studio · India</div>
+    <h1>We make <em>rare ideas</em> real.</h1>
+    <p class="hero-sub">SaaS · AI · Mobile · Hardware</p>
+  </div>
+
+  <div class="hero-visual">
+    <div class="orbit-ring"></div>
+    <div class="moon-el"></div>
+
+    <div class="cards-stack">
+
+      <!-- Card 1 (front) — FileSIGN · Web Browser Frame -->
+      <div class="s-card">
+        <div class="s-card-topbar" style="background:#B8860B;"></div>
+        <div class="s-browser">
+          <div class="s-browser-chrome">
+            <div class="s-bdot" style="background:#FF5F57;"></div>
+            <div class="s-bdot" style="background:#FFBD2E;"></div>
+            <div class="s-bdot" style="background:#28C840;"></div>
+            <div class="s-burl">🔒 filesign.ink/documents</div>
+          </div>
+          <div class="s-browser-body">
+            <img src="images/fs-documents.png" alt="FileSIGN Documents">
+          </div>
+        </div>
+        <div class="s-card-overlay">
+          <span class="s-card-tag">Document SaaS</span>
+          <div class="s-card-title">FileSIGN</div>
+        </div>
+      </div>
+
+      <!-- Card 2 — BuddyAI · Web Browser Frame -->
+      <div class="s-card">
+        <div class="s-card-topbar" style="background:#C0622F;"></div>
+        <div class="s-browser">
+          <div class="s-browser-chrome">
+            <div class="s-bdot" style="background:#FF5F57;"></div>
+            <div class="s-bdot" style="background:#FFBD2E;"></div>
+            <div class="s-bdot" style="background:#28C840;"></div>
+            <div class="s-burl">🔒 app.getbuddyai.com/tours</div>
+          </div>
+          <div class="s-browser-body">
+            <img src="images/buddy-tours.png" alt="BuddyAI Tours">
+          </div>
+        </div>
+        <div class="s-card-overlay">
+          <span class="s-card-tag">AI SaaS · Onboarding</span>
+          <div class="s-card-title">BuddyAI</div>
+        </div>
+      </div>
+
+      <!-- Card 3 — Custom AI Chatbots -->
+      <div class="s-card">
+        <div class="s-card-topbar" style="background:#4F46E5;"></div>
+        <div style="width:100%;height:100%;background:linear-gradient(135deg,#0A0B1A,#0F1130);display:flex;align-items:center;justify-content:center;gap:14px;flex-direction:column;position:relative;overflow:hidden;">
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(79,70,229,.18) 0%,transparent 70%);pointer-events:none;"></div>
+          <div style="display:flex;gap:10px;align-items:center;position:relative;z-index:2;">
+            <div style="width:36px;height:36px;border-radius:10px;background:rgba(37,211,102,.15);border:1px solid rgba(37,211,102,.35);display:flex;align-items:center;justify-content:center;font-size:16px;">💬</div>
+            <div style="width:36px;height:36px;border-radius:10px;background:rgba(79,70,229,.18);border:1px solid rgba(79,70,229,.45);display:flex;align-items:center;justify-content:center;font-size:16px;">💼</div>
+            <div style="width:36px;height:36px;border-radius:10px;background:rgba(0,120,215,.15);border:1px solid rgba(0,120,215,.35);display:flex;align-items:center;justify-content:center;font-size:16px;">🤝</div>
+          </div>
+          <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:10px 14px;max-width:220px;position:relative;z-index:2;">
+            <div style="font-size:8px;color:rgba(255,255,255,.4);font-family:monospace;letter-spacing:.08em;margin-bottom:6px;">AI AGENT · WHATSAPP</div>
+            <div style="font-size:9px;color:rgba(255,255,255,.75);line-height:1.5;">Your AI is live. Ask me anything about your orders, inventory, or escalate to a human.</div>
+          </div>
+        </div>
+        <div class="s-card-overlay">
+          <span class="s-card-tag">AI Chatbot · Custom</span>
+          <div class="s-card-title">AI Chatbots</div>
+        </div>
+      </div>
+
+      <!-- Card 4 — Healthsum · iPhone + Real Screenshot + Translucent BG -->
+      <div class="s-card">
+        <div class="s-card-topbar" style="background:#3A7D44;"></div>
+        <!-- Deep background -->
+        <div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 25%, rgba(58,125,68,.18) 0%, #030C07 65%);position:relative;display:flex;align-items:center;justify-content:center;">
+          <!-- Translucent glass panel -->
+          <div style="position:absolute;top:10px;bottom:10px;left:18px;right:18px;border-radius:22px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 8px 32px rgba(0,0,0,.5);"></div>
+          <!-- iPhone with real screenshot -->
+          <div class="s-iphone" style="background:#000;border-color:#3A3A3A;box-shadow:0 0 0 1px #222,0 24px 64px rgba(0,0,0,.9),0 0 40px rgba(58,125,68,.15);">
+            <div class="s-iphone-notch" style="background:#000;">
+              <div class="s-iphone-island" style="background:#000;outline-color:#1C1C1C;"></div>
+            </div>
+            <div class="s-iphone-screen">
+              <img src="images/healthsum-app.png" alt="Healthsum" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+            </div>
+            <div class="s-iphone-footer" style="background:#000;">
+              <div class="s-iphone-pill"></div>
+            </div>
+          </div>
+        </div>
+        <div class="s-card-overlay">
+          <span class="s-card-tag">AI Health · Mobile</span>
+          <div class="s-card-title">Healthsum</div>
+        </div>
+      </div>
+
+      <!-- Card 5 — Ausum · Real Screenshot -->
+      <div class="s-card">
+        <div class="s-card-topbar" style="background:#D4960A;"></div>
+        <div class="s-browser">
+          <div class="s-browser-chrome">
+            <div class="s-bdot" style="background:#FF5F57;"></div>
+            <div class="s-bdot" style="background:#FFBD2E;"></div>
+            <div class="s-bdot" style="background:#28C840;"></div>
+            <div class="s-burl">🔒 localhost:3000 · AuSum Dashboard</div>
+          </div>
+          <div class="s-browser-body">
+            <img src="images/ausum-screenshot.png" alt="Ausum Dashboard">
+          </div>
+        </div>
+        <div class="s-card-overlay">
+          <span class="s-card-tag">Manufacturing · Enterprise</span>
+          <div class="s-card-title">Ausum</div>
+        </div>
+      </div>
+
+      <!-- Card 6 (back) — Being Better · Product Photo + Translucent BG -->
+      <a class="s-card" href="https://www.getbeingbetter.com" target="_blank" rel="noopener">
+        <div class="s-card-topbar" style="background:#0891B2;"></div>
+        <!-- Deep dark background -->
+        <div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 35%, rgba(8,145,178,.14) 0%, #020C10 65%);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;">
+          <!-- Translucent glass panel the product floats on -->
+          <div style="position:absolute;top:10px;bottom:10px;left:16px;right:16px;border-radius:22px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 8px 32px rgba(0,0,0,.5);overflow:hidden;">
+            <img src="images/bb-product.png" alt="Being Better" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;">
+          </div>
+          <!-- Subtle cyan glow behind product -->
+          <div style="position:absolute;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(8,145,178,.18) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-55%);pointer-events:none;"></div>
+        </div>
+        <div class="s-card-overlay">
+          <span class="s-card-tag">AI Hardware · Consumer</span>
+          <div class="s-card-title">Being Better</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <div class="hero-actions">
+    <a href="#products" class="btn-ink">View Our Work</a>
+    <a href="#contact" class="btn-outline">Start a Project</a>
+  </div>
+
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-body reveal">
+      <div class="label">Studio</div>
+      <h2 class="display">An innovation lab<br>that <em>ships.</em></h2>
+      <p>Bluemoon Innovations is a <strong>product studio</strong> based in India — building in-house SaaS, AI products, and hardware, while also taking on ambitious contracts for clients who need things done right.</p>
+      <p>We are builders first. Strategy, design, engineering, and deployment all under one roof. <strong>From idea to live product, in weeks.</strong></p>
+    </div>
+    <div class="about-right reveal reveal-d2">
+      <div class="about-facts">
+        <div class="fact">
+          <div class="fact-num">6+</div>
+          <div class="fact-label">Products built & shipped</div>
+        </div>
+        <div class="fact">
+          <div class="fact-num">30%</div>
+          <div class="fact-label">Production boost delivered (Ausum)</div>
+        </div>
+        <div class="fact">
+          <div class="fact-num">3</div>
+          <div class="fact-label">Verticals: SaaS, Mobile, Hardware</div>
+        </div>
+        <div class="fact">
+          <div class="fact-num">∞</div>
+          <div class="fact-label">Ideas in the pipeline</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRODUCTS ── -->
+<section class="products-section" id="products">
+  <div class="products-header">
+    <div>
+      <div class="label reveal">Portfolio</div>
+      <h2 class="display reveal reveal-d1">Products we've<br><em>built & shipped.</em></h2>
+    </div>
+    <p style="font-size:14px;font-weight:300;color:var(--muted);max-width:260px;line-height:1.7;" class="reveal reveal-d2">Six products. Each solving a real problem, elegantly.</p>
+  </div>
+  <div class="products-grid">
+
+    <a href="products/filesign.html" class="product-card reveal" style="--card-accent:#B8860B;">
+      <div class="p-thumb" style="padding:0;overflow:hidden;">
+        <img src="images/fs-landing.png" style="width:100%;height:180px;object-fit:cover;object-position:center top;display:block;">
+      </div>
+      <div class="p-num">01</div>
+      <div class="p-cat">Document SaaS</div>
+      <div class="p-name">FileSIGN</div>
+      <p class="p-desc">Legally-binding e-signatures for anyone. Sign documents for free, in minutes. Signers don't need an account.</p>
+      <div class="p-link">filesign.ink</div>
+    </a>
+
+    <a href="products/ausum.html" class="product-card reveal reveal-d1" style="--card-accent:#D4960A;--thumb-bg:#0F0A02;">
+      <div class="p-thumb" style="background:linear-gradient(135deg,#0F0A02,#1A1005);display:flex;flex-direction:column;align-items:flex-start;padding:20px 22px;gap:8px;">
+        <div style="font-family:var(--serif);font-size:18px;font-weight:800;color:#D4960A;letter-spacing:.02em;">AUSUM</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="background:rgba(212,150,10,.15);border:1px solid rgba(212,150,10,.3);color:#D4960A;padding:3px 10px;font-family:var(--mono);font-size:8px;letter-spacing:.1em;">↑30% PRODUCTION</span>
+          <span style="background:rgba(212,150,10,.15);border:1px solid rgba(212,150,10,.3);color:#D4960A;padding:3px 10px;font-family:var(--mono);font-size:8px;letter-spacing:.1em;">↓20% ERRORS</span>
+        </div>
+        <div style="height:2px;width:100%;background:linear-gradient(90deg,#D4960A,transparent);margin-top:4px;opacity:.4;"></div>
+      </div>
+      <div class="p-num">02</div>
+      <div class="p-cat">Manufacturing · Enterprise</div>
+      <div class="p-name">Ausum</div>
+      <p class="p-desc">Operations intelligence for a jewellery manufacturer. Reduced audit errors by 20%, boosted production by 30%.</p>
+      <div class="p-link">View Case Study</div>
+    </a>
+
+    <a href="products/healthsum.html" class="product-card reveal reveal-d2" style="--card-accent:#3A7D44;--thumb-bg:#071020;">
+      <div class="p-thumb" style="background:linear-gradient(160deg,#071020,#0D1E30);display:flex;align-items:center;justify-content:center;gap:12px;">
+        <div style="width:52px;height:90px;background:#0D1E35;border-radius:10px;border:2px solid rgba(58,125,68,.4);box-shadow:0 0 20px rgba(58,125,68,.15);display:flex;flex-direction:column;align-items:center;padding-top:8px;gap:4px;">
+          <div style="width:28px;height:4px;background:rgba(255,255,255,.1);border-radius:2px;"></div>
+          <div style="width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,#3A7D44,#2196F3);margin-top:4px;"></div>
+          <div style="width:34px;height:3px;background:rgba(58,125,68,.4);border-radius:2px;margin-top:4px;"></div>
+          <div style="width:34px;height:3px;background:rgba(58,125,68,.25);border-radius:2px;"></div>
+          <div style="width:34px;height:3px;background:rgba(58,125,68,.15);border-radius:2px;"></div>
+        </div>
+        <div style="font-family:var(--mono);font-size:9px;color:rgba(58,125,68,.7);letter-spacing:.15em;text-transform:uppercase;">AI Health<br>Companion</div>
+      </div>
+      <div class="p-num">03</div>
+      <div class="p-cat">AI Health Tech · Mobile</div>
+      <div class="p-name">Healthsum</div>
+      <p class="p-desc">An AI health companion that reads your reports, tracks body systems, and guides you to better health with Healio AI.</p>
+      <div class="p-link">Coming Soon</div>
+    </a>
+
+    <a href="products/buddyai.html" class="product-card reveal reveal-d3" style="--card-accent:#C0622F;">
+      <div class="p-thumb" style="padding:0;overflow:hidden;">
+        <img src="images/buddy-tours.png" style="width:100%;height:180px;object-fit:cover;object-position:top;display:block;">
+      </div>
+      <div class="p-num">04</div>
+      <div class="p-cat">AI SaaS · Onboarding</div>
+      <div class="p-name">BuddyAI</div>
+      <p class="p-desc">An intelligent onboarding copilot for SaaS products. Generate tours, chat with users, escalate to humans. Chrome extension included.</p>
+      <div class="p-link">getbuddyai.com</div>
+    </a>
+
+    <a href="products/robin-copilot.html" class="product-card reveal reveal-d4" style="--card-accent:#4F46E5;--thumb-bg:#0A0B1A;">
+      <div class="p-thumb" style="background:linear-gradient(135deg,#0A0B1A,#0F1130);display:flex;flex-direction:column;align-items:flex-start;padding:20px 22px;gap:10px;position:relative;overflow:hidden;">
+        <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,rgba(79,70,229,.2) 0%,transparent 70%);pointer-events:none;"></div>
+        <div style="display:flex;gap:6px;position:relative;z-index:1;">
+          <div style="background:rgba(37,211,102,.15);border:1px solid rgba(37,211,102,.4);border-radius:6px;padding:4px 10px;font-family:monospace;font-size:7.5px;letter-spacing:.08em;color:rgba(37,211,102,.9);">WhatsApp</div>
+          <div style="background:rgba(79,70,229,.2);border:1px solid rgba(79,70,229,.5);border-radius:6px;padding:4px 10px;font-family:monospace;font-size:7.5px;letter-spacing:.08em;color:rgba(149,144,255,.9);">Slack</div>
+          <div style="background:rgba(0,120,215,.15);border:1px solid rgba(0,120,215,.4);border-radius:6px;padding:4px 10px;font-family:monospace;font-size:7.5px;letter-spacing:.08em;color:rgba(100,180,255,.9);">Teams</div>
+        </div>
+        <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:8px;padding:9px 12px;width:100%;position:relative;z-index:1;">
+          <div style="font-size:7px;color:rgba(149,144,255,.6);letter-spacing:.1em;margin-bottom:5px;">AI AGENT</div>
+          <div style="font-size:8.5px;color:rgba(255,255,255,.7);line-height:1.55;">Ask me anything — I'll handle it or escalate to a human.</div>
+        </div>
+        <div style="display:flex;gap:4px;position:relative;z-index:1;">
+          <span style="background:#4F46E5;color:white;padding:3px 10px;border-radius:3px;font-size:7px;font-family:monospace;">Approve</span>
+          <span style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.4);padding:3px 10px;border-radius:3px;font-size:7px;font-family:monospace;">Reject</span>
+        </div>
+      </div>
+      <div class="p-num">05</div>
+      <div class="p-cat">AI Chatbot · Custom Integrations</div>
+      <div class="p-name">Custom AI Chatbots</div>
+      <p class="p-desc">AI chat agents that live inside WhatsApp, Slack, or Teams — so your team adopts them instantly without changing how they work. Human-in-the-loop included.</p>
+      <div class="p-link">Let's Build Yours</div>
+    </a>
+
+    <a href="products/being-better.html" class="product-card reveal reveal-d5" style="--card-accent:#0891B2;--thumb-bg:#06090F;">
+      <div class="p-thumb" style="background:linear-gradient(160deg,#06090F,#0A111C);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+        <div style="position:absolute;width:120px;height:120px;border-radius:50%;border:1px solid rgba(8,145,178,.15);"></div>
+        <div style="position:absolute;width:90px;height:90px;border-radius:50%;border:1px solid rgba(8,145,178,.2);"></div>
+        <div style="width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,#0A1825,#0D2035);border:2px solid rgba(8,145,178,.4);box-shadow:0 0 24px rgba(8,145,178,.2);display:flex;align-items:center;justify-content:center;font-size:24px;position:relative;z-index:2;">🔬</div>
+        <div style="position:absolute;bottom:16px;font-family:var(--mono);font-size:8px;color:rgba(8,145,178,.6);letter-spacing:.15em;text-transform:uppercase;">Scalp Sentinel BB01</div>
+      </div>
+      <div class="p-num">06</div>
+      <div class="p-cat">AI Hardware · Consumer</div>
+      <div class="p-name">Being Better</div>
+      <p class="p-desc">Everyday tools, made smarter. Scalp Sentinel (BB01) — 60× magnification, 3D scalp mapping, AI follicle analysis.</p>
+      <div class="p-link">getbeingbetter.com</div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="label reveal">Services</div>
+    <h2 class="display reveal reveal-d1">What we<br><em>offer.</em></h2>
+    <div class="services-grid">
+      <div class="svc reveal reveal-d1">
+        <div class="svc-icon">_AI</div>
+        <div class="svc-name">AI SaaS Development</div>
+        <p class="svc-desc">From LLM-powered assistants to full AI SaaS products. We architect, build, and deploy AI applications that scale.</p>
+        <div class="svc-tools">
+          <span class="tool">Claude</span><span class="tool">GPT-4</span><span class="tool">Gemini</span><span class="tool">RAG</span><span class="tool">Agents</span>
+        </div>
+      </div>
+      <div class="svc reveal reveal-d2">
+        <div class="svc-icon">[]</div>
+        <div class="svc-name">Mobile Apps</div>
+        <p class="svc-desc">Native-quality cross-platform apps with Flutter. Beautiful UX, robust backends, shipped fast.</p>
+        <div class="svc-tools">
+          <span class="tool">Flutter</span><span class="tool">Dart</span><span class="tool">Supabase</span><span class="tool">Firebase</span>
+        </div>
+      </div>
+      <div class="svc reveal reveal-d3">
+        <div class="svc-icon">/\/</div>
+        <div class="svc-name">Hardware + AI</div>
+        <p class="svc-desc">Smart hardware from the ground up — sensors, firmware, AI inference, and companion apps.</p>
+        <div class="svc-tools">
+          <span class="tool">IoT</span><span class="tool">CV</span><span class="tool">Sensors</span><span class="tool">Firmware</span>
+        </div>
+      </div>
+      <div class="svc reveal reveal-d4">
+        <div class="svc-icon">⚡</div>
+        <div class="svc-name">No-Code & Automation</div>
+        <p class="svc-desc">Build and automate without writing a line — or combine with custom code for maximum leverage.</p>
+        <div class="svc-tools">
+          <span class="tool">Airtable</span><span class="tool">Zapier</span><span class="tool">n8n</span><span class="tool">Make</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nocode-strip">
+    <div class="nocode-strip-inner">
+      <span class="nocode-label">Platforms we use</span>
+      <div class="nocode-tools">
+        <span class="nocode-tool">Airtable</span>
+        <span class="nocode-tool">StackerHQ</span>
+        <span class="nocode-tool">Budibase</span>
+        <span class="nocode-tool">Appsmith</span>
+        <span class="nocode-tool">Zapier</span>
+        <span class="nocode-tool">n8n</span>
+        <span class="nocode-tool">Make.com</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS OVERVIEW ── -->
+<section class="process-overview" id="how-we-work">
+  <div class="process-overview-inner">
+    <div class="process-overview-header">
+      <div>
+        <div class="label reveal">How We Work</div>
+        <h2 class="display reveal reveal-d1">Six steps from<br><em>problem to live.</em></h2>
+      </div>
+      <a href="process.html" class="process-cta-link reveal reveal-d2">Full Process &amp; Expertise →</a>
+    </div>
+
+    <div class="process-steps-grid">
+
+      <div class="ps-card reveal">
+        <div class="ps-step-num">01</div>
+        <div class="ps-icon">
+          <svg width="36" height="36" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="17" cy="17" r="11"/><line x1="25" y1="25" x2="36" y2="36"/>
+            <line x1="17" y1="10" x2="17" y2="24"/><line x1="10" y1="17" x2="24" y2="17"/>
+            <circle cx="17" cy="17" r="3" stroke-opacity="0.35"/>
+          </svg>
+        </div>
+        <div class="ps-title">Understand the <em>Problem</em></div>
+        <p class="ps-desc">We go deep — the origin, the root causes, the stopgaps already in place. A well-defined problem is half the solution.</p>
+      </div>
+
+      <div class="ps-card reveal reveal-d1">
+        <div class="ps-step-num">02</div>
+        <div class="ps-icon">
+          <svg width="36" height="36" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6C13.4 6 8 11.4 8 18c0 4.2 2.2 7.9 5.5 10.1V32h13v-3.9C29.8 25.9 32 22.2 32 18 32 11.4 26.6 6 20 6z"/>
+            <line x1="13.5" y1="35" x2="26.5" y2="35"/><line x1="15" y1="32" x2="25" y2="32"/>
+            <line x1="20" y1="6" x2="20" y2="3"/><line x1="6" y1="18" x2="3" y2="18"/>
+            <line x1="34" y1="18" x2="37" y2="18"/>
+          </svg>
+        </div>
+        <div class="ps-title">Explore Your <em>Ideas</em></div>
+        <p class="ps-desc">Mockups, sketches, a voice note, ideas on a chit — we take everything and treat it as a signal about what success looks like to you.</p>
+      </div>
+
+      <div class="ps-card reveal reveal-d2">
+        <div class="ps-step-num">03</div>
+        <div class="ps-icon">
+          <svg width="36" height="36" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 7h22a2 2 0 012 2v10a2 2 0 01-2 2H8l-6 5V9a2 2 0 012-2z"/>
+            <path d="M28 15h6a2 2 0 012 2v9a2 2 0 01-2 2h-2v4l-6-4h-6a2 2 0 01-2-2v-2"/>
+          </svg>
+        </div>
+        <div class="ps-title">Debate &amp; <em>Refine</em></div>
+        <p class="ps-desc">Our team debates honestly — right solution? needs iteration? something better? We come back with a clear recommendation, not just a yes.</p>
+      </div>
+
+      <div class="ps-card reveal reveal-d3">
+        <div class="ps-step-num">04</div>
+        <div class="ps-icon">
+          <svg width="36" height="36" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 4L36 20L20 36L4 20L20 4z"/>
+            <polyline points="13,20 18,26 27,13"/>
+          </svg>
+        </div>
+        <div class="ps-title">Agree on <em>Approach</em></div>
+        <p class="ps-desc">Once both sides are genuinely happy, we lock in the plan. Shared scope, shared milestones, zero ambiguity.</p>
+      </div>
+
+      <div class="ps-card reveal reveal-d4">
+        <div class="ps-step-num">05</div>
+        <div class="ps-icon">
+          <svg width="36" height="36" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="20,5 36,13 20,21 4,13"/>
+            <polyline points="4,20 20,28 36,20"/>
+            <polyline points="4,27 20,35 36,27"/>
+          </svg>
+        </div>
+        <div class="ps-title">Build the <em>System</em></div>
+        <p class="ps-desc">Architecture first, then business systems, then UI and AI layers. We build from the ground up so everything holds at scale.</p>
+      </div>
+
+      <div class="ps-card reveal reveal-d5">
+        <div class="ps-step-num">06</div>
+        <div class="ps-icon">
+          <svg width="36" height="36" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4,30 13,19 21,23 34,9"/>
+            <polyline points="27,9 34,9 34,16"/>
+            <circle cx="13" cy="19" r="2.2" fill="currentColor" stroke="none"/>
+            <circle cx="21" cy="23" r="2.2" fill="currentColor" stroke="none"/>
+            <line x1="4" y1="36" x2="36" y2="36" stroke-opacity="0.2"/>
+          </svg>
+        </div>
+        <div class="ps-title">Adopt &amp; <em>Thrive</em></div>
+        <p class="ps-desc">We stay after launch — training, monitoring, adoption metrics to your inbox, and automated nudges to keep users engaged.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── NUMBERS ── -->
+<section class="numbers" id="numbers">
+  <div class="numbers-inner">
+    <div class="label reveal">Impact</div>
+    <h2 class="display reveal reveal-d1">Numbers that<br><em>matter.</em></h2>
+    <div class="numbers-grid">
+      <div class="num-item reveal reveal-d1">
+        <div class="num-big">6<span>+</span></div>
+        <div class="num-label">Products Shipped</div>
+      </div>
+      <div class="num-item reveal reveal-d2">
+        <div class="num-big">30<span>%</span></div>
+        <div class="num-label">Production Boost</div>
+      </div>
+      <div class="num-item reveal reveal-d3">
+        <div class="num-big">20<span>%</span></div>
+        <div class="num-label">Audit Error Reduction</div>
+      </div>
+      <div class="num-item reveal reveal-d4">
+        <div class="num-big">3</div>
+        <div class="num-label">Product Verticals</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CAREERS ── -->
+<section class="careers" id="careers">
+  <div class="careers-inner">
+    <div class="label reveal">Join Us</div>
+    <h2 class="display reveal reveal-d1">Build the future<br><em>with us.</em></h2>
+    <div class="career-card reveal reveal-d2">
+      <div>
+        <div class="career-open">Now Hiring</div>
+        <div class="career-title">Marketing &amp; <em>Growth Intern</em></div>
+        <p class="career-desc">Help us grow Bluemoon's products and brand. You'll work directly with the founding team on content, launches, and user acquisition. Real ownership. Real impact.</p>
+        <div class="career-meta">
+          <span>Bangalore / Remote</span>
+          <span>3–6 Months</span>
+          <span>Growth · Content · Social</span>
+        </div>
+      </div>
+      <div class="career-right">
+        <div class="stipend-num">₹15K</div>
+        <div class="stipend-label">Monthly Stipend</div>
+        <a href="mailto:affrid@gmail.com?subject=Marketing Intern Application" class="btn-ink">Apply Now →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-grid">
+      <div class="contact-left reveal">
+        <div class="label">Contact</div>
+        <h2 class="display">Let's build<br><em>something</em><br>extraordinary.</h2>
+        <p>Whether you have a product idea, need a tech partner, or want to digitize your operations — we'd love to hear from you.</p>
+        <div class="contact-actions">
+          <a href="mailto:affrid@gmail.com" class="btn-cream">Send a Message</a>
+          <a href="https://wa.me/919003626854?text=Hey%2C%20I%20checkout%20out%20your%20website%20and%20would%20like%20to%20talk%20about%20a%20project%20i%20want%20to%20brainstorm%20and%20build%20with%20you%20guys." target="_blank" class="btn-whatsapp">Chat Now ↗</a>
+          <a href="https://www.linkedin.com/company/bluemoon-innovations/" target="_blank" class="btn-outline-cream">LinkedIn →</a>
+        </div>
+      </div>
+      <div class="contact-info reveal reveal-d2">
+        <div class="info-row">
+          <span class="info-key">Phone</span>
+          <span class="info-val"><a href="tel:+919003626854">+91 900 362 6854</a></span>
+        </div>
+        <div class="info-row">
+          <span class="info-key">Email</span>
+          <span class="info-val"><a href="mailto:affrid@gmail.com">affrid@gmail.com</a></span>
+        </div>
+        <div class="info-row">
+          <span class="info-key">Bangalore</span>
+          <span class="info-val">JP Nagar, Bangalore — 560076</span>
+        </div>
+        <div class="info-row">
+          <span class="info-key">HQ · Hosur</span>
+          <span class="info-val">Moovendhar Nagar, Bagalur Road,<br>Hosur — 635109</span>
+        </div>
+        <div class="info-row">
+          <span class="info-key">LinkedIn</span>
+          <span class="info-val"><a href="https://www.linkedin.com/company/bluemoon-innovations/" target="_blank">Bluemoon Innovations</a></span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <span class="footer-brand">Bluemoon Innovations</span>
+      <span class="footer-copy">© 2026 · Built with care in India</span>
+      <div class="footer-links">
+        <a href="products/filesign.html">FileSIGN</a>
+        <a href="products/ausum.html">Ausum</a>
+        <a href="products/buddyai.html">BuddyAI</a>
+        <a href="products/being-better.html">Being Better</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+/* ── CURSOR ── */
+const cur = document.getElementById('cur');
+const dot = document.getElementById('dot');
+let cx=0,cy=0,ax=0,ay=0;
+document.addEventListener('mousemove',e=>{ax=e.clientX;ay=e.clientY;dot.style.left=ax+'px';dot.style.top=ay+'px';});
+(function loop(){cx+=(ax-cx)*.12;cy+=(ay-cy)*.12;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>cur.classList.add('hover'));el.addEventListener('mouseleave',()=>cur.classList.remove('hover'));});
+
+/* ── NAV ── */
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);});
+
+/* ── SCROLL REVEAL ── */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ── MOON ORBIT (JS-driven so orbit is flat and moon passes through card area) ── */
+(function(){
+  const moon   = document.querySelector('.moon-el');
+  const visual = document.querySelector('.hero-visual');
+  if (!moon || !visual) return;
+
+  const PERIOD = 10000; // ms per revolution
+  let t0 = null;
+
+  function animate(ts) {
+    if (!t0) t0 = ts;
+    const frac  = ((ts - t0) % PERIOD) / PERIOD;
+    const angle = frac * Math.PI * 2;          // 0 → 2π
+
+    const W  = visual.offsetWidth;
+    const H  = visual.offsetHeight;
+    const Rx = W * 0.48;                        // wide horizontal sweep
+    const Ry = H * 0.16;                        // flat — stays within card half-height
+
+    const x = W / 2 + Rx * Math.cos(angle);
+    const y = H / 2 + Ry * Math.sin(angle);
+
+    moon.style.left = x + 'px';
+    moon.style.top  = y + 'px';
+
+    // sin > 0  → bottom arc → moon is in FRONT of cards (z above cards-stack z:5)
+    // sin ≤ 0  → top arc    → moon is BEHIND cards (z below cards-stack z:5)
+    moon.style.zIndex = (Math.sin(angle) > 0) ? '8' : '1';
+
+    requestAnimationFrame(animate);
+  }
+  requestAnimationFrame(animate);
+})();
+
+/* ── HERO CARD CYCLING ── */
+(function(){
+  const POSITIONS = [
+    { t:'rotate(0deg) translate(0px,0px) scale(1)',         z:6, o:1    },
+    { t:'rotate(4deg) translate(32px,10px) scale(.97)',     z:5, o:.97  },
+    { t:'rotate(1deg) translate(8px,22px) scale(.94)',      z:4, o:.92  },
+    { t:'rotate(-3deg) translate(-24px,40px) scale(.91)',   z:3, o:.85  },
+    { t:'rotate(-7deg) translate(-48px,64px) scale(.86)',   z:2, o:.76  },
+    { t:'rotate(-11deg) translate(-74px,88px) scale(.82)',  z:1, o:.68  },
+  ];
+  const cards = [...document.querySelectorAll('.cards-stack .s-card')];
+  const N = cards.length;
+  let front = 0;
+  function applyPositions(){
+    cards.forEach((card,i)=>{
+      const p = POSITIONS[(i - front + N) % N];
+      card.style.transform = p.t;
+      card.style.zIndex    = p.z;
+      card.style.opacity   = p.o;
+    });
+  }
+  setInterval(()=>{ front = (front + 1) % N; applyPositions(); }, 2000);
+})();
+
+/* ── PRODUCT CARD 3D TILT ── */
+document.querySelectorAll('.product-card').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    card.style.transform=`perspective(900px) rotateY(${x*10}deg) rotateX(${-y*7}deg) scale3d(1.015,1.015,1.015)`;
+  });
+  card.addEventListener('mouseleave',()=>{card.style.transform='perspective(900px) rotateY(0) rotateX(0) scale3d(1,1,1)';});
+  card.style.transition='transform .4s cubic-bezier(.2,0,0,1), box-shadow .4s ease';
+});
+
+</script>
+</body>
+</html>

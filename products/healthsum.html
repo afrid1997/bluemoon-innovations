@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Healthsum — Your AI Health Companion</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--bg:#06101A;--surface:#0C1A28;--ink:#F0F8F4;--green:#3A7D44;--green2:#4CAF50;--blue:#2196F3;--muted:rgba(240,248,244,.4);--rule:rgba(240,248,244,.08);--serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;--mono:'JetBrains Mono',monospace;}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);overflow-x:hidden;}
+*{cursor:none!important;}
+#cur{position:fixed;width:32px;height:32px;border:1.5px solid rgba(58,125,68,.55);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform .18s,background .18s;}
+#dot{position:fixed;width:5px;height:5px;background:var(--green);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);}
+#cur.hover{transform:translate(-50%,-50%) scale(2);background:rgba(58,125,68,.06);}
+nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:22px 52px;transition:background .3s;}
+nav.scrolled{background:rgba(6,16,26,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--rule);}
+.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink);}
+.nav-logo{height:62px;width:auto;display:block;background:white;padding:4px 10px;border-radius:6px;}
+.nav-name{font-family:var(--serif);font-size:15px;font-weight:600;letter-spacing:.04em;line-height:1.2;}
+.nav-name small{display:block;font-weight:300;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-family:var(--mono);}
+.nav-back{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;}
+.nav-back:hover{color:var(--ink);}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:50% 50%;padding-top:80px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-300px;right:-200px;width:800px;height:800px;background:radial-gradient(circle,rgba(58,125,68,.07),transparent 65%);}
+.hero::after{content:'';position:absolute;bottom:-200px;left:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(33,150,243,.05),transparent 65%);}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 60px 80px 52px;position:relative;z-index:2;}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--green);display:flex;align-items:center;gap:10px;margin-bottom:40px;}
+.eyebrow::before{content:'';width:20px;height:1px;background:var(--green);}
+h1{font-family:var(--serif);font-size:clamp(48px,5.5vw,80px);font-weight:300;line-height:1.05;letter-spacing:-.02em;margin-bottom:28px;}
+h1 em{font-style:italic;color:var(--green2);}
+.hero-sub{font-size:16px;font-weight:300;color:var(--muted);line-height:1.8;max-width:400px;margin-bottom:52px;}
+.btn-green{display:inline-block;padding:13px 28px;background:var(--green);color:white;font-family:var(--sans);font-size:13px;letter-spacing:.06em;text-decoration:none;transition:background .2s;margin-right:12px;}
+.btn-green:hover{background:var(--green2);}
+.btn-ghost{display:inline-block;padding:13px 28px;background:transparent;color:var(--muted);font-family:var(--sans);font-size:13px;letter-spacing:.06em;text-decoration:none;border:1px solid var(--rule);transition:border-color .2s,color .2s;}
+.btn-ghost:hover{border-color:rgba(240,248,244,.3);color:var(--ink);}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(58,125,68,.1);border:1px solid rgba(58,125,68,.25);border-radius:100px;padding:6px 16px;font-family:var(--mono);font-size:10px;color:var(--green2);letter-spacing:.1em;margin-bottom:40px;}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green2);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+
+.hero-right{display:flex;align-items:center;justify-content:center;padding:60px 40px;position:relative;z-index:2;}
+
+/* PHONE MOCKUP */
+.phones-wrap{position:relative;width:320px;height:480px;}
+.phone{position:absolute;width:180px;height:360px;background:#0C1A28;border-radius:26px;border:2px solid rgba(240,248,244,.1);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);}
+.phone-main{top:40px;left:20px;z-index:2;box-shadow:0 40px 100px rgba(0,0,0,.6),0 0 40px rgba(58,125,68,.08);}
+.phone-bg{top:80px;right:0;z-index:1;opacity:.7;transform:rotate(8deg);}
+.phone-bar{height:24px;background:#06101A;display:flex;align-items:center;justify-content:flex-end;padding:0 12px;border-bottom:1px solid rgba(255,255,255,.04);}
+.phone-bar span{font-family:var(--mono);font-size:7px;color:rgba(240,248,244,.3);}
+.phone-inner{padding:12px 10px;}
+.p-greeting{font-family:var(--mono);font-size:7px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;}
+.p-name{font-family:var(--serif);font-size:16px;font-weight:600;color:var(--ink);margin-bottom:12px;}
+.healio-card{background:linear-gradient(135deg,rgba(58,125,68,.15),rgba(33,150,243,.1));border:1px solid rgba(58,125,68,.25);border-radius:10px;padding:10px;margin-bottom:10px;}
+.healio-label{font-family:var(--mono);font-size:7px;font-weight:700;color:var(--green2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;display:flex;align-items:center;gap:4px;}
+.healio-label::before{content:'✦';font-size:8px;}
+.healio-text{font-size:9px;color:rgba(240,248,244,.8);line-height:1.5;}
+.systems-label{font-family:var(--mono);font-size:7px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin:8px 0 6px;}
+.systems-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
+.system{background:rgba(255,255,255,.04);border-radius:8px;padding:6px;text-align:center;}
+.sys-icon{font-size:14px;margin-bottom:3px;}
+.sys-name{font-size:7px;color:var(--muted);}
+.sys-dot{width:7px;height:7px;border-radius:50%;margin:3px auto 0;}
+
+/* SECTIONS */
+section{padding:100px 52px;}
+.dark{background:var(--bg);}
+.surface{background:var(--surface);}
+.inner{max-width:1100px;margin:0 auto;}
+.label{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.label::before{content:'';width:20px;height:1px;background:var(--muted);}
+h2.display{font-family:var(--serif);font-size:clamp(36px,4vw,54px);font-weight:300;line-height:1.1;letter-spacing:-.02em;margin-bottom:56px;}
+h2.display em{font-style:italic;color:var(--green2);}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);}
+.feat{background:var(--bg);padding:36px 28px;}
+.surface .feat{background:var(--surface);}
+.feat-num{font-family:var(--mono);font-size:10px;letter-spacing:.15em;color:var(--green);margin-bottom:16px;}
+.feat-title{font-family:var(--serif);font-size:20px;font-weight:600;margin-bottom:10px;line-height:1.2;}
+.feat-desc{font-size:13px;font-weight:300;color:var(--muted);line-height:1.75;}
+
+/* HEALIO FEATURE */
+.healio-section{padding:100px 52px;background:linear-gradient(160deg,#071520,#0C1E10);}
+.healio-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.healio-text .label::before{background:var(--green);}
+.healio-chat{background:rgba(6,16,26,.8);border:1px solid rgba(58,125,68,.2);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:12px;}
+.chat-msg{padding:12px 16px;border-radius:10px;font-size:13px;font-weight:300;line-height:1.6;max-width:85%;}
+.chat-ai{background:rgba(58,125,68,.1);border:1px solid rgba(58,125,68,.2);color:var(--ink);align-self:flex-start;}
+.chat-ai .sender{font-family:var(--mono);font-size:9px;color:var(--green2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;}
+.chat-user{background:rgba(240,248,244,.05);border:1px solid var(--rule);color:rgba(240,248,244,.7);align-self:flex-end;}
+.cta-band{background:var(--green);padding:80px 52px;text-align:center;}
+.cta-band h2{font-family:var(--serif);font-size:clamp(32px,4vw,52px);font-weight:300;line-height:1.1;color:white;margin-bottom:20px;}
+.cta-band h2 em{font-style:italic;}
+.cta-band p{font-size:15px;font-weight:300;color:rgba(255,255,255,.6);margin-bottom:36px;}
+.btn-white{display:inline-block;padding:14px 36px;background:white;color:var(--green);font-family:var(--sans);font-size:13px;letter-spacing:.06em;text-decoration:none;transition:background .2s;}
+.btn-white:hover{background:rgba(255,255,255,.9);}
+footer{background:#040C10;color:rgba(240,248,244,.25);padding:32px 52px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--rule);}
+footer a{color:rgba(240,248,244,.25);text-decoration:none;font-family:var(--mono);font-size:10px;letter-spacing:.12em;transition:color .2s;}
+footer a:hover{color:rgba(240,248,244,.7);}
+.footer-copy{font-family:var(--mono);font-size:10px;letter-spacing:.12em;}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s;}
+.reveal.in{opacity:1;transform:none;}
+.reveal-d1{transition-delay:.1s;}.reveal-d2{transition-delay:.2s;}.reveal-d3{transition-delay:.3s;}
+@media(max-width:900px){nav{padding:18px 24px;}.hero{grid-template-columns:1fr;}.hero-right{min-height:50vw;}.healio-inner{grid-template-columns:1fr;}section{padding:80px 24px;}}
+</style>
+</head>
+<body>
+<div id="cur"></div><div id="dot"></div>
+<nav id="nav">
+  <a href="../index.html" class="nav-brand">
+    <img src="../images/logo.png" class="nav-logo" alt="Bluemoon Innovations">
+  </a>
+  <a href="../index.html#products" class="nav-back">← All Products</a>
+</nav>
+
+<section class="hero" style="padding-top:0;">
+  <div class="hero-left" style="padding-top:120px;">
+    <div class="hero-badge">Coming Soon · Flutter App</div>
+    <div class="eyebrow">Healthsum · AI Health Companion</div>
+    <h1>Know your body.<br><em>Deeply.</em></h1>
+    <p class="hero-sub">Healthsum reads your medical reports, tracks health across every body system, and gives you personalised guidance through Healio AI. Your family's health, understood.</p>
+    <div>
+      <a href="../index.html#contact" class="btn-green">Get Early Access →</a>
+      <a href="../index.html#contact" class="btn-ghost">Partner With Us</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="phones-wrap" style="width:220px;height:460px;position:relative;display:flex;align-items:center;justify-content:center;">
+      <!-- iPhone frame with real app screenshot -->
+      <div style="width:220px;height:460px;background:#0A0A0A;border-radius:38px;border:3px solid #363636;box-shadow:0 0 0 1px #222,inset 0 0 0 1px #484848,0 40px 100px rgba(0,0,0,.8),0 0 50px rgba(58,125,68,.12);overflow:hidden;position:relative;">
+        <!-- Dynamic Island -->
+        <div style="position:absolute;top:10px;left:50%;transform:translateX(-50%);width:68px;height:17px;background:#000;border-radius:9px;z-index:10;outline:1.5px solid #1C1C1C;"></div>
+        <img src="../images/healthsum-app.png" alt="Healthsum App" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+        <!-- Home indicator -->
+        <div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:60px;height:5px;background:rgba(0,0,0,.35);border-radius:3px;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HEALIO AI FEATURE -->
+<div class="healio-section">
+  <div class="healio-inner">
+    <div class="healio-text reveal">
+      <div class="label">AI Core</div>
+      <h2 class="display">Meet <em>Healio,</em><br>your health AI.</h2>
+      <p style="font-size:16px;font-weight:300;color:var(--muted);line-height:1.8;margin-bottom:24px;">Healio analyses your uploaded medical reports, understands your health history, and gives you clear, personalised guidance — not just raw data. Ask it anything about your health.</p>
+      <p style="font-size:14px;font-weight:300;color:var(--muted);line-height:1.75;">Healio speaks to you in plain language, suggests next steps, and flags anything that needs attention — before your doctor even calls.</p>
+    </div>
+    <div class="healio-chat reveal reveal-d2">
+      <div class="chat-msg chat-ai">
+        <div class="sender">✦ Healio AI</div>
+        I've analysed your latest blood report. Your haemoglobin is at 11.2 g/dL — slightly below the healthy range for your profile. I'd recommend increasing iron-rich foods and checking with your doctor.
+      </div>
+      <div class="chat-msg chat-user">What foods should I eat?</div>
+      <div class="chat-msg chat-ai">
+        <div class="sender">✦ Healio AI</div>
+        Great question. For your profile: spinach, lentils, pumpkin seeds, and dark chocolate. Pair with Vitamin C sources to improve absorption. I've added this to your weekly goal.
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="dark">
+  <div class="inner">
+    <div class="label reveal">Features</div>
+    <h2 class="display reveal reveal-d1">Health tracking<br><em>reimagined.</em></h2>
+    <div class="feat-grid">
+      <div class="feat reveal reveal-d1"><div class="feat-num">01 / REPORTS</div><div class="feat-title">AI Report Analysis</div><p class="feat-desc">Upload any medical PDF — blood work, scans, prescriptions. Healio reads it, extracts key markers, and explains what they mean for you.</p></div>
+      <div class="feat reveal reveal-d2"><div class="feat-num">02 / SYSTEMS</div><div class="feat-title">Body System Tracking</div><p class="feat-desc">Track health across Cardiovascular, Respiratory, Metabolic, Skeletal, Neurological, and Hormonal systems. See which need attention.</p></div>
+      <div class="feat reveal reveal-d3"><div class="feat-num">03 / FAMILY</div><div class="feat-title">Family Health Groups</div><p class="feat-desc">Add family members, manage their reports, and get a unified view of your family's health. Care for everyone, together.</p></div>
+      <div class="feat reveal reveal-d1"><div class="feat-num">04 / GOALS</div><div class="feat-title">Smart Goals & Challenges</div><p class="feat-desc">Set health goals guided by your data. Daily steps, hydration, sleep — with AI-adjusted targets based on your progress.</p></div>
+      <div class="feat reveal reveal-d2"><div class="feat-num">05 / TRENDS</div><div class="feat-title">Health Trends Over Time</div><p class="feat-desc">See how your markers change across reports over months and years. Catch changes before they become problems.</p></div>
+      <div class="feat reveal reveal-d3"><div class="feat-num">06 / PRIVACY</div><div class="feat-title">Fully Private</div><p class="feat-desc">Your health data is yours. End-to-end encrypted, never sold. Built on Supabase with row-level security.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <h2>Your health,<br><em>finally understood.</em></h2>
+  <p>Healthsum is coming soon. Get on the early access list.</p>
+  <a href="../index.html#contact" class="btn-white">Get Early Access →</a>
+</div>
+
+<footer>
+  <a href="../index.html">← Bluemoon Innovations</a>
+  <span class="footer-copy">© 2026 Bluemoon Innovations</span>
+  <span style="font-family:var(--mono);font-size:10px;color:rgba(240,248,244,.3);">Coming Soon</span>
+</footer>
+
+<script>
+const cur=document.getElementById('cur'),dot=document.getElementById('dot');
+let cx=0,cy=0,ax=0,ay=0;
+document.addEventListener('mousemove',e=>{ax=e.clientX;ay=e.clientY;dot.style.left=ax+'px';dot.style.top=ay+'px';});
+(function loop(){cx+=(ax-cx)*.12;cy+=(ay-cy)*.12;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>cur.classList.add('hover'));el.addEventListener('mouseleave',()=>cur.classList.remove('hover'));});
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

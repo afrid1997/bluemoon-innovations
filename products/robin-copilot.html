@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custom AI Chatbots — Bluemoon Innovations</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--bg:#F4F4F8;--ink:#0F0F14;--indigo:#4F46E5;--indigo2:#6366F1;--muted:rgba(15,15,20,.45);--rule:rgba(15,15,20,.08);--serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;--mono:'JetBrains Mono',monospace;}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);overflow-x:hidden;}
+*{cursor:none!important;}
+#cur{position:fixed;width:32px;height:32px;border:1.5px solid rgba(79,70,229,.55);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform .18s,background .18s;}
+#dot{position:fixed;width:5px;height:5px;background:var(--indigo);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);}
+#cur.hover{transform:translate(-50%,-50%) scale(2);background:rgba(79,70,229,.05);}
+nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:22px 52px;background:rgba(244,244,248,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--rule);}
+.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink);}
+.nav-logo{height:62px;width:auto;display:block;}
+.nav-name{font-family:var(--serif);font-size:15px;font-weight:600;letter-spacing:.04em;line-height:1.2;}
+.nav-name small{display:block;font-weight:300;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-family:var(--mono);}
+.nav-back{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;}
+.nav-back:hover{color:var(--ink);}
+
+.hero{min-height:100vh;display:grid;grid-template-columns:50% 50%;padding-top:80px;background:var(--bg);}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 60px 80px 52px;}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--indigo);display:flex;align-items:center;gap:10px;margin-bottom:40px;}
+.eyebrow::before{content:'';width:20px;height:1px;background:var(--indigo);}
+h1{font-family:var(--serif);font-size:clamp(48px,5.5vw,80px);font-weight:300;line-height:1.05;letter-spacing:-.02em;margin-bottom:28px;}
+h1 em{font-style:italic;color:var(--indigo);}
+.hero-sub{font-size:16px;font-weight:300;color:var(--muted);line-height:1.8;max-width:420px;margin-bottom:52px;}
+.btn-indigo{display:inline-block;padding:13px 28px;background:var(--indigo);color:white;font-family:var(--sans);font-size:13px;letter-spacing:.06em;text-decoration:none;transition:background .2s;margin-right:12px;}
+.btn-indigo:hover{background:var(--indigo2);}
+.btn-ghost{display:inline-block;padding:13px 28px;background:transparent;color:var(--ink);font-family:var(--sans);font-size:13px;letter-spacing:.06em;text-decoration:none;border:1px solid var(--rule);transition:border-color .2s;}
+.btn-ghost:hover{border-color:var(--ink);}
+
+.hero-right{background:linear-gradient(135deg,#0A0B1A,#0F1130);display:flex;align-items:center;justify-content:center;padding:60px 40px;overflow:hidden;position:relative;}
+.hero-right::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,rgba(79,70,229,.25) 0%,transparent 70%);pointer-events:none;}
+/* platform cards */
+.platform-visual{position:relative;z-index:2;width:100%;max-width:520px;display:flex;flex-direction:column;gap:14px;}
+.plat-header{display:flex;gap:10px;align-items:center;margin-bottom:8px;}
+.plat-badge{padding:6px 14px;border-radius:6px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;font-weight:600;display:flex;align-items:center;gap:7px;border:1px solid;}
+.plat-badge.wa{background:rgba(37,211,102,.12);border-color:rgba(37,211,102,.35);color:rgba(37,211,102,.95);}
+.plat-badge.sl{background:rgba(224,82,44,.12);border-color:rgba(224,82,44,.35);color:rgba(230,120,80,.95);}
+.plat-badge.ms{background:rgba(0,120,215,.12);border-color:rgba(0,120,215,.35);color:rgba(80,170,255,.95);}
+.chat-window{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:12px;overflow:hidden;}
+.chat-topbar{height:36px;background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;padding:0 16px;gap:8px;}
+.chat-topbar-name{font-size:11px;font-weight:600;color:rgba(255,255,255,.7);}
+.chat-topbar-status{font-family:var(--mono);font-size:9px;color:rgba(37,211,102,.8);margin-left:auto;display:flex;align-items:center;gap:5px;}
+.chat-topbar-status::before{content:'';width:6px;height:6px;border-radius:50%;background:rgba(37,211,102,.8);}
+.chat-msgs{padding:16px;display:flex;flex-direction:column;gap:10px;}
+.chat-msg{padding:9px 13px;border-radius:10px;font-size:11px;line-height:1.6;max-width:85%;}
+.chat-msg.ai{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.75);align-self:flex-start;}
+.chat-msg.user{background:var(--indigo);color:rgba(255,255,255,.9);align-self:flex-end;}
+.chat-approval{background:rgba(79,70,229,.12);border:1px solid rgba(79,70,229,.3);border-radius:10px;padding:12px 14px;margin:0 16px 16px;}
+.chat-approval-label{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:rgba(149,144,255,.8);margin-bottom:7px;}
+.chat-approval-text{font-size:11px;color:rgba(255,255,255,.6);margin-bottom:10px;line-height:1.5;}
+.chat-approval-btns{display:flex;gap:6px;}
+.chat-btn-approve{padding:5px 14px;border-radius:4px;background:var(--indigo);color:white;font-size:10px;font-family:var(--mono);}
+.chat-btn-reject{padding:5px 14px;border-radius:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.4);font-size:10px;font-family:var(--mono);}
+
+/* chat mock */
+.chat-3d{width:100%;max-width:580px;background:white;border-radius:12px;box-shadow:0 40px 100px rgba(0,0,0,.12),0 0 0 1px rgba(0,0,0,.05);transform:perspective(1400px) rotateY(-14deg) rotateX(3deg);transition:transform .5s;overflow:hidden;display:flex;flex-direction:column;}
+.chat-3d:hover{transform:perspective(1400px) rotateY(-7deg) rotateX(2deg);}
+.c-bar{height:36px;background:#F8F8F8;border-bottom:1px solid #EEE;display:flex;align-items:center;padding:0 14px;gap:6px;flex-shrink:0;}
+.c-dot{width:9px;height:9px;border-radius:50%;}
+.c-url{flex:1;background:rgba(0,0,0,.04);border-radius:4px;height:18px;margin:0 10px;font-family:var(--mono);font-size:9px;color:rgba(15,15,20,.35);display:flex;align-items:center;padding:0 8px;}
+.c-body{display:flex;min-height:320px;}
+.c-list{width:140px;background:#FAFAFA;border-right:1px solid #EEE;padding:12px;flex-shrink:0;}
+.c-list-title{font-size:11px;font-weight:700;color:#111;margin-bottom:10px;}
+.c-conv{padding:7px 8px;border-radius:6px;border:1px solid #EEE;background:white;margin-bottom:5px;}
+.c-conv.active{border-color:var(--indigo);background:rgba(79,70,229,.04);}
+.c-conv-user{font-size:8px;font-weight:600;color:#333;}
+.c-conv-preview{font-size:7px;color:#999;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:110px;}
+.c-main{flex:1;display:flex;flex-direction:column;padding:12px;}
+.c-header{display:flex;justify-content:space-between;align-items:center;padding:6px 8px;background:#F8F8F8;border-radius:6px;border:1px solid #EEE;margin-bottom:8px;}
+.c-header-name{font-size:9px;font-weight:600;color:#333;}
+.c-status{padding:2px 8px;border-radius:100px;font-size:7px;font-weight:700;background:#FEF3C7;color:#92400E;}
+.c-msgs{display:flex;flex-direction:column;gap:6px;flex:1;}
+.c-msg{padding:7px 10px;border-radius:8px;font-size:8px;line-height:1.55;max-width:85%;}
+.c-msg.ai{background:white;border:1px solid #EEE;color:#333;align-self:flex-start;}
+.c-msg.user{background:linear-gradient(135deg,var(--indigo),var(--indigo2));color:white;align-self:flex-end;}
+.c-approval{background:white;border:1px solid rgba(79,70,229,.25);border-radius:8px;padding:10px 12px;margin-top:4px;}
+.c-approval-title{font-size:8px;font-weight:700;color:var(--indigo);margin-bottom:4px;}
+.c-approval-text{font-size:7px;color:#666;margin-bottom:6px;}
+.c-approval-btns{display:flex;gap:4px;}
+.btn-approve{padding:3px 10px;border-radius:4px;background:var(--indigo);color:white;font-size:7px;font-weight:600;}
+.btn-reject{padding:3px 10px;border-radius:4px;background:#F5F5F5;color:#888;font-size:7px;border:1px solid #EEE;}
+
+/* sections */
+section{padding:100px 52px;}
+.dark-section{background:var(--ink);color:white;padding:100px 52px;}
+.inner{max-width:1100px;margin:0 auto;}
+.label{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.label::before{content:'';width:20px;height:1px;background:var(--muted);}
+.dark-section .label{color:rgba(255,255,255,.35);}
+.dark-section .label::before{background:rgba(255,255,255,.35);}
+h2.display{font-family:var(--serif);font-size:clamp(36px,4vw,54px);font-weight:300;line-height:1.1;letter-spacing:-.02em;margin-bottom:56px;}
+h2.display em{font-style:italic;color:var(--indigo);}
+.dark-section h2.display{color:white;}
+.dark-section h2.display em{color:var(--indigo2);}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);}
+.dark-section .feat-grid{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.08);}
+.feat{background:var(--bg);padding:36px 28px;}
+.dark-section .feat{background:var(--ink);}
+.feat-num{font-family:var(--mono);font-size:10px;letter-spacing:.15em;color:var(--indigo);margin-bottom:16px;}
+.feat-title{font-family:var(--serif);font-size:20px;font-weight:600;margin-bottom:10px;line-height:1.2;}
+.dark-section .feat-title{color:white;}
+.feat-desc{font-size:13px;font-weight:300;color:var(--muted);line-height:1.75;}
+.dark-section .feat-desc{color:rgba(255,255,255,.45);}
+/* approval flow diagram */
+.flow{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;margin-top:60px;}
+.flow-step{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:2px;padding:24px 28px;text-align:center;min-width:150px;}
+.flow-step-num{font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.15em;margin-bottom:8px;}
+.flow-step-label{font-family:var(--serif);font-size:16px;font-weight:600;color:white;line-height:1.2;}
+.flow-arrow{font-family:var(--mono);font-size:20px;color:rgba(255,255,255,.2);padding:0 12px;}
+.flow-step.highlight{background:rgba(79,70,229,.15);border-color:rgba(79,70,229,.35);}
+.flow-step.highlight .flow-step-label{color:var(--indigo2);}
+.cta-band{background:var(--indigo);padding:80px 52px;text-align:center;}
+.cta-band h2{font-family:var(--serif);font-size:clamp(32px,4vw,52px);font-weight:300;line-height:1.1;color:white;margin-bottom:20px;}
+.cta-band h2 em{font-style:italic;}
+.cta-band p{font-size:15px;font-weight:300;color:rgba(255,255,255,.6);margin-bottom:36px;}
+.btn-white{display:inline-block;padding:14px 36px;background:white;color:var(--indigo);font-family:var(--sans);font-size:13px;letter-spacing:.06em;text-decoration:none;transition:background .2s;}
+.btn-white:hover{background:rgba(255,255,255,.9);}
+footer{background:var(--ink);color:rgba(255,255,255,.25);padding:32px 52px;display:flex;justify-content:space-between;align-items:center;}
+footer a{color:rgba(255,255,255,.25);text-decoration:none;font-family:var(--mono);font-size:10px;letter-spacing:.12em;transition:color .2s;}
+footer a:hover{color:rgba(255,255,255,.7);}
+.footer-copy{font-family:var(--mono);font-size:10px;letter-spacing:.12em;}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s;}
+.reveal.in{opacity:1;transform:none;}
+.reveal-d1{transition-delay:.1s;}.reveal-d2{transition-delay:.2s;}.reveal-d3{transition-delay:.3s;}
+@media(max-width:900px){nav{padding:18px 24px;}.hero{grid-template-columns:1fr;}.hero-right{min-height:50vw;}section,.dark-section{padding:80px 24px;}.flow{flex-direction:column;}.flow-arrow{transform:rotate(90deg);}}
+</style>
+</head>
+<body>
+<div id="cur"></div><div id="dot"></div>
+<nav>
+  <a href="../index.html" class="nav-brand">
+    <img src="../images/logo.png" class="nav-logo" alt="Bluemoon Innovations">
+  </a>
+  <a href="../index.html#products" class="nav-back">← All Products</a>
+</nav>
+
+<section class="hero" style="padding-top:0;">
+  <div class="hero-left" style="padding-top:120px;">
+    <div class="eyebrow">Custom AI Chatbots · Integrations</div>
+    <h1>AI that lives where<br>your team<br><em>already works.</em></h1>
+    <p class="hero-sub">We build AI chat agents that plug directly into WhatsApp, Slack, and Microsoft Teams — so your team adopts them instantly without changing a single workflow. Intelligent, context-aware, and always ready to escalate to a human when it matters.</p>
+    <div>
+      <a href="../index.html#contact" class="btn-indigo">Build Your AI Agent →</a>
+      <a href="https://wa.me/919003626854?text=Hey%2C%20I%20checkout%20out%20your%20website%20and%20would%20like%20to%20talk%20about%20a%20project%20i%20want%20to%20brainstorm%20and%20build%20with%20you%20guys." target="_blank" class="btn-ghost">Chat on WhatsApp</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="platform-visual">
+      <div class="plat-header">
+        <span class="plat-badge wa">WhatsApp</span>
+        <span class="plat-badge sl">Slack</span>
+        <span class="plat-badge ms">Teams</span>
+      </div>
+      <div class="chat-window">
+        <div class="chat-topbar">
+          <div class="chat-topbar-name">AI Agent · Your Business</div>
+          <div class="chat-topbar-status">Live</div>
+        </div>
+        <div class="chat-msgs">
+          <div class="chat-msg user">What's the status of order #4821?</div>
+          <div class="chat-msg ai">Order #4821 is out for delivery — estimated by 4 PM today. Want me to notify the customer automatically?</div>
+          <div class="chat-msg user">Yes, and process a ₹200 discount for the delay.</div>
+          <div class="chat-msg ai">I can send the notification now. The discount needs approval before I apply it.</div>
+        </div>
+        <div class="chat-approval">
+          <div class="chat-approval-label">⚡ Approval Required</div>
+          <div class="chat-approval-text">Apply ₹200 discount to Order #4821 for delay compensation.</div>
+          <div class="chat-approval-btns">
+            <span class="chat-btn-approve">Approve</span>
+            <span class="chat-btn-reject">Reject</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="dark-section">
+  <div class="inner">
+    <div class="label reveal">How It Works</div>
+    <h2 class="display reveal reveal-d1">Message in, action out —<br><em>in the tools you trust.</em></h2>
+    <div class="flow reveal reveal-d2">
+      <div class="flow-step"><div class="flow-step-num">01</div><div class="flow-step-label">Message on WhatsApp / Slack / Teams</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="flow-step-num">02</div><div class="flow-step-label">AI Understands &amp; Responds</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step highlight"><div class="flow-step-num">03</div><div class="flow-step-label">Approval Gate (if needed)</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="flow-step-num">04</div><div class="flow-step-label">Human Reviews</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="flow-step-num">05</div><div class="flow-step-label">Action Executed</div></div>
+    </div>
+  </div>
+</div>
+
+<section style="background:white;padding:100px 52px;">
+  <div class="inner">
+    <div class="label reveal">Capabilities</div>
+    <h2 class="display reveal reveal-d1">Smart enough to help.<br><em>Present</em> where your<br>people already are.</h2>
+    <div class="feat-grid" style="background:rgba(15,15,20,.06);border-color:rgba(15,15,20,.06);">
+      <div class="feat reveal reveal-d1" style="background:white;"><div class="feat-num">01 / PLATFORMS</div><div class="feat-title">WhatsApp, Slack &amp; Teams</div><p class="feat-desc">Your AI agent lives inside the messaging tools your team already uses every day — zero new app to learn, zero adoption friction. Just message it.</p></div>
+      <div class="feat reveal reveal-d2" style="background:white;"><div class="feat-num">02 / HITL</div><div class="feat-title">Human-in-the-Loop Approval</div><p class="feat-desc">Every consequential action — refunds, discounts, escalations — is gated behind human approval before the AI executes it. Control stays with you.</p></div>
+      <div class="feat reveal reveal-d3" style="background:white;"><div class="feat-num">03 / CONTEXT</div><div class="feat-title">Intelligent Conversation</div><p class="feat-desc">The agent understands context across your conversation, handles follow-ups naturally, and knows when it doesn't know — escalating to a human instead of guessing.</p></div>
+      <div class="feat reveal reveal-d1" style="background:white;"><div class="feat-num">04 / CONNECT</div><div class="feat-title">Connected to Your Systems</div><p class="feat-desc">We integrate the agent with your existing tools — your ERP, CRM, inventory, order management — so it answers from real data, not generic responses.</p></div>
+      <div class="feat reveal reveal-d2" style="background:white;"><div class="feat-num">05 / CUSTOM</div><div class="feat-title">Fully Custom Persona &amp; Logic</div><p class="feat-desc">Your agent, your brand voice, your business rules. We define the persona, the tone, the scope of what it handles — built specifically for your workflows.</p></div>
+      <div class="feat reveal reveal-d3" style="background:white;"><div class="feat-num">06 / ANALYTICS</div><div class="feat-title">Usage &amp; Adoption Tracking</div><p class="feat-desc">See what your team is asking, what the agent handles vs. escalates, and where adoption is strongest — with metrics delivered straight to your inbox.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <h2>Your team is already on WhatsApp.<br><em>Your AI should be too.</em></h2>
+  <p>We build custom AI agents for WhatsApp, Slack, and Teams — connected to your systems, trained on your workflows, live in weeks.</p>
+  <a href="../index.html#contact" class="btn-white">Let's Build Yours →</a>
+</div>
+
+<footer>
+  <a href="../index.html">← Bluemoon Innovations</a>
+  <span class="footer-copy">© 2026 Bluemoon Innovations</span>
+  <span style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.2);">AI Chatbot · Custom Integrations</span>
+</footer>
+
+<script>
+const cur=document.getElementById('cur'),dot=document.getElementById('dot');
+let cx=0,cy=0,ax=0,ay=0;
+document.addEventListener('mousemove',e=>{ax=e.clientX;ay=e.clientY;dot.style.left=ax+'px';dot.style.top=ay+'px';});
+(function loop(){cx+=(ax-cx)*.12;cy+=(ay-cy)*.12;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>cur.classList.add('hover'));el.addEventListener('mouseleave',()=>cur.classList.remove('hover'));});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

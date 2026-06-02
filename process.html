@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Process & Expertise — Bluemoon Innovations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --cream: #F7F5F0;
+  --ink:   #0D0D0D;
+  --blue:  #1B4FD8;
+  --muted: rgba(13,13,13,0.45);
+  --rule:  rgba(13,13,13,0.1);
+  --jost: 'Jost', sans-serif;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+body { font-family: var(--jost); background: var(--cream); color: var(--ink); overflow-x: hidden; }
+
+/* ── CURSOR ── */
+* { cursor: none !important; }
+#cur { position:fixed; width:32px; height:32px; border:1.5px solid rgba(27,79,216,0.55); border-radius:50%; pointer-events:none; z-index:99999; transform:translate(-50%,-50%); transition:transform .18s ease, background .18s ease, border-color .18s ease; will-change:left,top; }
+#dot { position:fixed; width:5px; height:5px; background:var(--blue); border-radius:50%; pointer-events:none; z-index:99999; transform:translate(-50%,-50%); transition:transform .08s ease; }
+#cur.hover { transform:translate(-50%,-50%) scale(2); background:rgba(27,79,216,0.06); border-color:var(--blue); }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 52px;
+  transition: background .3s ease, border-bottom .3s ease;
+}
+nav.scrolled {
+  background: rgba(247,245,240,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 14px;
+  text-decoration: none; color: var(--ink);
+}
+.nav-logo { height: 124px; width: auto; display: block; }
+.nav-brand-name { font-family: var(--serif); font-size: 14px; font-weight: 400; line-height: 1.35; letter-spacing: 0.04em; color: var(--ink); }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a { font-family: var(--jost); font-size: 13px; font-weight: 400; letter-spacing: 0.04em; color: var(--muted); text-decoration: none; transition: color .2s; }
+.nav-links a:hover { color: var(--ink); }
+.nav-links a.active { color: var(--ink); }
+.nav-links a.cta {
+  color: var(--ink);
+  border: 1px solid rgba(13,13,13,0.3);
+  padding: 8px 20px; border-radius: 2px;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.nav-links a.cta:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+
+/* ── HERO ── */
+.page-hero {
+  min-height: 80vh;
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: 160px 52px 96px;
+  position: relative; overflow: hidden;
+  border-bottom: 1px solid var(--rule);
+}
+.page-hero::before {
+  content: '';
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background-image:
+    radial-gradient(1.5px 1.5px at 7% 12%,  rgba(27,79,216,.1) 0%, transparent 100%),
+    radial-gradient(1px 1px at 25% 5%,   rgba(27,79,216,.06) 0%, transparent 100%),
+    radial-gradient(2px 2px at 55% 8%,   rgba(27,79,216,.08) 0%, transparent 100%),
+    radial-gradient(1px 1px at 80% 20%,  rgba(27,79,216,.05) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 92% 55%, rgba(27,79,216,.07) 0%, transparent 100%);
+}
+.hero-number {
+  font-family: var(--serif);
+  font-size: clamp(160px, 22vw, 320px);
+  font-weight: 300;
+  line-height: 0.85;
+  color: rgba(13,13,13,0.05);
+  position: absolute;
+  right: 52px;
+  bottom: -20px;
+  letter-spacing: -0.04em;
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+}
+.page-hero-inner { position: relative; z-index: 2; max-width: 900px; }
+.label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--muted); }
+.page-hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(52px, 7vw, 108px);
+  font-weight: 300; line-height: 1.0;
+  letter-spacing: -0.025em; color: var(--ink);
+  margin-bottom: 32px;
+}
+.page-hero h1 em { font-style: italic; color: rgba(13,13,13,.3); }
+.page-hero-sub {
+  font-size: 16px; font-weight: 300; line-height: 1.8;
+  color: var(--muted); max-width: 560px;
+}
+
+/* ── COMMON ── */
+h2.display {
+  font-family: var(--serif);
+  font-size: clamp(40px, 4.5vw, 64px);
+  font-weight: 300; line-height: 1.1; letter-spacing: -0.02em;
+}
+h2.display em { font-style: italic; }
+.rule { height: 1px; background: var(--rule); }
+
+/* ── SCROLL REVEAL ── */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+.reveal-d1 { transition-delay: .1s; }
+.reveal-d2 { transition-delay: .2s; }
+.reveal-d3 { transition-delay: .3s; }
+.reveal-d4 { transition-delay: .4s; }
+.reveal-d5 { transition-delay: .5s; }
+.reveal-d6 { transition-delay: .6s; }
+
+/* ── PROCESS SECTION ── */
+.process { padding: 120px 52px; }
+.process-inner { max-width: 1200px; margin: 0 auto; }
+.process-header { margin-bottom: 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; }
+.process-header-right { font-size: 15px; font-weight: 300; line-height: 1.85; color: var(--muted); padding-bottom: 6px; }
+.process-header-right strong { color: var(--ink); font-weight: 400; }
+
+/* Steps */
+.steps { position: relative; }
+.steps::before {
+  content: '';
+  position: absolute;
+  left: 28px;
+  top: 40px; bottom: 40px;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--rule) 10%, var(--rule) 90%, transparent);
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 0 52px;
+  padding: 56px 0;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+}
+.step:first-child { padding-top: 0; }
+.step:last-child { border-bottom: none; }
+
+.step-num-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4px;
+  position: relative;
+}
+.step-node {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  border: 1px solid var(--rule);
+  background: var(--cream);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  transition: border-color .3s, box-shadow .3s;
+  flex-shrink: 0;
+  z-index: 2;
+}
+.step:hover .step-node {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 6px rgba(27,79,216,0.06);
+}
+.step-num {
+  font-family: var(--serif);
+  font-size: 20px; font-weight: 300;
+  color: var(--muted);
+  transition: color .3s;
+}
+.step:hover .step-num { color: var(--blue); }
+
+.step-content { padding-top: 8px; }
+.step-tag {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 12px;
+}
+.step-title {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+.step-title em { font-style: italic; color: rgba(13,13,13,0.35); }
+.step-body {
+  font-size: 15px; font-weight: 300;
+  line-height: 1.85; color: var(--muted);
+  max-width: 640px;
+}
+.step-body strong { color: var(--ink); font-weight: 400; }
+
+.step-pills {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px;
+}
+.step-pill {
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 6px 14px;
+  border: 1px solid var(--rule);
+  color: var(--muted);
+  background: transparent;
+  transition: border-color .2s, color .2s;
+}
+.step:hover .step-pill { border-color: rgba(27,79,216,0.2); color: rgba(27,79,216,0.7); }
+
+/* ── EXPERTISE SECTION ── */
+.expertise { background: var(--ink); color: var(--cream); padding: 120px 52px; }
+.expertise-inner { max-width: 1200px; margin: 0 auto; }
+.expertise .label { color: rgba(247,245,240,0.35); }
+.expertise .label::before { background: rgba(247,245,240,0.35); }
+.expertise h2.display { color: var(--cream); margin-bottom: 72px; }
+
+/* Sectors strip */
+.sectors-strip {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  margin-bottom: 80px;
+}
+.sector-tag {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 9px 18px;
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(247,245,240,0.55);
+  transition: background .2s, border-color .2s, color .2s;
+}
+.sector-tag:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.3); color: var(--cream); }
+
+/* Capability cards */
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.07);
+}
+.cap-card {
+  background: var(--ink);
+  padding: 52px 48px;
+  border-top: 2px solid transparent;
+  transition: border-color .3s, background .3s;
+  position: relative; overflow: hidden;
+}
+.cap-card:hover { border-top-color: var(--blue); background: rgba(255,255,255,0.02); }
+.cap-num {
+  font-family: var(--serif);
+  font-size: 80px; font-weight: 300;
+  color: rgba(255,255,255,0.04);
+  line-height: 1;
+  position: absolute;
+  top: 20px; right: 32px;
+  transition: color .3s;
+}
+.cap-card:hover .cap-num { color: rgba(27,79,216,0.08); }
+.step-icon {
+  color: var(--blue);
+  margin-bottom: 20px;
+  opacity: 0.85;
+  transition: opacity .3s;
+}
+.step:hover .step-icon { opacity: 1; }
+.step-icon svg { display: block; }
+.cap-icon {
+  color: var(--blue);
+  margin-bottom: 22px;
+  opacity: 0.8;
+  transition: opacity .3s;
+}
+.cap-card:hover .cap-icon { opacity: 1; }
+.cap-icon svg { display: block; }
+.cap-title {
+  font-family: var(--serif);
+  font-size: 26px; font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+.cap-body {
+  font-size: 14px; font-weight: 300;
+  color: rgba(247,245,240,0.5);
+  line-height: 1.75;
+}
+
+/* Trust strip */
+.trust-strip {
+  margin-top: 80px;
+  padding-top: 52px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.07);
+}
+.trust-item {
+  background: var(--ink);
+  padding: 36px 32px;
+}
+.trust-big {
+  font-family: var(--serif);
+  font-size: 52px; font-weight: 300;
+  color: var(--cream);
+  line-height: 1;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+.trust-big span { color: var(--blue); }
+.trust-label {
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(247,245,240,0.3);
+}
+
+/* ── CTA SECTION ── */
+.process-cta { padding: 120px 52px; text-align: center; }
+.process-cta-inner { max-width: 680px; margin: 0 auto; }
+.process-cta .label { justify-content: center; }
+.process-cta .label::before { display: none; }
+.process-cta h2.display { margin: 16px 0 24px; }
+.process-cta p {
+  font-size: 15px; font-weight: 300;
+  line-height: 1.8; color: var(--muted);
+  margin-bottom: 40px;
+}
+.cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn-ink {
+  display: inline-block; padding: 14px 32px;
+  background: var(--ink); color: var(--cream);
+  font-family: var(--jost); font-size: 13px; font-weight: 400;
+  letter-spacing: 0.06em; text-decoration: none; border: 1px solid var(--ink);
+  transition: background .2s, color .2s, border-color .2s;
+}
+.btn-ink:hover { background: var(--blue); border-color: var(--blue); }
+.btn-outline {
+  display: inline-block; padding: 14px 32px;
+  background: transparent; color: var(--ink);
+  font-family: var(--jost); font-size: 13px; font-weight: 400;
+  letter-spacing: 0.06em; text-decoration: none; border: 1px solid rgba(13,13,13,0.25);
+  transition: border-color .2s, color .2s;
+}
+.btn-outline:hover { border-color: var(--ink); }
+
+/* ── FOOTER ── */
+.footer { background: var(--ink); padding: 52px; }
+.footer-bar { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.footer-brand { font-family: var(--serif); font-size: 14px; font-weight: 300; color: rgba(247,245,240,0.4); letter-spacing: 0.08em; }
+.footer-copy { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: rgba(247,245,240,0.25); }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: rgba(247,245,240,0.35); text-decoration: none; text-transform: uppercase; transition: color .2s; }
+.footer-links a:hover { color: var(--cream); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  nav { padding: 18px 24px; }
+  .nav-links { display: none; }
+  .page-hero { padding: 140px 24px 80px; }
+  .hero-number { font-size: 28vw; right: 16px; }
+  .process { padding: 80px 24px; }
+  .process-header { grid-template-columns: 1fr; gap: 32px; }
+  .steps::before { left: 20px; }
+  .step { grid-template-columns: 60px 1fr; gap: 0 28px; padding: 40px 0; }
+  .step-node { width: 40px; height: 40px; }
+  .step-num { font-size: 16px; }
+  .expertise { padding: 80px 24px; }
+  .capabilities-grid { grid-template-columns: 1fr; }
+  .trust-strip { grid-template-columns: 1fr; margin-top: 40px; }
+  .process-cta { padding: 80px 24px; }
+  .footer { padding: 40px 24px; }
+  .footer-bar { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="dot"></div>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <a href="index.html" class="nav-brand">
+    <img src="images/logo.png" class="nav-logo" alt="Bluemoon Innovations">
+    <span class="nav-brand-name">Bluemoon<br>Innovations</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">Studio</a></li>
+    <li><a href="index.html#products">Products</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="process.html" class="active">Process</a></li>
+    <li><a href="index.html#careers">Careers</a></li>
+    <li><a href="index.html#contact" class="cta">Let's Build</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="page-hero">
+  <div class="hero-number">06</div>
+  <div class="page-hero-inner">
+    <div class="label reveal">How we work</div>
+    <div class="reveal" style="margin-bottom:28px; color:var(--blue); opacity:0.6;">
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="24" cy="24" r="20"/>
+        <circle cx="24" cy="24" r="12"/>
+        <circle cx="24" cy="24" r="4" fill="currentColor" stroke="none" opacity="0.5"/>
+        <line x1="24" y1="4" x2="24" y2="12"/>
+        <line x1="24" y1="36" x2="24" y2="44"/>
+        <line x1="4" y1="24" x2="12" y2="24"/>
+        <line x1="36" y1="24" x2="44" y2="24"/>
+      </svg>
+    </div>
+    <h1 class="reveal reveal-d1">Rigour<br>before <em>pixels.</em></h1>
+    <p class="page-hero-sub reveal reveal-d2">We spend more time in the problem than in the solution — because a system built on deep understanding outperforms one built on assumptions, every time.</p>
+  </div>
+</section>
+
+<!-- ── PROCESS ── -->
+<section class="process" id="process">
+  <div class="process-inner">
+    <div class="process-header">
+      <div>
+        <div class="label reveal">The Process</div>
+        <h2 class="display reveal reveal-d1">Six steps from<br><em>problem to live.</em></h2>
+      </div>
+      <p class="process-header-right reveal reveal-d2">We work with you as closely as you are comfortable. <strong>No hand-off culture.</strong> No black boxes. Every decision is made together, every trade-off is explained, every milestone is visible.</p>
+    </div>
+
+    <div class="steps">
+
+      <!-- Step 1 -->
+      <div class="step reveal">
+        <div class="step-num-col">
+          <div class="step-node"><span class="step-num">01</span></div>
+        </div>
+        <div class="step-content">
+          <div class="step-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="17" cy="17" r="11"/>
+              <line x1="25" y1="25" x2="36" y2="36"/>
+              <line x1="17" y1="10" x2="17" y2="24"/>
+              <line x1="10" y1="17" x2="24" y2="17"/>
+              <circle cx="17" cy="17" r="3" stroke-opacity="0.35"/>
+            </svg>
+          </div>
+          <div class="step-tag">Discovery</div>
+          <div class="step-title">Understand the<br><em>Problem</em></div>
+          <p class="step-body">
+            A good solution demands a well-defined problem. We begin by going deep into <strong>what is broken</strong> — its origin, the key factors feeding it, and the stopgaps you've already tried. We study your current workflows, shadow your teams if needed, and map the full weight of the problem before a single wireframe is drawn.
+          </p>
+          <div class="step-pills">
+            <span class="step-pill">Problem Origin</span>
+            <span class="step-pill">Root Cause</span>
+            <span class="step-pill">Current Gaps</span>
+            <span class="step-pill">Stakeholder Interviews</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step reveal reveal-d1">
+        <div class="step-num-col">
+          <div class="step-node"><span class="step-num">02</span></div>
+        </div>
+        <div class="step-content">
+          <div class="step-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 6C13.4 6 8 11.4 8 18c0 4.2 2.2 7.9 5.5 10.1V32h13v-3.9C29.8 25.9 32 22.2 32 18 32 11.4 26.6 6 20 6z"/>
+              <line x1="13.5" y1="35" x2="26.5" y2="35"/>
+              <line x1="15" y1="32" x2="25" y2="32"/>
+              <line x1="20" y1="6" x2="20" y2="3"/>
+              <line x1="6" y1="18" x2="3" y2="18"/>
+              <line x1="34" y1="18" x2="37" y2="18"/>
+              <line x1="9.5" y1="9.5" x2="7.4" y2="7.4"/>
+              <line x1="30.5" y1="9.5" x2="32.6" y2="7.4"/>
+            </svg>
+          </div>
+          <div class="step-tag">Vision</div>
+          <div class="step-title">Explore Your<br><em>Ideas</em></div>
+          <p class="step-body">
+            You've been living with this problem. You have instincts about the fix. We want all of it — <strong>mockups, rough sketches, a chit with scribbled ideas, a voice note</strong>. We meet you exactly where you are and take your vision seriously, treating every artefact as a signal about what success looks like to you.
+          </p>
+          <div class="step-pills">
+            <span class="step-pill">Mockups</span>
+            <span class="step-pill">Blueprints</span>
+            <span class="step-pill">Reference Products</span>
+            <span class="step-pill">Rough Ideas</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step reveal reveal-d2">
+        <div class="step-num-col">
+          <div class="step-node"><span class="step-num">03</span></div>
+        </div>
+        <div class="step-content">
+          <div class="step-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 7h22a2 2 0 012 2v10a2 2 0 01-2 2H8l-6 5V9a2 2 0 012-2z"/>
+              <path d="M28 15h6a2 2 0 012 2v9a2 2 0 01-2 2h-2v4l-6-4h-6a2 2 0 01-2-2v-2"/>
+            </svg>
+          </div>
+          <div class="step-tag">Refinement</div>
+          <div class="step-title">Debate &amp;<br><em>Refine</em></div>
+          <p class="step-body">
+            Our team takes your inputs into a room and debates honestly. Is this the right solution? Does it need iteration? Can we design something that <strong>solves the problem better</strong> — simpler, more scalable, less brittle? We come back to you with a clear recommendation and the reasoning behind it. Not yes-men. Partners.
+          </p>
+          <div class="step-pills">
+            <span class="step-pill">Solution Review</span>
+            <span class="step-pill">Alternatives</span>
+            <span class="step-pill">Trade-off Analysis</span>
+            <span class="step-pill">Iteration</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="step reveal reveal-d3">
+        <div class="step-num-col">
+          <div class="step-node"><span class="step-num">04</span></div>
+        </div>
+        <div class="step-content">
+          <div class="step-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 4L36 20L20 36L4 20L20 4z"/>
+              <polyline points="13,20 18,26 27,13"/>
+            </svg>
+          </div>
+          <div class="step-tag">Alignment</div>
+          <div class="step-title">Agree on<br><em>Approach</em></div>
+          <p class="step-body">
+            Once both sides are genuinely happy about the direction and the implementation plan, we lock it in together. No ambiguity. <strong>A shared understanding of what we're building</strong>, why each decision was made, and what the system will look like when it's done. This is the contract we both sign in spirit.
+          </p>
+          <div class="step-pills">
+            <span class="step-pill">Scope Lock</span>
+            <span class="step-pill">Implementation Plan</span>
+            <span class="step-pill">Shared Milestones</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="step reveal reveal-d4">
+        <div class="step-num-col">
+          <div class="step-node"><span class="step-num">05</span></div>
+        </div>
+        <div class="step-content">
+          <div class="step-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="20,5 36,13 20,21 4,13"/>
+              <polyline points="4,20 20,28 36,20"/>
+              <polyline points="4,27 20,35 36,27"/>
+            </svg>
+          </div>
+          <div class="step-tag">Build</div>
+          <div class="step-title">Build the<br><em>System</em></div>
+          <p class="step-body">
+            We build from the ground up: <strong>system architecture and digital business logic first</strong>, ensuring the new systems mirror and enhance on-ground operations. Once the backbone is solid, we layer the UI for clarity and the AI for intelligence — delivering a solution that is both deeply functional and beautiful to use.
+          </p>
+          <div class="step-pills">
+            <span class="step-pill">Architecture</span>
+            <span class="step-pill">Business Systems</span>
+            <span class="step-pill">UI Layer</span>
+            <span class="step-pill">AI Integration</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 6 -->
+      <div class="step reveal reveal-d5">
+        <div class="step-num-col">
+          <div class="step-node"><span class="step-num">06</span></div>
+        </div>
+        <div class="step-content">
+          <div class="step-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="4,30 13,19 21,23 34,9"/>
+              <polyline points="27,9 34,9 34,16"/>
+              <circle cx="13" cy="19" r="2.2" fill="currentColor" stroke="none"/>
+              <circle cx="21" cy="23" r="2.2" fill="currentColor" stroke="none"/>
+              <line x1="4" y1="36" x2="36" y2="36" stroke-opacity="0.2"/>
+            </svg>
+          </div>
+          <div class="step-tag">Adoption</div>
+          <div class="step-title">Adopt &amp;<br><em>Thrive</em></div>
+          <p class="step-body">
+            We don't disappear at launch. Our team visits to <strong>train your people and monitor early adoption</strong>. You receive adoption cues and usage metrics directly to your inbox. Automated alerts and nudges are sent to your users to drive consistent engagement — so the new system actually gets used, not shelved.
+          </p>
+          <div class="step-pills">
+            <span class="step-pill">On-site Training</span>
+            <span class="step-pill">Adoption Metrics</span>
+            <span class="step-pill">Automated Nudges</span>
+            <span class="step-pill">Ongoing Support</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPERTISE ── -->
+<section class="expertise" id="expertise">
+  <div class="expertise-inner">
+    <div class="label reveal">Expertise</div>
+    <h2 class="display reveal reveal-d1">Learned in the field.<br><em>Applied with precision.</em></h2>
+
+    <div class="sectors-strip reveal reveal-d2">
+      <span class="sector-tag">Micromobility</span>
+      <span class="sector-tag">Logistics</span>
+      <span class="sector-tag">Quick Commerce</span>
+      <span class="sector-tag">Farming</span>
+      <span class="sector-tag">D2C</span>
+      <span class="sector-tag">Manufacturing</span>
+      <span class="sector-tag">AI SaaS</span>
+      <span class="sector-tag">Health Tech</span>
+    </div>
+
+    <div class="capabilities-grid">
+      <div class="cap-card reveal">
+        <div class="cap-num">01</div>
+        <div class="cap-icon">
+          <svg width="34" height="34" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="17,3 21,13 32,13 23,20 26,31 17,24 8,31 11,20 2,13 13,13"/>
+          </svg>
+        </div>
+        <div class="cap-title">Built for India's Fastest Growing Companies</div>
+        <p class="cap-body">Observed, learned, and built multiple systems for unicorn and soonicorn startups across India — companies operating at scale, under pressure, with complex operations that demand systems that hold up.</p>
+      </div>
+      <div class="cap-card reveal reveal-d1">
+        <div class="cap-num">02</div>
+        <div class="cap-icon">
+          <svg width="34" height="34" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 17C3 17 8 7 17 7C26 7 31 17 31 17C31 17 26 27 17 27C8 27 3 17 3 17Z"/>
+            <circle cx="17" cy="17" r="5"/>
+            <circle cx="17" cy="17" r="2" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+        <div class="cap-title">Realtime Operational Intelligence</div>
+        <p class="cap-body">Our solutions give leadership and operations teams live visibility into what's happening on the ground — and the data tools to act on it, drive efficiency, and make decisions with confidence rather than instinct.</p>
+      </div>
+      <div class="cap-card reveal reveal-d2">
+        <div class="cap-num">03</div>
+        <div class="cap-icon">
+          <svg width="34" height="34" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="17" cy="17" r="3.5"/>
+            <circle cx="5" cy="7" r="2.5"/>
+            <circle cx="29" cy="7" r="2.5"/>
+            <circle cx="5" cy="27" r="2.5"/>
+            <circle cx="29" cy="27" r="2.5"/>
+            <line x1="17" y1="13.5" x2="7" y2="8.8"/>
+            <line x1="17" y1="13.5" x2="27" y2="8.8"/>
+            <line x1="17" y1="20.5" x2="7" y2="25.2"/>
+            <line x1="17" y1="20.5" x2="27" y2="25.2"/>
+          </svg>
+        </div>
+        <div class="cap-title">Deep Systems Design Thinking</div>
+        <p class="cap-body">We break down every role, every object, every process in your operations — and map how they interconnect. This structured thinking is what allows us to design systems that handle your specific intricacies, not generic ones that almost fit.</p>
+      </div>
+      <div class="cap-card reveal reveal-d3">
+        <div class="cap-num">04</div>
+        <div class="cap-icon">
+          <svg width="34" height="34" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 5C10.4 5 5 10.4 5 17C5 20.1 6.2 22.9 8.2 25L7 29l4.2-1.3C12.9 28.5 14.9 29 17 29C23.6 29 29 23.6 29 17C29 10.4 23.6 5 17 5Z"/>
+            <line x1="11" y1="15" x2="23" y2="15"/>
+            <line x1="11" y1="19" x2="19" y2="19"/>
+          </svg>
+        </div>
+        <div class="cap-title">We Listen Before We Build</div>
+        <p class="cap-body">We spend more time in your operations than in our IDE. Understanding your processes in detail is what separates systems that work beautifully from systems that technically function. The investment in understanding is what makes the difference.</p>
+      </div>
+    </div>
+
+    <div class="trust-strip reveal reveal-d2">
+      <div class="trust-item">
+        <div style="color:rgba(27,79,216,0.6);margin-bottom:16px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+            <path d="M16 3.13a4 4 0 010 7.75"/>
+          </svg>
+        </div>
+        <div class="trust-big">10<span>+</span></div>
+        <div class="trust-label">Companies Served</div>
+      </div>
+      <div class="trust-item">
+        <div style="color:rgba(27,79,216,0.6);margin-bottom:16px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7" rx="1"/>
+            <rect x="14" y="3" width="7" height="7" rx="1"/>
+            <rect x="3" y="14" width="7" height="7" rx="1"/>
+            <rect x="14" y="14" width="7" height="7" rx="1"/>
+          </svg>
+        </div>
+        <div class="trust-big">5<span>+</span></div>
+        <div class="trust-label">Industry Verticals</div>
+      </div>
+      <div class="trust-item">
+        <div style="color:rgba(27,79,216,0.6);margin-bottom:16px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+            <polyline points="17 6 23 6 23 12"/>
+          </svg>
+        </div>
+        <div class="trust-big">30<span>%</span></div>
+        <div class="trust-label">Avg. Efficiency Gain</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="process-cta">
+  <div class="process-cta-inner">
+    <div class="label reveal">Ready?</div>
+    <h2 class="display reveal reveal-d1">Let's start with<br><em>your problem.</em></h2>
+    <p class="reveal reveal-d2">Tell us what's broken, what you've tried, and what you imagine. We'll take it from there.</p>
+    <div class="cta-row reveal reveal-d3">
+      <a href="index.html#contact" class="btn-ink">Start a Conversation</a>
+      <a href="https://wa.me/919003626854?text=Hey%2C%20I%20checkout%20out%20your%20website%20and%20would%20like%20to%20talk%20about%20a%20project%20i%20want%20to%20brainstorm%20and%20build%20with%20you%20guys." target="_blank" class="btn-outline">Chat on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="footer-bar">
+    <span class="footer-brand">Bluemoon Innovations</span>
+    <span class="footer-copy">© 2026 · Built with care in India</span>
+    <div class="footer-links">
+      <a href="products/filesign.html">FileSIGN</a>
+      <a href="products/ausum.html">Ausum</a>
+      <a href="products/buddyai.html">BuddyAI</a>
+      <a href="products/being-better.html">Being Better</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── CURSOR ── */
+const cur = document.getElementById('cur');
+const dot = document.getElementById('dot');
+let cx=0,cy=0,ax=0,ay=0;
+document.addEventListener('mousemove',e=>{ax=e.clientX;ay=e.clientY;dot.style.left=ax+'px';dot.style.top=ay+'px';});
+(function loop(){cx+=(ax-cx)*.12;cy+=(ay-cy)*.12;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>cur.classList.add('hover'));el.addEventListener('mouseleave',()=>cur.classList.remove('hover'));});
+
+/* ── NAV SCROLL ── */
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);});
+
+/* ── SCROLL REVEAL ── */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ── STEP HOVER LINE PULSE ── */
+document.querySelectorAll('.step').forEach(step=>{
+  const node=step.querySelector('.step-node');
+  step.addEventListener('mouseenter',()=>{node.style.background='rgba(27,79,216,0.04)';});
+  step.addEventListener('mouseleave',()=>{node.style.background='var(--cream)';});
+});
+</script>
+</body>
+</html>

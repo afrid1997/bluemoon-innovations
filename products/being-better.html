@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Being Better — AI Hardware. Scalp Sentinel BB01.</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--bg:#06080D;--surface:#090C13;--ink:#F0F4FA;--teal:#0891B2;--teal2:#22D3EE;--muted:rgba(240,244,250,.4);--rule:rgba(240,244,250,.07);--serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;--mono:'JetBrains Mono',monospace;}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);overflow-x:hidden;}
+*{cursor:none!important;}
+#cur{position:fixed;width:32px;height:32px;border:1.5px solid rgba(8,145,178,.55);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform .18s,background .18s;}
+#dot{position:fixed;width:5px;height:5px;background:var(--teal);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);}
+#cur.hover{transform:translate(-50%,-50%) scale(2);background:rgba(8,145,178,.06);}
+nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:22px 52px;transition:background .3s,border-bottom .3s;}
+nav.scrolled{background:rgba(6,8,13,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--rule);}
+.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink);}
+.nav-mark{width:32px;}
+.nav-logo{height:62px;width:auto;display:block;background:white;padding:4px 10px;border-radius:6px;}
+.nav-name{font-family:var(--serif);font-size:15px;font-weight:600;letter-spacing:.04em;line-height:1.2;}
+.nav-name small{display:block;font-weight:300;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-family:var(--mono);}
+.nav-back{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;}
+.nav-back:hover{color:var(--ink);}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 52px 80px;position:relative;overflow:hidden;}
+#deviceCanvas{position:absolute;inset:0;width:100%!important;height:100%!important;}
+.hero-content{position:relative;z-index:2;max-width:700px;}
+.hero-tag{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:40px;}
+.hero-tag::before,.hero-tag::after{content:'';width:24px;height:1px;background:var(--teal);}
+h1{font-family:var(--serif);font-size:clamp(52px,6.5vw,96px);font-weight:300;line-height:1.02;letter-spacing:-.03em;margin-bottom:28px;}
+h1 em{font-style:italic;color:var(--teal2);}
+.hero-sub{font-size:17px;font-weight:300;color:var(--muted);line-height:1.8;max-width:500px;margin:0 auto 52px;}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.btn-teal{display:inline-block;padding:13px 28px;background:var(--teal);color:white;font-family:var(--sans);font-size:13px;letter-spacing:.06em;text-decoration:none;transition:background .2s;}
+.btn-teal:hover{background:var(--teal2);color:var(--bg);}
+.btn-ghost{display:inline-block;padding:13px 28px;background:transparent;color:var(--muted);font-family:var(--sans);font-size:13px;letter-spacing:.06em;text-decoration:none;border:1px solid var(--rule);transition:border-color .2s,color .2s;}
+.btn-ghost:hover{border-color:rgba(240,244,250,.3);color:var(--ink);}
+.hero-specs{display:flex;justify-content:center;gap:48px;margin-top:72px;padding-top:48px;border-top:1px solid var(--rule);flex-wrap:wrap;}
+.spec-num{font-family:var(--serif);font-size:40px;font-weight:300;color:var(--teal2);line-height:1;}
+.spec-label{font-family:var(--mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-top:6px;}
+
+/* FEATURES sections */
+section{padding:100px 52px;}
+.inner{max-width:1100px;margin:0 auto;}
+.label{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.label::before{content:'';width:20px;height:1px;background:var(--muted);}
+h2.display{font-family:var(--serif);font-size:clamp(36px,4vw,54px);font-weight:300;line-height:1.1;letter-spacing:-.02em;margin-bottom:56px;}
+h2.display em{font-style:italic;color:var(--teal2);}
+.feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);}
+.feat{background:var(--bg);padding:40px 36px;}
+.feat-num{font-family:var(--mono);font-size:10px;letter-spacing:.15em;color:var(--teal);margin-bottom:20px;}
+.feat-title{font-family:var(--serif);font-size:24px;font-weight:600;margin-bottom:12px;line-height:1.15;}
+.feat-desc{font-size:14px;font-weight:300;color:var(--muted);line-height:1.75;}
+.feat-spec{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--teal);margin-top:20px;padding-top:20px;border-top:1px solid var(--rule);}
+
+/* DEVICE SECTION */
+.device-section{background:var(--surface);padding:100px 52px;}
+.device-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.device-vis{position:relative;height:400px;display:flex;align-items:center;justify-content:center;}
+.device-ring{position:absolute;border-radius:50%;border:1px solid rgba(8,145,178,.12);animation:ring-pulse 3s ease-in-out infinite;}
+.ring1{width:300px;height:300px;}
+.ring2{width:220px;height:220px;animation-delay:.8s;}
+.ring3{width:140px;height:140px;animation-delay:1.6s;}
+@keyframes ring-pulse{0%,100%{opacity:.5;transform:scale(1);}50%{opacity:1;transform:scale(1.02);}}
+.device-core{width:100px;height:100px;background:linear-gradient(135deg,#0A1525,#0F1E35);border-radius:24px;border:2px solid rgba(8,145,178,.4);box-shadow:0 0 40px rgba(8,145,178,.2),0 20px 60px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;font-size:44px;position:relative;z-index:2;}
+.device-core::after{content:'BB01';position:absolute;bottom:-28px;font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:rgba(8,145,178,.6);text-transform:uppercase;}
+.device-text h3{font-family:var(--serif);font-size:36px;font-weight:300;line-height:1.1;letter-spacing:-.01em;margin-bottom:20px;}
+.device-text h3 em{font-style:italic;color:var(--teal2);}
+.device-text p{font-size:15px;font-weight:300;color:var(--muted);line-height:1.8;margin-bottom:24px;}
+.spec-list{display:flex;flex-direction:column;gap:12px;margin-top:32px;}
+.spec-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--rule);}
+.spec-key{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.spec-val{font-family:var(--mono);font-size:10px;color:var(--teal2);}
+
+/* VISION */
+.vision-section{background:linear-gradient(160deg,#060810,#0A1218);padding:100px 52px;text-align:center;}
+.vision-inner{max-width:800px;margin:0 auto;}
+.vision-quote{font-family:var(--serif);font-size:clamp(28px,3.5vw,48px);font-weight:300;line-height:1.2;letter-spacing:-.01em;color:var(--ink);margin-bottom:24px;}
+.vision-quote em{font-style:italic;color:var(--teal2);}
+.vision-sub{font-size:15px;font-weight:300;color:var(--muted);line-height:1.8;}
+
+.cta-band{background:var(--teal);padding:80px 52px;text-align:center;}
+.cta-band h2{font-family:var(--serif);font-size:clamp(32px,4vw,52px);font-weight:300;line-height:1.1;color:white;margin-bottom:20px;}
+.cta-band h2 em{font-style:italic;}
+.cta-band p{font-size:15px;font-weight:300;color:rgba(255,255,255,.65);margin-bottom:36px;}
+.btn-white{display:inline-block;padding:14px 36px;background:white;color:var(--teal);font-family:var(--sans);font-size:13px;letter-spacing:.06em;text-decoration:none;transition:background .2s;margin:0 6px;}
+.btn-white:hover{background:rgba(255,255,255,.9);}
+.btn-ghost-w{display:inline-block;padding:14px 28px;background:transparent;color:rgba(255,255,255,.7);font-family:var(--sans);font-size:13px;letter-spacing:.06em;text-decoration:none;border:1px solid rgba(255,255,255,.3);transition:border-color .2s,color .2s;margin:0 6px;}
+.btn-ghost-w:hover{border-color:white;color:white;}
+footer{background:#030508;color:rgba(240,244,250,.2);padding:32px 52px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--rule);}
+footer a{color:rgba(240,244,250,.2);text-decoration:none;font-family:var(--mono);font-size:10px;letter-spacing:.12em;transition:color .2s;}
+footer a:hover{color:rgba(240,244,250,.7);}
+.footer-copy{font-family:var(--mono);font-size:10px;letter-spacing:.12em;}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s;}
+.reveal.in{opacity:1;transform:none;}
+.reveal-d1{transition-delay:.1s;}.reveal-d2{transition-delay:.2s;}.reveal-d3{transition-delay:.3s;}
+@media(max-width:900px){nav{padding:18px 24px;}.hero{padding:120px 24px 80px;}.device-inner{grid-template-columns:1fr;}section,.device-section{padding:80px 24px;}.feat-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div id="cur"></div><div id="dot"></div>
+<nav id="nav">
+  <a href="../index.html" class="nav-brand">
+    <img src="../images/logo.png" class="nav-logo" alt="Bluemoon Innovations">
+  </a>
+  <a href="../index.html#products" class="nav-back">← All Products</a>
+</nav>
+
+<!-- HERO WITH THREE.JS -->
+<section class="hero">
+  <canvas id="deviceCanvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-tag">Being Better · AI Hardware</div>
+    <h1>Everyday tools,<br><em>made smarter.</em></h1>
+    <p class="hero-sub">We believe the gap between innovation and daily life is too wide. Being Better closes it — one intelligent device at a time.</p>
+    <div class="hero-btns">
+      <a href="https://getbeingbetter.com" target="_blank" class="btn-teal">Visit getbeingbetter.com →</a>
+      <a href="../index.html#contact" class="btn-ghost">Partner With Us</a>
+    </div>
+    <div class="hero-specs">
+      <div><div class="spec-num">60×</div><div class="spec-label">Magnification</div></div>
+      <div><div class="spec-num">3D</div><div class="spec-label">Scalp Mapping</div></div>
+      <div><div class="spec-num">4</div><div class="spec-label">AI Sensors</div></div>
+      <div><div class="spec-num">BB01</div><div class="spec-label">First Product</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DEVICE -->
+<div class="device-section">
+  <div class="device-inner">
+    <div class="device-vis reveal" style="height:auto;overflow:visible;">
+      <img src="../images/bb-product.png" alt="Being Better — Scalp Sentinel BB01"
+           style="width:100%;max-width:460px;display:block;border-radius:20px;
+                  box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 80px rgba(8,145,178,.12);">
+    </div>
+    <div class="device-text reveal reveal-d2">
+      <div class="label">Flagship Product</div>
+      <h3>Scalp Sentinel<br><em>BB01</em></h3>
+      <p>The first device from Being Better. A clinical-grade scalp health analyser that brings hospital-level insights into your morning routine. No appointment required.</p>
+      <div class="spec-list">
+        <div class="spec-row"><span class="spec-key">Camera</span><span class="spec-val">3MP · 60× Macro</span></div>
+        <div class="spec-row"><span class="spec-key">Mapping</span><span class="spec-val">3D · 6-Axis IMU</span></div>
+        <div class="spec-row"><span class="spec-key">Chemistry</span><span class="spec-val">RGBC Sebum Sensor</span></div>
+        <div class="spec-row"><span class="spec-key">Moisture</span><span class="spec-val">Humidity Barrier Sensor</span></div>
+        <div class="spec-row"><span class="spec-key">AI</span><span class="spec-val">On-device + Cloud</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section>
+  <div class="inner">
+    <div class="label reveal">Four Technologies</div>
+    <h2 class="display reveal reveal-d1">Clinical precision.<br><em>Consumer form.</em></h2>
+    <div class="feat-grid">
+      <div class="feat reveal reveal-d1">
+        <div class="feat-num">01 / VISION</div>
+        <div class="feat-title">Macro-Sight Follicle Tracking</div>
+        <p class="feat-desc">A 3MP microscope camera with 60× magnification captures follicle-level images every session. Tracks density and health over time, alerting you to changes before they're visible in a mirror.</p>
+        <div class="feat-spec">3MP camera · 60× macro magnification</div>
+      </div>
+      <div class="feat reveal reveal-d2">
+        <div class="feat-num">02 / MAPPING</div>
+        <div class="feat-title">3D Geospatial Scalp Blueprint</div>
+        <p class="feat-desc">Integrated 6-axis motion sensors track every stroke across your head. Data is stitched into a 3D health map, letting you monitor progress zone-by-zone: crown, temples, and beyond.</p>
+        <div class="feat-spec">6-axis IMU · Zone-level analysis</div>
+      </div>
+      <div class="feat reveal reveal-d1">
+        <div class="feat-num">03 / CHEMISTRY</div>
+        <div class="feat-title">Sebum &amp; Oiliness Audit</div>
+        <p class="feat-desc">A high-sensitivity RGBC sensor measures surface gloss and sebum levels across your scalp. Identifies exactly where you're oily or dry, and recommends the right serum for each zone.</p>
+        <div class="feat-spec">RGBC sensor · Chemical precision</div>
+      </div>
+      <div class="feat reveal reveal-d2">
+        <div class="feat-num">04 / MOISTURE</div>
+        <div class="feat-title">Environmental Hydration Proxy</div>
+        <p class="feat-desc">Precision humidity sensing within your hair follicles assesses moisture barrier health. Predicts dryness and inflammation cycles before flaking begins.</p>
+        <div class="feat-spec">Humidity sensing · Predictive alerts</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION -->
+<div class="vision-section">
+  <div class="vision-inner">
+    <div class="label reveal" style="justify-content:center;">Philosophy</div>
+    <div class="vision-quote reveal reveal-d1">"The gap between what technology can do and what everyday tools actually do is <em>the opportunity.</em>"</div>
+    <p class="vision-sub reveal reveal-d2">Being Better exists to close that gap. One device at a time. Starting with scalp health. Then beyond.</p>
+  </div>
+</div>
+
+<div class="cta-band">
+  <h2>The future of<br><em>personal health.</em></h2>
+  <p>Scalp Sentinel BB01 is coming. Get on the list.</p>
+  <a href="https://getbeingbetter.com" target="_blank" class="btn-white">Visit getbeingbetter.com →</a>
+  <a href="../index.html#contact" class="btn-ghost-w">Build With Us</a>
+</div>
+
+<footer>
+  <a href="../index.html">← Bluemoon Innovations</a>
+  <span class="footer-copy">© 2026 Being Better · Bluemoon Innovations</span>
+  <a href="https://getbeingbetter.com" target="_blank">getbeingbetter.com ↗</a>
+</footer>
+
+<script>
+/* cursor */
+const cur=document.getElementById('cur'),dot=document.getElementById('dot');
+let cx=0,cy=0,ax=0,ay=0;
+document.addEventListener('mousemove',e=>{ax=e.clientX;ay=e.clientY;dot.style.left=ax+'px';dot.style.top=ay+'px';});
+(function loop(){cx+=(ax-cx)*.12;cy+=(ay-cy)*.12;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>cur.classList.add('hover'));el.addEventListener('mouseleave',()=>cur.classList.remove('hover'));});
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* THREE.JS hero scene */
+(function(){
+  const canvas=document.getElementById('deviceCanvas');
+  const W=canvas.parentElement.offsetWidth,H=canvas.parentElement.offsetHeight;
+  const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  renderer.setSize(W,H);
+  renderer.setClearColor(0x06080D,1);
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(50,W/H,.1,100);
+  camera.position.set(0,0,8);
+
+  /* Central sphere */
+  const sphere=new THREE.Mesh(
+    new THREE.SphereGeometry(1.4,64,64),
+    new THREE.MeshPhysicalMaterial({color:0x0891B2,roughness:.7,metalness:.1,emissive:new THREE.Color(0x044455),emissiveIntensity:.5})
+  );
+  scene.add(sphere);
+
+  /* Wireframe overlay */
+  scene.add(new THREE.Mesh(new THREE.SphereGeometry(1.41,20,20),new THREE.MeshBasicMaterial({color:0x22D3EE,wireframe:true,transparent:true,opacity:.04})));
+
+  /* Glow */
+  scene.add(new THREE.Mesh(new THREE.SphereGeometry(1.65,32,32),new THREE.MeshBasicMaterial({color:0x0891B2,transparent:true,opacity:.06,side:THREE.BackSide})));
+
+  /* Rings */
+  const ring1=new THREE.Mesh(new THREE.TorusGeometry(2.6,.04,16,180),new THREE.MeshBasicMaterial({color:0x0891B2,transparent:true,opacity:.4}));
+  ring1.rotation.x=1.1;scene.add(ring1);
+  const ring2=new THREE.Mesh(new THREE.TorusGeometry(3.4,.018,16,180),new THREE.MeshBasicMaterial({color:0x22D3EE,transparent:true,opacity:.18}));
+  ring2.rotation.x=1.25;ring2.rotation.z=.4;scene.add(ring2);
+
+  /* Stars */
+  const sp=new Float32Array(400*3);
+  for(let i=0;i<400;i++){const r=5+Math.random()*5,t=Math.random()*Math.PI*2,p=Math.acos(2*Math.random()-1);sp[i*3]=r*Math.sin(p)*Math.cos(t);sp[i*3+1]=r*Math.sin(p)*Math.sin(t);sp[i*3+2]=r*Math.cos(p);}
+  const sg=new THREE.BufferGeometry();sg.setAttribute('position',new THREE.BufferAttribute(sp,3));
+  scene.add(new THREE.Points(sg,new THREE.PointsMaterial({color:0x88BBCC,size:.025,transparent:true,opacity:.55})));
+
+  /* Lights */
+  scene.add(new THREE.AmbientLight(0xffffff,.2));
+  const kl=new THREE.DirectionalLight(0xffffff,1.6);kl.position.set(4,3,4);scene.add(kl);
+  const rl=new THREE.DirectionalLight(0x00BBCC,.8);rl.position.set(-4,-2,-3);scene.add(rl);
+
+  let mx=0,my=0;
+  window.addEventListener('mousemove',e=>{mx=(e.clientX/window.innerWidth-.5)*2;my=(e.clientY/window.innerHeight-.5)*2;});
+  window.addEventListener('resize',()=>{const W2=canvas.parentElement.offsetWidth,H2=canvas.parentElement.offsetHeight;renderer.setSize(W2,H2);camera.aspect=W2/H2;camera.updateProjectionMatrix();});
+
+  const clock=new THREE.Clock();
+  function animate(){
+    requestAnimationFrame(animate);
+    const t=clock.getElapsedTime();
+    sphere.rotation.y=t*.06;sphere.rotation.x=t*.02;
+    ring1.rotation.z=t*.08;
+    ring2.rotation.z=-t*.05;
+    camera.position.x+=(mx*.5-camera.position.x)*.04;
+    camera.position.y+=(-my*.3-camera.position.y)*.04;
+    camera.lookAt(scene.position);
+    renderer.render(scene,camera);
+  }
+  animate();
+})();
+</script>
+</body>
+</html>
