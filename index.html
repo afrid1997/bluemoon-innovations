@@ -537,6 +537,82 @@ h2.display em { font-style: italic; }
 .footer-links a { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: rgba(247,245,240,0.35); text-decoration: none; text-transform: uppercase; transition: color .2s; }
 .footer-links a:hover { color: var(--cream); }
 
+/* ── ASKADE LEAD POP-UP ───────────────────────────────── */
+#bm-teaser {
+  position: fixed; bottom: 32px; right: 32px; z-index: 8000;
+  display: flex; align-items: center; gap: 12px;
+  background: var(--ink); color: var(--cream);
+  padding: 14px 20px 14px 16px;
+  border-left: 3px solid var(--blue);
+  box-shadow: 0 8px 40px rgba(0,0,0,.28), 0 2px 8px rgba(0,0,0,.15);
+  cursor: pointer;
+  transform: translateY(120px); opacity: 0;
+  transition: transform .45s cubic-bezier(.2,0,0,1), opacity .45s ease;
+  max-width: 320px;
+}
+#bm-teaser.show { transform: translateY(0); opacity: 1; }
+#bm-teaser-icon { font-size: 22px; flex-shrink: 0; }
+#bm-teaser-text { flex: 1; }
+#bm-teaser-text strong { display: block; font-family: var(--serif); font-size: 15px; font-weight: 600; line-height: 1.2; color: var(--cream); margin-bottom: 3px; }
+#bm-teaser-text span { font-family: var(--mono); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: rgba(247,245,240,.4); }
+#bm-teaser-cta { font-family: var(--mono); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); white-space: nowrap; padding: 6px 12px; border: 1px solid rgba(27,79,216,.4); transition: background .2s, color .2s, border-color .2s; flex-shrink: 0; }
+#bm-teaser:hover #bm-teaser-cta { background: var(--blue); color: var(--cream); border-color: var(--blue); }
+#bm-teaser-dismiss { position: absolute; top: 6px; right: 8px; background: none; border: none; color: rgba(247,245,240,.3); font-size: 12px; line-height: 1; cursor: pointer; padding: 2px 4px; }
+#bm-teaser-dismiss:hover { color: rgba(247,245,240,.7); }
+
+#bm-modal-overlay {
+  position: fixed; inset: 0; z-index: 9000;
+  background: rgba(13,13,13,.72);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  opacity: 0; pointer-events: none;
+  transition: opacity .35s ease;
+}
+#bm-modal-overlay.open { opacity: 1; pointer-events: all; }
+
+#bm-modal {
+  background: var(--cream);
+  width: 100%; max-width: 560px;
+  position: relative;
+  transform: translateY(24px) scale(.97);
+  transition: transform .4s cubic-bezier(.2,0,0,1);
+  overflow: hidden;
+}
+#bm-modal-overlay.open #bm-modal { transform: translateY(0) scale(1); }
+
+#bm-modal-header {
+  padding: 32px 36px 24px;
+  border-bottom: 1px solid var(--rule);
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;
+}
+#bm-modal-header-text {}
+#bm-modal-label { font-family: var(--mono); font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+#bm-modal-label::before { content: ''; display: inline-block; width: 16px; height: 1px; background: rgba(27,79,216,.4); }
+#bm-modal-title { font-family: var(--serif); font-size: 28px; font-weight: 300; line-height: 1.1; letter-spacing: -.01em; color: var(--ink); }
+#bm-modal-title em { font-style: italic; color: rgba(13,13,13,.35); }
+#bm-modal-sub { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.7; margin-top: 10px; }
+#bm-modal-close { background: none; border: none; cursor: pointer; color: var(--muted); font-size: 20px; line-height: 1; padding: 4px; flex-shrink: 0; transition: color .2s; }
+#bm-modal-close:hover { color: var(--ink); }
+
+#bm-modal-game { width: 100%; height: 540px; border: none; display: block; background: #0D0D0D; }
+
+#bm-modal-footer {
+  padding: 14px 36px;
+  border-top: 1px solid var(--rule);
+  display: flex; align-items: center; gap: 12px;
+}
+#bm-modal-footer-badge { width: 6px; height: 6px; border-radius: 50%; background: #3A7D44; flex-shrink: 0; }
+#bm-modal-footer p { font-family: var(--mono); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); line-height: 1.5; }
+
+@media (max-width: 960px) {
+  #bm-teaser { bottom: 20px; right: 16px; left: 16px; max-width: none; }
+  #bm-modal-header { padding: 24px 20px 18px; }
+  #bm-modal-title { font-size: 22px; }
+  #bm-modal-game { height: 420px; }
+  #bm-modal-footer { padding: 12px 20px; }
+}
+
 /* ── SCROLL REVEAL ────────────────────────────────────── */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
 .reveal.in { opacity: 1; transform: none; }
@@ -1147,6 +1223,44 @@ h2.display em { font-style: italic; }
   </div>
 </section>
 
+<!-- ── ASKADE LEAD CAPTURE POP-UP ── -->
+
+<!-- Teaser Pill -->
+<div id="bm-teaser">
+  <button id="bm-teaser-dismiss" title="Dismiss">×</button>
+  <div id="bm-teaser-icon">🎮</div>
+  <div id="bm-teaser-text">
+    <strong>Got an idea worth building?</strong>
+    <span>Play 2 mins · Get a free analysis</span>
+  </div>
+  <div id="bm-teaser-cta">Try it →</div>
+</div>
+
+<!-- Modal Overlay -->
+<div id="bm-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="bm-modal-title-text">
+  <div id="bm-modal">
+    <div id="bm-modal-header">
+      <div id="bm-modal-header-text">
+        <div id="bm-modal-label">Free Idea Analysis</div>
+        <div id="bm-modal-title"><span id="bm-modal-title-text">Tell us what you<br>want to <em>build.</em></span></div>
+        <p id="bm-modal-sub">Play a 2-minute game, share your idea — and we'll send you a free architecture sketch, feasibility analysis, and delivery estimate. To your inbox. In 1 business day.</p>
+      </div>
+      <button id="bm-modal-close" aria-label="Close">×</button>
+    </div>
+    <iframe
+      id="bm-modal-game"
+      src="about:blank"
+      data-src="https://askade.vercel.app/play/542d067a-4241-45ec-91e5-b8d097321aa9/bubble"
+      title="Share your idea — Askade by Bluemoon"
+      allowfullscreen
+    ></iframe>
+    <div id="bm-modal-footer">
+      <div id="bm-modal-footer-badge"></div>
+      <p>No spam. No sales calls. Just a free, genuine assessment — sent straight to your inbox.</p>
+    </div>
+  </div>
+</div>
+
 <script>
 /* ── CURSOR ── */
 const cur = document.getElementById('cur');
@@ -1232,6 +1346,78 @@ document.querySelectorAll('.product-card').forEach(card=>{
   card.addEventListener('mouseleave',()=>{card.style.transform='perspective(900px) rotateY(0) rotateX(0) scale3d(1,1,1)';});
   card.style.transition='transform .4s cubic-bezier(.2,0,0,1), box-shadow .4s ease';
 });
+
+/* ── ASKADE LEAD POP-UP ── */
+(function(){
+  const STORAGE_KEY = 'bm_lead_dismissed';
+  const DELAY_MS    = 30000; // 30 s before teaser appears
+
+  const teaser  = document.getElementById('bm-teaser');
+  const overlay = document.getElementById('bm-modal-overlay');
+  const iframe  = document.getElementById('bm-modal-game');
+
+  if (!teaser || !overlay || !iframe) return;
+  if (sessionStorage.getItem(STORAGE_KEY)) return;
+
+  function showTeaser() {
+    teaser.classList.add('show');
+    // cursor hover effect
+    [teaser].forEach(el=>{ el.addEventListener('mouseenter',()=>cur.classList.add('hover')); el.addEventListener('mouseleave',()=>cur.classList.remove('hover')); });
+  }
+
+  function openModal() {
+    // lazy-load the iframe only on open
+    if (iframe.src === 'about:blank' || !iframe.src.includes('askade')) {
+      iframe.src = iframe.dataset.src;
+    }
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    teaser.classList.remove('show');
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function dismiss() {
+    teaser.classList.remove('show');
+    sessionStorage.setItem(STORAGE_KEY, '1');
+  }
+
+  // Trigger: 30 s timer
+  let teaserTimer = setTimeout(showTeaser, DELAY_MS);
+
+  // Trigger: exit intent (mouse leaves top of viewport)
+  document.addEventListener('mouseleave', function onLeave(e) {
+    if (e.clientY <= 0 && !sessionStorage.getItem(STORAGE_KEY)) {
+      clearTimeout(teaserTimer);
+      showTeaser();
+      document.removeEventListener('mouseleave', onLeave);
+    }
+  });
+
+  // Teaser click → open modal
+  teaser.addEventListener('click', function(e) {
+    if (e.target === document.getElementById('bm-teaser-dismiss')) return;
+    openModal();
+  });
+
+  // Dismiss X on teaser
+  document.getElementById('bm-teaser-dismiss').addEventListener('click', function(e) {
+    e.stopPropagation();
+    dismiss();
+  });
+
+  // Close modal
+  document.getElementById('bm-modal-close').addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closeModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+})();
 
 </script>
 </body>
