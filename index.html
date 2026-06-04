@@ -539,18 +539,18 @@ h2.display em { font-style: italic; }
 
 /* ── ASKADE LEAD POP-UP ───────────────────────────────── */
 #bm-teaser {
-  position: fixed; bottom: 32px; right: 32px; z-index: 8000;
+  position: fixed; bottom: 32px; left: 50%; z-index: 8000;
   display: flex; align-items: center; gap: 12px;
   background: var(--ink); color: var(--cream);
   padding: 14px 20px 14px 16px;
   border-left: 3px solid var(--blue);
   box-shadow: 0 8px 40px rgba(0,0,0,.28), 0 2px 8px rgba(0,0,0,.15);
   cursor: pointer;
-  transform: translateY(120px); opacity: 0;
+  transform: translateX(-50%) translateY(120px); opacity: 0;
   transition: transform .45s cubic-bezier(.2,0,0,1), opacity .45s ease;
-  max-width: 320px;
+  max-width: 420px; width: max-content;
 }
-#bm-teaser.show { transform: translateY(0); opacity: 1; }
+#bm-teaser.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 #bm-teaser-icon { font-size: 22px; flex-shrink: 0; }
 #bm-teaser-text { flex: 1; }
 #bm-teaser-text strong { display: block; font-family: var(--serif); font-size: 15px; font-weight: 600; line-height: 1.2; color: var(--cream); margin-bottom: 3px; }
@@ -606,7 +606,7 @@ h2.display em { font-style: italic; }
 #bm-modal-footer p { font-family: var(--mono); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); line-height: 1.5; }
 
 @media (max-width: 960px) {
-  #bm-teaser { bottom: 20px; right: 16px; left: 16px; max-width: none; }
+  #bm-teaser { bottom: 20px; left: 50%; max-width: calc(100vw - 32px); width: max-content; }
   #bm-modal-header { padding: 24px 20px 18px; }
   #bm-modal-title { font-size: 22px; }
   #bm-modal-game { height: 420px; }
