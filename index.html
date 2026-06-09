@@ -7,6 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<!-- RB2B visitor identification -->
+<script>!function(key){if(window.reb2b)return;window.reb2b={loaded:true};var s=document.createElement("script");s.async=true;s.src="https://ddwl4m2hdecbv.cloudfront.net/b/"+key+"/"+key+".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s,document.getElementsByTagName("script")[0]);}("7N850H5W2XN1");</script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -613,6 +615,34 @@ h2.display em { font-style: italic; }
   #bm-modal-footer { padding: 12px 20px; }
 }
 
+/* ── ANNOUNCEMENT BAR ────────────────────────────────────── */
+#bm-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 950;
+  background: var(--ink);
+  height: 42px;
+  display: flex; align-items: center; justify-content: center; gap: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transform: translateY(-42px);
+  transition: transform 0.45s cubic-bezier(.2,0,0,1);
+}
+#bm-bar.show { transform: translateY(0); }
+#bm-bar-text { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(247,245,240,0.5); }
+#bm-bar-cta {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--blue); background: none; border: 1px solid rgba(27,79,216,0.4);
+  padding: 5px 14px; cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+#bm-bar-cta:hover { background: var(--blue); border-color: var(--blue); color: var(--cream); }
+#bm-bar-close {
+  position: absolute; right: 16px;
+  background: none; border: none; color: rgba(247,245,240,0.25);
+  font-size: 15px; cursor: pointer; padding: 4px 8px;
+  transition: color 0.2s;
+}
+#bm-bar-close:hover { color: rgba(247,245,240,0.65); }
+@media (max-width: 600px) { #bm-bar { gap: 10px; } #bm-bar-text { display: none; } }
+
 /* ── SCROLL REVEAL ────────────────────────────────────── */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
 .reveal.in { opacity: 1; transform: none; }
@@ -660,6 +690,13 @@ h2.display em { font-style: italic; }
 </style>
 </head>
 <body>
+
+<!-- ── ANNOUNCEMENT BAR ── -->
+<div id="bm-bar">
+  <span id="bm-bar-text">Got a project in mind?</span>
+  <button id="bm-bar-cta">Get a free estimate in 24 hrs →</button>
+  <button id="bm-bar-close" title="Dismiss">×</button>
+</div>
 
 <div id="cur"></div>
 <div id="dot"></div>
@@ -1350,29 +1387,42 @@ document.querySelectorAll('.product-card').forEach(card=>{
 /* ── ASKADE LEAD POP-UP ── */
 (function(){
   const STORAGE_KEY = 'bm_lead_dismissed';
-  const DELAY_MS    = 30000; // 30 s before teaser appears
 
   const teaser  = document.getElementById('bm-teaser');
   const overlay = document.getElementById('bm-modal-overlay');
   const iframe  = document.getElementById('bm-modal-game');
+  const bar     = document.getElementById('bm-bar');
+  const nav     = document.getElementById('nav');
 
   if (!teaser || !overlay || !iframe) return;
-  if (sessionStorage.getItem(STORAGE_KEY)) return;
+  const dismissed = () => sessionStorage.getItem(STORAGE_KEY);
+
+  function showBar() {
+    if (dismissed() || !bar) return;
+    bar.classList.add('show');
+    if (nav) nav.style.top = '42px';
+  }
+
+  function hideBar() {
+    if (!bar) return;
+    bar.classList.remove('show');
+    if (nav) nav.style.top = '0';
+  }
 
   function showTeaser() {
+    if (dismissed()) return;
     teaser.classList.add('show');
-    // cursor hover effect
     [teaser].forEach(el=>{ el.addEventListener('mouseenter',()=>cur.classList.add('hover')); el.addEventListener('mouseleave',()=>cur.classList.remove('hover')); });
   }
 
   function openModal() {
-    // lazy-load the iframe only on open
     if (iframe.src === 'about:blank' || !iframe.src.includes('askade')) {
       iframe.src = iframe.dataset.src;
     }
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
     teaser.classList.remove('show');
+    hideBar();
   }
 
   function closeModal() {
@@ -1382,41 +1432,58 @@ document.querySelectorAll('.product-card').forEach(card=>{
 
   function dismiss() {
     teaser.classList.remove('show');
+    hideBar();
     sessionStorage.setItem(STORAGE_KEY, '1');
   }
 
-  // Trigger: 30 s timer
-  let teaserTimer = setTimeout(showTeaser, DELAY_MS);
+  // Bar: show after 1 s (always visible until dismissed)
+  setTimeout(showBar, 1000);
 
-  // Trigger: exit intent (mouse leaves top of viewport)
+  // Teaser pill: show after 7 s
+  let teaserTimer = setTimeout(showTeaser, 7000);
+
+  // Scroll trigger: show teaser at 35% page depth
+  let scrollFired = false;
+  window.addEventListener('scroll', function onScroll() {
+    if (scrollFired || dismissed()) return;
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    if (pct >= 0.35) {
+      scrollFired = true;
+      clearTimeout(teaserTimer);
+      showTeaser();
+    }
+  }, { passive: true });
+
+  // Exit intent
   document.addEventListener('mouseleave', function onLeave(e) {
-    if (e.clientY <= 0 && !sessionStorage.getItem(STORAGE_KEY)) {
+    if (e.clientY <= 0 && !dismissed()) {
       clearTimeout(teaserTimer);
       showTeaser();
       document.removeEventListener('mouseleave', onLeave);
     }
   });
 
+  // Bar CTA → open modal
+  if (bar) {
+    document.getElementById('bm-bar-cta').addEventListener('click', openModal);
+    document.getElementById('bm-bar-close').addEventListener('click', function(e) {
+      e.stopPropagation(); dismiss();
+    });
+  }
+
   // Teaser click → open modal
   teaser.addEventListener('click', function(e) {
     if (e.target === document.getElementById('bm-teaser-dismiss')) return;
     openModal();
   });
-
-  // Dismiss X on teaser
   document.getElementById('bm-teaser-dismiss').addEventListener('click', function(e) {
-    e.stopPropagation();
-    dismiss();
+    e.stopPropagation(); dismiss();
   });
 
   // Close modal
   document.getElementById('bm-modal-close').addEventListener('click', closeModal);
-  overlay.addEventListener('click', function(e) {
-    if (e.target === overlay) closeModal();
-  });
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeModal();
-  });
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 })();
 
 </script>
