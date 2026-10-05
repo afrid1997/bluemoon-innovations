@@ -3,10 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bluemoon Innovations — Innovation Studio, India</title>
+<title>Bluemoon Innovations | Innovation studio, India</title>
+<meta name="description" content="Bluemoon is an innovation studio in India. We build our own products, and yours, with AI in the loop from day one.">
+<meta property="og:title" content="Bluemoon Innovations | Innovation studio, India">
+<meta property="og:description" content="Bluemoon is an innovation studio in India. We build our own products, and yours, with AI in the loop from day one.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="assets/mark.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
 <!-- RB2B visitor identification -->
 <script>!function(key){if(window.reb2b)return;window.reb2b={loaded:true};var s=document.createElement("script");s.async=true;s.src="https://ddwl4m2hdecbv.cloudfront.net/b/"+key+"/"+key+".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s,document.getElementsByTagName("script")[0]);}("7N850H5W2XN1");</script>
 <!-- Microsoft Clarity session recording & heatmaps -->
@@ -17,1500 +23,227 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "xbkijk79ph");
 </script>
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-
-:root {
-  --cream: #F7F5F0;
-  --ink:   #0D0D0D;
-  --blue:  #1B4FD8;
-  --muted: rgba(13,13,13,0.45);
-  --rule:  rgba(13,13,13,0.1);
-  --jost: 'Jost', sans-serif;
-  --serif: 'Cormorant Garamond', Georgia, serif;
-  --mono: 'JetBrains Mono', monospace;
-}
-
-body { font-family: var(--jost); background: var(--cream); color: var(--ink); overflow-x: hidden; }
-body.dark-hero { background: var(--cream); }
-
-/* ── CURSOR ─────────────────────────────────────────── */
-* { cursor: none !important; }
-#cur { position:fixed; width:32px; height:32px; border:1.5px solid rgba(27,79,216,0.55); border-radius:50%; pointer-events:none; z-index:99999; transform:translate(-50%,-50%); transition:transform .18s ease, background .18s ease, border-color .18s ease; will-change:left,top; }
-#dot { position:fixed; width:5px; height:5px; background:var(--blue); border-radius:50%; pointer-events:none; z-index:99999; transform:translate(-50%,-50%); transition:transform .08s ease; }
-#cur.hover { transform:translate(-50%,-50%) scale(2); background:rgba(27,79,216,0.06); border-color:var(--blue); }
-
-/* ── NAV ─────────────────────────────────────────────── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 900;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 22px 52px;
-  transition: background .3s ease, border-bottom .3s ease;
-}
-nav.scrolled {
-  background: rgba(247,245,240,0.92);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--rule);
-}
-.nav-brand {
-  display: flex; align-items: center; gap: 14px;
-  text-decoration: none; color: var(--ink);
-}
-.nav-logo { height: 124px; width: auto; display: block; }
-.nav-brand-name { font-family: var(--serif); font-size: 14px; font-weight: 400; line-height: 1.35; letter-spacing: 0.04em; color: var(--ink); }
-.nav-links { display: flex; gap: 36px; list-style: none; }
-.nav-links a { font-family: var(--jost); font-size: 13px; font-weight: 400; letter-spacing: 0.04em; color: var(--muted); text-decoration: none; transition: color .2s; }
-.nav-links a:hover { color: var(--ink); }
-.nav-links a.cta {
-  color: var(--ink);
-  border: 1px solid rgba(13,13,13,0.3);
-  padding: 8px 20px; border-radius: 2px;
-  transition: background .2s, color .2s, border-color .2s;
-}
-.nav-links a.cta:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); }
-
-/* ── HERO — LIGHT MODE ──────────────────────────────── */
-.hero {
-  min-height: 100vh;
-  background: var(--cream);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  padding: 100px 40px 80px;
-  position: relative; overflow: hidden; gap: 0;
-}
-/* subtle blue shimmer dots on cream */
-.hero::before {
-  content: '';
-  position: absolute; inset: 0; pointer-events: none; z-index: 0;
-  background-image:
-    radial-gradient(1.5px 1.5px at 7% 12%,  rgba(27,79,216,.12) 0%, transparent 100%),
-    radial-gradient(1px 1px at 18% 5%,   rgba(27,79,216,.07) 0%, transparent 100%),
-    radial-gradient(1px 1px at 32% 22%,  rgba(27,79,216,.06) 0%, transparent 100%),
-    radial-gradient(2px 2px at 45% 8%,   rgba(27,79,216,.10) 0%, transparent 100%),
-    radial-gradient(1px 1px at 61% 17%,  rgba(27,79,216,.05) 0%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 77% 6%, rgba(27,79,216,.09) 0%, transparent 100%),
-    radial-gradient(1px 1px at 89% 24%,  rgba(27,79,216,.06) 0%, transparent 100%),
-    radial-gradient(1px 1px at 11% 44%,  rgba(27,79,216,.04) 0%, transparent 100%),
-    radial-gradient(1px 1px at 84% 61%,  rgba(27,79,216,.04) 0%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 93% 79%, rgba(27,79,216,.07) 0%, transparent 100%),
-    radial-gradient(1px 1px at 27% 91%,  rgba(27,79,216,.04) 0%, transparent 100%),
-    radial-gradient(1px 1px at 4% 81%,   rgba(27,79,216,.04) 0%, transparent 100%);
-}
-/* soft blue glow under orbit */
-.hero::after {
-  content: '';
-  position: absolute;
-  width: 900px; height: 500px;
-  left: 50%; top: 65%;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(ellipse, rgba(27,79,216,.07) 0%, transparent 65%);
-  pointer-events: none; z-index: 0;
-  animation: hero-glow-pulse 7s ease-in-out infinite;
-}
-@keyframes hero-glow-pulse {
-  0%, 100% { opacity: 1; transform: translate(-50%,-50%) scale(1); }
-  50%       { opacity: 0.5; transform: translate(-50%,-50%) scale(1.1); }
-}
-
-/* headline */
-.hero-text {
-  text-align: center;
-  position: relative; z-index: 2;
-  margin-bottom: 52px;
-}
-.hero-tag {
-  font-family: var(--mono); font-size: 11px;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--blue); margin-bottom: 26px;
-  display: flex; align-items: center; justify-content: center; gap: 14px;
-}
-.hero-tag::before, .hero-tag::after {
-  content: ''; display: inline-block; width: 36px; height: 1px; background: rgba(27,79,216,.35);
-}
-.hero h1 {
-  font-family: var(--serif);
-  font-size: clamp(50px, 6.5vw, 92px);
-  font-weight: 300; line-height: 1.05;
-  letter-spacing: -0.025em; color: var(--ink);
-}
-.hero h1 em { font-style: italic; color: rgba(13,13,13,.28); }
-.hero-sub {
-  font-size: 13px; font-weight: 300; font-family: var(--mono);
-  color: rgba(13,13,13,.38); margin-top: 22px;
-  letter-spacing: 0.14em; text-transform: uppercase;
-}
-
-/* ── ORBITAL STAGE ── */
-.hero-visual {
-  position: relative; z-index: 2;
-  width: min(1180px, 97vw);
-  height: min(780px, 88vw);
-  flex-shrink: 0;
-  margin-bottom: 56px;
-}
-
-/* ellipse orbit ring — flat tilted orbital plane */
-.orbit-ring {
-  position: absolute;
-  width: 96%; height: 32%;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  border: 1px solid rgba(27,79,216,.3);
-  pointer-events: none;
-  box-shadow: 0 0 60px rgba(27,79,216,.07) inset, 0 0 120px rgba(27,79,216,.04) inset;
-}
-
-/* ── MOON — positioned by JS ── */
-.moon-el {
-  position: absolute;
-  width: 84px; height: 84px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 36% 30%, #daeeff 0%, #6aaef8 24%, #2568d9 54%, #0d2480 85%, #04102e 100%);
-  box-shadow:
-    0 0 24px rgba(27,79,216,1),
-    0 0 56px rgba(27,79,216,.65),
-    0 0 120px rgba(27,79,216,.40),
-    0 0 220px rgba(27,79,216,.20),
-    inset -14px -10px 26px rgba(0,5,44,.6);
-  z-index: 10;
-  transform: translate(-50%, -50%);
-  will-change: left, top;
-}
-.moon-el::before {
-  content: '';
-  position: absolute;
-  width: 12px; height: 12px; border-radius: 50%;
-  background: rgba(8,18,80,.28);
-  top: 20px; left: 36px;
-  box-shadow: 9px 13px 0 -3px rgba(8,18,80,.2), -5px 28px 0 -3px rgba(8,18,80,.14);
-}
-
-/* ── CARD STACK ── */
-.cards-stack {
-  position: absolute;
-  top: 50%; left: 50%;
-  width: 755px; height: 472px;
-  transform: translate(-50%, -50%);
-  animation: stack-float 7s ease-in-out infinite;
-  z-index: 5;
-}
-@keyframes stack-float {
-  0%, 100% { transform: translate(-50%, -50%) translateY(0px); }
-  50%       { transform: translate(-50%, -50%) translateY(-14px); }
-}
-
-.s-card {
-  position: absolute;
-  width: 755px; height: 472px;
-  border-radius: 16px;
-  top: 0; left: 0; overflow: hidden;
-  box-shadow: 0 32px 80px rgba(0,0,0,.22), 0 0 0 1px rgba(0,0,0,.06);
-  will-change: transform;
-  transition: transform .55s cubic-bezier(.2,0,0,1), opacity .55s ease;
-}
-.s-card:nth-child(1) { transform: rotate(0deg)   translate(0px,   0px)  scale(1);   z-index:6; opacity:1;   }
-.s-card:nth-child(2) { transform: rotate(4deg)   translate(32px,  10px) scale(.97); z-index:5; opacity:.97; }
-.s-card:nth-child(3) { transform: rotate(1deg)   translate(8px,   22px) scale(.94); z-index:4; opacity:.92; }
-.s-card:nth-child(4) { transform: rotate(-3deg)  translate(-24px, 40px) scale(.91); z-index:3; opacity:.85; }
-.s-card:nth-child(5) { transform: rotate(-7deg)  translate(-48px, 64px) scale(.86); z-index:2; opacity:.76; }
-.s-card:nth-child(6) { transform: rotate(-11deg) translate(-74px, 88px) scale(.82); z-index:1; opacity:.68; }
-.s-card-bg {
-  width: 100%; height: 100%;
-  object-fit: cover; object-position: center;
-  display: block;
-}
-
-/* ── BROWSER FRAME ── */
-.s-browser {
-  width: 100%; height: 100%;
-  display: flex; flex-direction: column; background: #f0eeea;
-}
-.s-browser-chrome {
-  height: 32px; background: #E2E0DC;
-  display: flex; align-items: center; padding: 0 12px; gap: 6px;
-  flex-shrink: 0; border-bottom: 1px solid rgba(0,0,0,.08);
-}
-.s-bdot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
-.s-burl {
-  flex: 1; height: 20px; background: white; border-radius: 10px;
-  margin-left: 8px; display: flex; align-items: center;
-  padding: 0 10px; font-family: var(--mono); font-size: 8.5px;
-  color: #555; letter-spacing: .03em; overflow: hidden; white-space: nowrap;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
-}
-.s-browser-body { flex: 1; overflow: hidden; position: relative; }
-.s-browser-body > img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
-
-/* ── iPHONE FRAME ── */
-.s-iphone-bg {
-  width: 100%; height: 100%;
-  display: flex; align-items: center; justify-content: center;
-  position: relative; overflow: hidden;
-}
-.s-iphone {
-  width: 148px; height: 302px;
-  border-radius: 30px; background: #0D0D0D;
-  border: 3px solid #363636;
-  box-shadow: 0 0 0 1px #222, inset 0 0 0 1px #484848, 0 20px 60px rgba(0,0,0,.95);
-  display: flex; flex-direction: column; overflow: hidden;
-  flex-shrink: 0; position: relative; z-index: 2;
-}
-.s-iphone-notch {
-  height: 22px; background: #0D0D0D;
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-}
-.s-iphone-island {
-  width: 56px; height: 14px; background: #000;
-  border-radius: 7px; outline: 1.5px solid #1C1C1C;
-}
-.s-iphone-screen { flex: 1; overflow: hidden; }
-.s-iphone-footer {
-  height: 18px; display: flex; align-items: center;
-  justify-content: center; flex-shrink: 0;
-}
-.s-iphone-pill {
-  width: 50px; height: 4px;
-  background: rgba(255,255,255,.35); border-radius: 2px;
-}
-
-/* ── CARD OVERLAY ── */
-.s-card-overlay {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 36px 22px 18px;
-  background: linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.52) 52%, transparent 100%);
-}
-.s-card-topbar {
-  position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 8;
-  border-radius: 16px 16px 0 0;
-}
-.s-card-tag {
-  font-family: var(--mono); font-size: 10px;
-  letter-spacing: .14em; text-transform: uppercase;
-  color: rgba(255,255,255,.55); display: block; margin-bottom: 5px;
-}
-.s-card-title {
-  font-family: var(--serif); font-size: 28px; font-weight: 600;
-  color: #fff; line-height: 1;
-}
-
-/* hero buttons */
-.btn-ink {
-  display: inline-block; padding: 13px 28px;
-  background: var(--ink); color: var(--cream);
-  font-family: var(--jost); font-size: 13px; font-weight: 400;
-  letter-spacing: 0.06em; text-decoration: none; border: 1px solid var(--ink);
-  transition: background .2s, color .2s;
-}
-.btn-ink:hover { background: var(--blue); border-color: var(--blue); }
-.btn-outline {
-  display: inline-block; padding: 13px 28px;
-  background: transparent; color: var(--ink);
-  font-family: var(--jost); font-size: 13px; font-weight: 400;
-  letter-spacing: 0.06em; text-decoration: none; border: 1px solid rgba(13,13,13,0.25);
-  transition: border-color .2s, color .2s;
-}
-.btn-outline:hover { border-color: var(--ink); }
-
-.hero-actions {
-  display: flex; gap: 14px; flex-wrap: wrap;
-  justify-content: center;
-  position: relative; z-index: 2;
-}
-.hero-actions .btn-outline {
-  border-color: rgba(13,13,13,.22);
-  color: rgba(13,13,13,.55);
-}
-.hero-actions .btn-outline:hover {
-  border-color: var(--ink);
-  color: var(--ink);
-}
-
-/* scroll hint */
-.hero-scroll {
-  position: absolute; bottom: 36px; left: 50%;
-  transform: translateX(-50%);
-  display: flex; flex-direction: column;
-  align-items: center; gap: 10px;
-  font-family: var(--mono); font-size: 10px;
-  letter-spacing: 0.15em; text-transform: uppercase;
-  color: rgba(13,13,13,.25); z-index: 2;
-}
-.hero-scroll::after {
-  content: ''; display: block; width: 1px; height: 44px;
-  background: linear-gradient(to bottom, rgba(13,13,13,.15), transparent);
-}
-
-/* ── SECTIONS COMMON ──────────────────────────────────── */
-.label {
-  font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
-  text-transform: uppercase; color: var(--muted); margin-bottom: 20px;
-  display: flex; align-items: center; gap: 10px;
-}
-.label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--muted); }
-
-h2.display {
-  font-family: var(--serif);
-  font-size: clamp(40px, 4.5vw, 64px);
-  font-weight: 300; line-height: 1.1; letter-spacing: -0.02em;
-}
-h2.display em { font-style: italic; }
-.rule { height: 1px; background: var(--rule); }
-
-/* ── ABOUT ────────────────────────────────────────────── */
-.about { padding: 120px 52px; }
-.about-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
-.about-body { padding-top: 8px; }
-.about-body p { font-size: 17px; font-weight: 300; line-height: 1.85; color: var(--muted); margin-top: 28px; }
-.about-body p strong { color: var(--ink); font-weight: 400; }
-.about-right { }
-.about-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
-.fact {
-  background: var(--cream); padding: 32px 28px;
-}
-.fact-num { font-family: var(--serif); font-size: 44px; font-weight: 300; line-height: 1; color: var(--blue); margin-bottom: 8px; }
-.fact-label { font-size: 12px; font-weight: 300; color: var(--muted); line-height: 1.5; }
-
-/* ── PRODUCTS ─────────────────────────────────────────── */
-.products-section { padding: 0 52px 120px; }
-.products-header { padding: 80px 0 60px; border-top: 1px solid var(--rule); max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-end; }
-.products-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
-
-.product-card {
-  background: var(--cream); padding: 40px 36px 36px;
-  text-decoration: none; color: var(--ink);
-  display: block; position: relative; overflow: hidden;
-  transition: transform .35s cubic-bezier(.2,0,0,1), box-shadow .35s ease;
-  transform-style: preserve-3d; will-change: transform;
-}
-.product-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: var(--card-accent, #1B4FD8); opacity: 0;
-  transition: opacity .25s ease;
-}
-.product-card:hover::before { opacity: 1; }
-.product-card:hover { box-shadow: 0 20px 60px rgba(0,0,0,0.1); z-index: 2; }
-/* product card thumbnail */
-.p-thumb { height: 180px; overflow: hidden; position: relative; background: var(--thumb-bg, #EEEAE4); border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: center; }
-.p-thumb-inner { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--card-accent, var(--muted)); opacity: 0.5; }
-
-.p-num { font-family: var(--serif); font-size: 64px; font-weight: 300; color: var(--rule); line-height: 1; margin-bottom: 20px; transition: color .25s; }
-.product-card:hover .p-num { color: rgba(13,13,13,0.12); }
-.p-cat { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--card-accent, var(--muted)); margin-bottom: 14px; }
-.p-name { font-family: var(--serif); font-size: 26px; font-weight: 600; margin-bottom: 14px; line-height: 1.1; }
-.p-desc { font-size: 14px; font-weight: 300; color: var(--muted); line-height: 1.7; margin-bottom: 28px; }
-.p-link { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--card-accent, var(--ink)); display: flex; align-items: center; gap: 8px; }
-.p-link::after { content: '→'; transition: transform .2s; }
-.product-card:hover .p-link::after { transform: translateX(4px); }
-
-/* ── SERVICES ─────────────────────────────────────────── */
-.services { background: var(--ink); color: var(--cream); padding: 120px 52px; }
-.services-inner { max-width: 1200px; margin: 0 auto; }
-.services .label { color: rgba(247,245,240,0.35); }
-.services .label::before { background: rgba(247,245,240,0.35); }
-.services h2.display { color: var(--cream); }
-.services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.07); margin-top: 64px; }
-.svc {
-  background: var(--ink); padding: 40px 32px;
-  border-top: 2px solid transparent;
-  transition: border-color .25s, background .25s;
-}
-.svc:hover { border-top-color: var(--blue); background: rgba(255,255,255,0.02); }
-.svc-icon { font-size: 28px; margin-bottom: 20px; }
-.svc-name { font-family: var(--serif); font-size: 20px; font-weight: 600; margin-bottom: 12px; color: var(--cream); }
-.svc-desc { font-size: 13px; font-weight: 300; color: rgba(247,245,240,0.5); line-height: 1.7; margin-bottom: 24px; }
-.svc-tools { display: flex; flex-wrap: wrap; gap: 6px; }
-.tool { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; padding: 4px 10px; border: 1px solid rgba(255,255,255,0.1); color: rgba(247,245,240,0.4); }
-
-/* nocode strip */
-.nocode-strip { background: rgba(255,255,255,0.03); border-top: 1px solid rgba(255,255,255,0.07); padding: 40px 0; margin-top: 1px; }
-.nocode-strip-inner { max-width: 1200px; margin: 0 auto; padding: 0 52px; display: flex; align-items: center; gap: 48px; }
-.nocode-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(247,245,240,0.3); white-space: nowrap; }
-.nocode-tools { display: flex; gap: 32px; flex-wrap: wrap; }
-.nocode-tool { font-size: 13px; font-weight: 300; color: rgba(247,245,240,0.45); transition: color .2s; }
-.nocode-tool:hover { color: var(--cream); }
-
-/* ── PROCESS OVERVIEW ────────────────────────────────── */
-.process-overview { padding: 120px 52px; background: #F0EDE6; }
-.process-overview-inner { max-width: 1200px; margin: 0 auto; }
-.process-overview-header {
-  display: flex; justify-content: space-between; align-items: flex-end;
-  margin-bottom: 72px; gap: 40px;
-}
-.process-overview-header .process-cta-link {
-  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
-  text-transform: uppercase; color: var(--blue);
-  text-decoration: none; display: flex; align-items: center; gap: 10px;
-  white-space: nowrap; padding-bottom: 4px;
-  border-bottom: 1px solid rgba(27,79,216,.25);
-  transition: border-color .2s;
-}
-.process-overview-header .process-cta-link:hover { border-color: var(--blue); }
-.process-steps-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--rule);
-  border: 1px solid var(--rule);
-}
-.ps-card {
-  background: #F0EDE6;
-  padding: 40px 36px 36px;
-  position: relative; overflow: hidden;
-  transition: background .3s;
-}
-.ps-card:hover { background: var(--cream); }
-.ps-card::after {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: var(--blue); opacity: 0;
-  transition: opacity .25s;
-}
-.ps-card:hover::after { opacity: 1; }
-.ps-step-num {
-  font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
-  color: var(--muted); margin-bottom: 20px;
-  display: flex; align-items: center; gap: 10px;
-}
-.ps-step-num::after {
-  content: ''; flex: 1; height: 1px; background: var(--rule);
-}
-.ps-icon { color: var(--blue); margin-bottom: 18px; opacity: 0.75; transition: opacity .25s; }
-.ps-card:hover .ps-icon { opacity: 1; }
-.ps-icon svg { display: block; }
-.ps-title {
-  font-family: var(--serif); font-size: 22px; font-weight: 600;
-  line-height: 1.15; margin-bottom: 12px; color: var(--ink);
-}
-.ps-title em { font-style: italic; font-weight: 300; color: rgba(13,13,13,.4); }
-.ps-desc {
-  font-size: 13px; font-weight: 300; line-height: 1.75; color: var(--muted);
-}
-
-/* ── NUMBERS ──────────────────────────────────────────── */
-.numbers { padding: 120px 52px; }
-.numbers-inner { max-width: 1200px; margin: 0 auto; }
-.numbers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 60px; }
-.num-item { background: var(--cream); padding: 52px 36px; }
-.num-big { font-family: var(--serif); font-size: 72px; font-weight: 300; line-height: 1; letter-spacing: -0.02em; color: var(--ink); }
-.num-big span { color: var(--blue); }
-.num-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-top: 12px; }
-
-/* ── CAREERS ──────────────────────────────────────────── */
-.careers { padding: 120px 52px; background: #F0EDE6; }
-.careers-inner { max-width: 1200px; margin: 0 auto; }
-.career-card {
-  margin-top: 60px;
-  display: grid; grid-template-columns: 1fr auto; gap: 60px; align-items: center;
-  border: 1px solid var(--rule); background: var(--cream);
-  padding: 52px;
-}
-.career-open { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #3A7D44; display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
-.career-open::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #3A7D44; }
-.career-title { font-family: var(--serif); font-size: 36px; font-weight: 300; letter-spacing: -0.01em; margin-bottom: 16px; }
-.career-title em { font-style: italic; }
-.career-desc { font-size: 15px; font-weight: 300; color: var(--muted); line-height: 1.75; max-width: 560px; }
-.career-meta { display: flex; gap: 32px; margin-top: 28px; }
-.career-meta span { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
-.career-right { text-align: right; }
-.stipend-num { font-family: var(--serif); font-size: 56px; font-weight: 300; letter-spacing: -0.02em; color: var(--ink); line-height: 1; }
-.stipend-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 4px; margin-bottom: 28px; }
-
-/* ── CONTACT ──────────────────────────────────────────── */
-.contact { background: var(--ink); color: var(--cream); padding: 120px 52px 80px; }
-.contact-inner { max-width: 1200px; margin: 0 auto; }
-.contact .label { color: rgba(247,245,240,0.35); }
-.contact .label::before { background: rgba(247,245,240,0.35); }
-.contact h2.display { color: var(--cream); }
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 72px; }
-.contact-left p { font-size: 15px; font-weight: 300; line-height: 1.8; color: rgba(247,245,240,0.55); margin-top: 20px; max-width: 420px; }
-.contact-actions { margin-top: 40px; display: flex; gap: 14px; flex-wrap: wrap; }
-.btn-cream { display: inline-block; padding: 13px 28px; background: var(--cream); color: var(--ink); font-family: var(--jost); font-size: 13px; font-weight: 400; letter-spacing: 0.06em; text-decoration: none; border: 1px solid var(--cream); transition: background .2s, color .2s; }
-.btn-cream:hover { background: var(--blue); border-color: var(--blue); color: var(--cream); }
-.btn-outline-cream { display: inline-block; padding: 13px 28px; background: transparent; color: rgba(247,245,240,0.6); font-family: var(--jost); font-size: 13px; font-weight: 400; letter-spacing: 0.06em; text-decoration: none; border: 1px solid rgba(247,245,240,0.2); transition: border-color .2s, color .2s; }
-.btn-outline-cream:hover { border-color: var(--cream); color: var(--cream); }
-.btn-whatsapp { display: inline-block; padding: 13px 28px; background: #25D366; color: #fff; font-family: var(--jost); font-size: 13px; font-weight: 400; letter-spacing: 0.06em; text-decoration: none; border: 1px solid #25D366; transition: background .2s, border-color .2s; }
-.btn-whatsapp:hover { background: #1ebe5b; border-color: #1ebe5b; }
-.contact-info { }
-.info-row { padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,0.07); display: grid; grid-template-columns: 120px 1fr; gap: 20px; align-items: start; }
-.info-key { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(247,245,240,0.3); padding-top: 2px; }
-.info-val { font-size: 14px; font-weight: 300; color: rgba(247,245,240,0.7); line-height: 1.65; }
-.info-val a { color: var(--cream); text-decoration: none; border-bottom: 1px solid rgba(247,245,240,0.2); transition: border-color .2s; }
-.info-val a:hover { border-color: var(--cream); }
-
-/* footer */
-.footer-bar { max-width: 1200px; margin: 80px auto 0; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-.footer-brand { font-family: var(--serif); font-size: 14px; font-weight: 300; color: rgba(247,245,240,0.4); letter-spacing: 0.08em; }
-.footer-copy { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: rgba(247,245,240,0.25); }
-.footer-links { display: flex; gap: 24px; }
-.footer-links a { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: rgba(247,245,240,0.35); text-decoration: none; text-transform: uppercase; transition: color .2s; }
-.footer-links a:hover { color: var(--cream); }
-
-/* ── ASKADE LEAD POP-UP ───────────────────────────────── */
-#bm-teaser {
-  position: fixed; bottom: 32px; left: 50%; z-index: 8000;
-  display: flex; align-items: center; gap: 12px;
-  background: var(--ink); color: var(--cream);
-  padding: 14px 20px 14px 16px;
-  border-left: 3px solid var(--blue);
-  box-shadow: 0 8px 40px rgba(0,0,0,.28), 0 2px 8px rgba(0,0,0,.15);
-  cursor: pointer;
-  transform: translateX(-50%) translateY(120px); opacity: 0;
-  transition: transform .45s cubic-bezier(.2,0,0,1), opacity .45s ease;
-  max-width: 420px; width: max-content;
-}
-#bm-teaser.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-#bm-teaser-icon { font-size: 22px; flex-shrink: 0; }
-#bm-teaser-text { flex: 1; }
-#bm-teaser-text strong { display: block; font-family: var(--serif); font-size: 15px; font-weight: 600; line-height: 1.2; color: var(--cream); margin-bottom: 3px; }
-#bm-teaser-text span { font-family: var(--mono); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: rgba(247,245,240,.4); }
-#bm-teaser-cta { font-family: var(--mono); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); white-space: nowrap; padding: 6px 12px; border: 1px solid rgba(27,79,216,.4); transition: background .2s, color .2s, border-color .2s; flex-shrink: 0; }
-#bm-teaser:hover #bm-teaser-cta { background: var(--blue); color: var(--cream); border-color: var(--blue); }
-#bm-teaser-dismiss { position: absolute; top: 6px; right: 8px; background: none; border: none; color: rgba(247,245,240,.3); font-size: 12px; line-height: 1; cursor: pointer; padding: 2px 4px; }
-#bm-teaser-dismiss:hover { color: rgba(247,245,240,.7); }
-
-#bm-modal-overlay {
-  position: fixed; inset: 0; z-index: 9000;
-  background: rgba(13,13,13,.72);
-  backdrop-filter: blur(6px);
-  display: flex; align-items: center; justify-content: center;
-  padding: 20px;
-  opacity: 0; pointer-events: none;
-  transition: opacity .35s ease;
-}
-#bm-modal-overlay.open { opacity: 1; pointer-events: all; }
-
-#bm-modal {
-  background: var(--cream);
-  width: 100%; max-width: 560px;
-  position: relative;
-  transform: translateY(24px) scale(.97);
-  transition: transform .4s cubic-bezier(.2,0,0,1);
-  overflow: hidden;
-}
-#bm-modal-overlay.open #bm-modal { transform: translateY(0) scale(1); }
-
-#bm-modal-header {
-  padding: 32px 36px 24px;
-  border-bottom: 1px solid var(--rule);
-  display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;
-}
-#bm-modal-header-text {}
-#bm-modal-label { font-family: var(--mono); font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-#bm-modal-label::before { content: ''; display: inline-block; width: 16px; height: 1px; background: rgba(27,79,216,.4); }
-#bm-modal-title { font-family: var(--serif); font-size: 28px; font-weight: 300; line-height: 1.1; letter-spacing: -.01em; color: var(--ink); }
-#bm-modal-title em { font-style: italic; color: rgba(13,13,13,.35); }
-#bm-modal-sub { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.7; margin-top: 10px; }
-#bm-modal-close { background: none; border: none; cursor: pointer; color: var(--muted); font-size: 20px; line-height: 1; padding: 4px; flex-shrink: 0; transition: color .2s; }
-#bm-modal-close:hover { color: var(--ink); }
-
-#bm-modal-game { width: 100%; height: 540px; border: none; display: block; background: #0D0D0D; }
-
-#bm-modal-footer {
-  padding: 14px 36px;
-  border-top: 1px solid var(--rule);
-  display: flex; align-items: center; gap: 12px;
-}
-#bm-modal-footer-badge { width: 6px; height: 6px; border-radius: 50%; background: #3A7D44; flex-shrink: 0; }
-#bm-modal-footer p { font-family: var(--mono); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); line-height: 1.5; }
-
-@media (max-width: 960px) {
-  #bm-teaser { bottom: 20px; left: 50%; max-width: calc(100vw - 32px); width: max-content; }
-  #bm-modal-header { padding: 24px 20px 18px; }
-  #bm-modal-title { font-size: 22px; }
-  #bm-modal-game { height: 420px; }
-  #bm-modal-footer { padding: 12px 20px; }
-}
-
-/* ── ANNOUNCEMENT BAR ────────────────────────────────────── */
-#bm-bar {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 950;
-  background: var(--ink);
-  height: 42px;
-  display: flex; align-items: center; justify-content: center; gap: 20px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  transform: translateY(-42px);
-  transition: transform 0.45s cubic-bezier(.2,0,0,1);
-}
-#bm-bar.show { transform: translateY(0); }
-#bm-bar-text { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(247,245,240,0.5); }
-#bm-bar-cta {
-  font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--blue); background: none; border: 1px solid rgba(27,79,216,0.4);
-  padding: 5px 14px; cursor: pointer;
-  transition: background 0.2s, border-color 0.2s, color 0.2s;
-}
-#bm-bar-cta:hover { background: var(--blue); border-color: var(--blue); color: var(--cream); }
-#bm-bar-close {
-  position: absolute; right: 16px;
-  background: none; border: none; color: rgba(247,245,240,0.25);
-  font-size: 15px; cursor: pointer; padding: 4px 8px;
-  transition: color 0.2s;
-}
-#bm-bar-close:hover { color: rgba(247,245,240,0.65); }
-@media (max-width: 600px) { #bm-bar { gap: 10px; } #bm-bar-text { display: none; } }
-
-/* ── SCROLL REVEAL ────────────────────────────────────── */
-.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
-.reveal.in { opacity: 1; transform: none; }
-.reveal-d1 { transition-delay: .1s; }
-.reveal-d2 { transition-delay: .2s; }
-.reveal-d3 { transition-delay: .3s; }
-.reveal-d4 { transition-delay: .4s; }
-.reveal-d5 { transition-delay: .5s; }
-.reveal-d6 { transition-delay: .6s; }
-
-/* ── RESPONSIVE ───────────────────────────────────────── */
-@media (max-width: 960px) {
-  nav { padding: 18px 24px; }
-  .nav-links { display: none; }
-  .hero { padding: 90px 20px 70px; }
-  .hero-visual { margin-bottom: 40px; }
-  .hero h1 { font-size: clamp(44px, 12vw, 72px); }
-  .moon-el { width: 56px; height: 56px; }
-  .cards-stack { width: 90vw; height: calc(90vw * 0.625); max-width: 500px; max-height: 312px; }
-  .s-card { width: 90vw; height: calc(90vw * 0.625); max-width: 500px; max-height: 312px; }
-  .s-card-title { font-size: 20px; }
-  .s-card-tag { font-size: 8px; }
-  .s-iphone { width: 100px; height: 204px; border-radius: 20px; }
-  .s-iphone-notch { height: 16px; }
-  .s-iphone-island { width: 40px; height: 10px; }
-  .s-iphone-footer { height: 14px; }
-  .s-browser-chrome { height: 24px; }
-  .s-bdot { width: 8px; height: 8px; }
-  .s-burl { font-size: 7px; height: 15px; }
-  .about, .products-section, .numbers, .careers, .contact { padding-left: 24px; padding-right: 24px; }
-  .about-inner { grid-template-columns: 1fr; gap: 60px; }
-  .products-grid { grid-template-columns: 1fr; }
-  .services { padding: 80px 24px 0; }
-  .services-grid { grid-template-columns: repeat(2,1fr); }
-  .nocode-strip-inner { padding: 0 24px; flex-direction: column; align-items: flex-start; gap: 20px; }
-  .numbers-grid { grid-template-columns: repeat(2,1fr); }
-  .process-steps-grid { grid-template-columns: 1fr; }
-  .process-overview { padding: 80px 24px; }
-  .process-overview-header { flex-direction: column; align-items: flex-start; gap: 24px; }
-  .career-card { grid-template-columns: 1fr; gap: 32px; }
-  .career-right { text-align: left; }
-  .contact-grid { grid-template-columns: 1fr; gap: 48px; }
-  .footer-bar { flex-direction: column; align-items: flex-start; }
-}
-</style>
 </head>
 <body>
-
-<!-- ── ANNOUNCEMENT BAR ── -->
-<div id="bm-bar">
-  <span id="bm-bar-text">Got a project in mind?</span>
-  <button id="bm-bar-cta">Get a free estimate in 24 hrs →</button>
-  <button id="bm-bar-close" title="Dismiss">×</button>
-</div>
-
-<div id="cur"></div>
-<div id="dot"></div>
-
-<!-- ── NAV ── -->
-<nav id="nav">
-  <a href="index.html" class="nav-brand">
-    <img src="images/logo.png" class="nav-logo" alt="Bluemoon Innovations">
-    <span class="nav-brand-name">Bluemoon<br>Innovations</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#about">Studio</a></li>
-    <li><a href="#products">Products</a></li>
-    <li><a href="#services">Services</a></li>
+<div id="bm-bar"><span id="bm-bar-text">Got a project in mind?</span><button id="bm-bar-cta">Get a free estimate in 24 hours</button><button id="bm-bar-close" aria-label="Dismiss">×</button></div>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav" id="nav">
+  <a class="brand" href="index.html" aria-label="Bluemoon Innovations, home"><svg viewBox="655 400 620 785" aria-hidden="true"><path fill-rule="evenodd" d="M663 405H826V573H663Z M826 576H966A302 302 0 0 1 966 1180A302 302 0 0 1 664 878V735H826Z M1105 878A139 139 0 1 0 827 878A139 139 0 1 0 1105 878Z"/></svg><span>Bluemoon</span></a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html#products">Products</a></li>
+    <li><a href="index.html#services">Work with us</a></li>
     <li><a href="process.html">Process</a></li>
-    <li><a href="#careers">Careers</a></li>
-    <li><a href="#contact" class="cta">Let's Build</a></li>
+    <li><a href="index.html#careers">Careers</a></li>
   </ul>
-</nav>
+  <a class="btn" href="index.html#contact">Start a project</a>
+</header>
 
-<!-- ── HERO ── -->
-<section class="hero">
-  <div class="hero-text">
-    <div class="hero-tag">Innovation Studio · India</div>
-    <h1>We make <em>rare ideas</em> real.</h1>
-    <p class="hero-sub">SaaS · AI · Mobile · Hardware</p>
+<main id="main">
+
+<section class="hero on-dark">
+  <div class="moon" aria-hidden="true"><div class="moon-shade"></div></div>
+  <div class="stage">
+    <div class="cards"><a class="hcard on" href="products/filesign.html" style="--bg:#F2C230;--fg:#1A1405" data-need="a contract signed by Friday." aria-label="FileSIGN, Live"><span class="chip">Live</span><span class="hvis"><img src="images/fs-documents.png" alt="" loading="lazy" style="object-position:top left"></span><b>FileSIGN</b></a><a class="hcard" href="products/buddyai.html" style="--bg:#B5471B;--fg:#FFF4EC" data-need="new users who don’t get lost." inert aria-label="BuddyAI, Live"><span class="chip">Live</span><span class="hvis"><img src="images/buddy-tours.png" alt="" loading="lazy" style="object-position:top left"></span><b>BuddyAI</b></a><a class="hcard" href="products/backside.html" style="--bg:#EFE6D4;--fg:#2A1D10" data-need="somewhere to put the idea before it’s gone." inert aria-label="Backside, Free for Mac"><span class="chip">Free for Mac</span><span class="hvis"><div class="hv-notes"><i class="y">Ship the v1.1 build</i><i class="p">Call Meera</i><i class="g">Flip back with the same hotkey</i></div></span><b>Backside</b></a><a class="hcard" href="products/robin-copilot.html" style="--bg:#4F46E5;--fg:#FFFFFF" data-need="an assistant inside WhatsApp." inert aria-label="Custom AI chatbots, Built to order"><span class="chip">Built to order</span><span class="hvis"><div class="hv-chat"><i class="u">Where do I approve a leave request?</i><i class="b">Opening Leave. I’ve highlighted Approve.</i></div></span><b>Custom AI chatbots</b></a><a class="hcard" href="products/ausum.html" style="--bg:#17110A;--fg:#F6DDA5" data-need="audits that match the factory floor." inert aria-label="Ausum, Client project"><span class="chip">Client project</span><span class="hvis"><img src="images/ausum-screenshot.png" alt="" loading="lazy" style="object-position:top left"></span><b>Ausum</b></a><a class="hcard" href="products/being-better.html" style="--bg:#06323D;--fg:#E4FAFF" data-need="a scalp checked while they comb." inert aria-label="Being Better, Prototype"><span class="chip">Prototype</span><span class="hvis"><img src="images/bb-product.png" alt="" loading="lazy" style="object-position:center 40%"></span><b>Being Better</b></a><a class="hcard" href="products/healthsum.html" style="--bg:#1F5C33;--fg:#EAF7EC" data-need="a blood report in plain language." inert aria-label="Healthsum, Coming soon"><span class="chip">Coming soon</span><span class="hvis"><img src="images/healthsum-app.png" alt="" loading="lazy" style="object-position:top center;width:62%;margin:0 auto;border-radius:18px 18px 0 0"></span><b>Healthsum</b></a></div>
+    <div class="dots"><button class="hdot on" data-i="0" style="--c:#F2C230" aria-label="Show FileSIGN"></button><button class="hdot" data-i="1" style="--c:#B5471B" aria-label="Show BuddyAI"></button><button class="hdot" data-i="2" style="--c:#EFE6D4" aria-label="Show Backside"></button><button class="hdot" data-i="3" style="--c:#4F46E5" aria-label="Show Custom AI chatbots"></button><button class="hdot" data-i="4" style="--c:#17110A" aria-label="Show Ausum"></button><button class="hdot" data-i="5" style="--c:#06323D" aria-label="Show Being Better"></button><button class="hdot" data-i="6" style="--c:#1F5C33" aria-label="Show Healthsum"></button></div>
   </div>
-
-  <div class="hero-visual">
-    <div class="orbit-ring"></div>
-    <div class="moon-el"></div>
-
-    <div class="cards-stack">
-
-      <!-- Card 1 (front) — FileSIGN · Web Browser Frame -->
-      <div class="s-card">
-        <div class="s-card-topbar" style="background:#B8860B;"></div>
-        <div class="s-browser">
-          <div class="s-browser-chrome">
-            <div class="s-bdot" style="background:#FF5F57;"></div>
-            <div class="s-bdot" style="background:#FFBD2E;"></div>
-            <div class="s-bdot" style="background:#28C840;"></div>
-            <div class="s-burl">🔒 filesign.ink/documents</div>
-          </div>
-          <div class="s-browser-body">
-            <img src="images/fs-documents.png" alt="FileSIGN Documents">
-          </div>
-        </div>
-        <div class="s-card-overlay">
-          <span class="s-card-tag">Document SaaS</span>
-          <div class="s-card-title">FileSIGN</div>
-        </div>
-      </div>
-
-      <!-- Card 2 — BuddyAI · Web Browser Frame -->
-      <div class="s-card">
-        <div class="s-card-topbar" style="background:#C0622F;"></div>
-        <div class="s-browser">
-          <div class="s-browser-chrome">
-            <div class="s-bdot" style="background:#FF5F57;"></div>
-            <div class="s-bdot" style="background:#FFBD2E;"></div>
-            <div class="s-bdot" style="background:#28C840;"></div>
-            <div class="s-burl">🔒 app.getbuddyai.com/tours</div>
-          </div>
-          <div class="s-browser-body">
-            <img src="images/buddy-tours.png" alt="BuddyAI Tours">
-          </div>
-        </div>
-        <div class="s-card-overlay">
-          <span class="s-card-tag">AI SaaS · Onboarding</span>
-          <div class="s-card-title">BuddyAI</div>
-        </div>
-      </div>
-
-      <!-- Card 3 — Custom AI Chatbots -->
-      <div class="s-card">
-        <div class="s-card-topbar" style="background:#4F46E5;"></div>
-        <div style="width:100%;height:100%;background:linear-gradient(135deg,#0A0B1A,#0F1130);display:flex;align-items:center;justify-content:center;gap:14px;flex-direction:column;position:relative;overflow:hidden;">
-          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(79,70,229,.18) 0%,transparent 70%);pointer-events:none;"></div>
-          <div style="display:flex;gap:10px;align-items:center;position:relative;z-index:2;">
-            <div style="width:36px;height:36px;border-radius:10px;background:rgba(37,211,102,.15);border:1px solid rgba(37,211,102,.35);display:flex;align-items:center;justify-content:center;font-size:16px;">💬</div>
-            <div style="width:36px;height:36px;border-radius:10px;background:rgba(79,70,229,.18);border:1px solid rgba(79,70,229,.45);display:flex;align-items:center;justify-content:center;font-size:16px;">💼</div>
-            <div style="width:36px;height:36px;border-radius:10px;background:rgba(0,120,215,.15);border:1px solid rgba(0,120,215,.35);display:flex;align-items:center;justify-content:center;font-size:16px;">🤝</div>
-          </div>
-          <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:10px 14px;max-width:220px;position:relative;z-index:2;">
-            <div style="font-size:8px;color:rgba(255,255,255,.4);font-family:monospace;letter-spacing:.08em;margin-bottom:6px;">AI AGENT · WHATSAPP</div>
-            <div style="font-size:9px;color:rgba(255,255,255,.75);line-height:1.5;">Your AI is live. Ask me anything about your orders, inventory, or escalate to a human.</div>
-          </div>
-        </div>
-        <div class="s-card-overlay">
-          <span class="s-card-tag">AI Chatbot · Custom</span>
-          <div class="s-card-title">AI Chatbots</div>
-        </div>
-      </div>
-
-      <!-- Card 4 — Healthsum · iPhone + Real Screenshot + Translucent BG -->
-      <div class="s-card">
-        <div class="s-card-topbar" style="background:#3A7D44;"></div>
-        <!-- Deep background -->
-        <div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 25%, rgba(58,125,68,.18) 0%, #030C07 65%);position:relative;display:flex;align-items:center;justify-content:center;">
-          <!-- Translucent glass panel -->
-          <div style="position:absolute;top:10px;bottom:10px;left:18px;right:18px;border-radius:22px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 8px 32px rgba(0,0,0,.5);"></div>
-          <!-- iPhone with real screenshot -->
-          <div class="s-iphone" style="background:#000;border-color:#3A3A3A;box-shadow:0 0 0 1px #222,0 24px 64px rgba(0,0,0,.9),0 0 40px rgba(58,125,68,.15);">
-            <div class="s-iphone-notch" style="background:#000;">
-              <div class="s-iphone-island" style="background:#000;outline-color:#1C1C1C;"></div>
-            </div>
-            <div class="s-iphone-screen">
-              <img src="images/healthsum-app.png" alt="Healthsum" style="width:100%;height:100%;object-fit:cover;object-position:top;">
-            </div>
-            <div class="s-iphone-footer" style="background:#000;">
-              <div class="s-iphone-pill"></div>
-            </div>
-          </div>
-        </div>
-        <div class="s-card-overlay">
-          <span class="s-card-tag">AI Health · Mobile</span>
-          <div class="s-card-title">Healthsum</div>
-        </div>
-      </div>
-
-      <!-- Card 5 — Ausum · Real Screenshot -->
-      <div class="s-card">
-        <div class="s-card-topbar" style="background:#D4960A;"></div>
-        <div class="s-browser">
-          <div class="s-browser-chrome">
-            <div class="s-bdot" style="background:#FF5F57;"></div>
-            <div class="s-bdot" style="background:#FFBD2E;"></div>
-            <div class="s-bdot" style="background:#28C840;"></div>
-            <div class="s-burl">🔒 localhost:3000 · AuSum Dashboard</div>
-          </div>
-          <div class="s-browser-body">
-            <img src="images/ausum-screenshot.png" alt="Ausum Dashboard">
-          </div>
-        </div>
-        <div class="s-card-overlay">
-          <span class="s-card-tag">Manufacturing · Enterprise</span>
-          <div class="s-card-title">Ausum</div>
-        </div>
-      </div>
-
-      <!-- Card 6 (back) — Being Better · Product Photo + Translucent BG -->
-      <a class="s-card" href="https://www.getbeingbetter.com" target="_blank" rel="noopener">
-        <div class="s-card-topbar" style="background:#0891B2;"></div>
-        <!-- Deep dark background -->
-        <div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 35%, rgba(8,145,178,.14) 0%, #020C10 65%);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;">
-          <!-- Translucent glass panel the product floats on -->
-          <div style="position:absolute;top:10px;bottom:10px;left:16px;right:16px;border-radius:22px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 8px 32px rgba(0,0,0,.5);overflow:hidden;">
-            <img src="images/bb-product.png" alt="Being Better" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;">
-          </div>
-          <!-- Subtle cyan glow behind product -->
-          <div style="position:absolute;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(8,145,178,.18) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-55%);pointer-events:none;"></div>
-        </div>
-        <div class="s-card-overlay">
-          <span class="s-card-tag">AI Hardware · Consumer</span>
-          <div class="s-card-title">Being Better</div>
-        </div>
-      </a>
-
-    </div>
-  </div>
-
-  <div class="hero-actions">
-    <a href="#products" class="btn-ink">View Our Work</a>
-    <a href="#contact" class="btn-outline">Start a Project</a>
-  </div>
-
-  <div class="hero-scroll">Scroll</div>
+  <h1>We build what people need.</h1>
+  <p class="need"><span>Right now, someone needs</span> <b id="need-text">a contract signed by Friday.</b></p>
+  <p class="lede">Bluemoon is an innovation studio in India. We make our own products, and build yours, with AI in the loop from day one.</p>
+  <div class="actions"><a class="btn btn-lemon" href="#products">See what we’ve built</a><a class="btn btn-line" href="#contact">Start a project</a></div>
+  <a class="ship" href="products/backside.html"><span class="ship-dot" aria-hidden="true"></span><span><b>Just shipped: Backside for Mac</b><span>Free to download.</span> <span data-downloads hidden></span></span></a>
 </section>
 
-<!-- ── ABOUT ── -->
-<section class="about" id="about">
-  <div class="about-inner">
-    <div class="about-body reveal">
-      <div class="label">Studio</div>
-      <h2 class="display">An innovation lab<br>that <em>ships.</em></h2>
-      <p>Bluemoon Innovations is a <strong>product studio</strong> based in India — building in-house SaaS, AI products, and hardware, while also taking on ambitious contracts for clients who need things done right.</p>
-      <p>We are builders first. Strategy, design, engineering, and deployment all under one roof. <strong>From idea to live product, in weeks.</strong></p>
+<section class="section" id="studio">
+  <div class="wrap">
+    <p class="statement">Most software gets built because someone could. We start with something that’s broken and keep building until it isn’t.</p>
+    <div class="beliefs">
+      <div><h3>Needed beats novel.</h3><p>We pick problems we’ve watched people struggle with: signing a contract, onboarding a user, checking a scalp, closing the books on a factory floor. If nobody’s asking for it, we don’t build it.</p></div>
+      <div><h3>AI is a material, not a pitch.</h3><p>We use models where they make a product simpler or faster to ship. Sometimes that’s an agent in WhatsApp. Sometimes it’s no AI at all.</p></div>
+      <div><h3>Ship, then listen.</h3><p>Real users find what a roadmap can’t. We launch early, read every message and rebuild what matters.</p></div>
     </div>
-    <div class="about-right reveal reveal-d2">
-      <div class="about-facts">
-        <div class="fact">
-          <div class="fact-num">7+</div>
-          <div class="fact-label">Products built & shipped</div>
-        </div>
-        <div class="fact">
-          <div class="fact-num">30%</div>
-          <div class="fact-label">Production boost delivered (Ausum)</div>
-        </div>
-        <div class="fact">
-          <div class="fact-num">3</div>
-          <div class="fact-label">Verticals: SaaS, Mobile, Hardware</div>
-        </div>
-        <div class="fact">
-          <div class="fact-num">∞</div>
-          <div class="fact-label">Ideas in the pipeline</div>
-        </div>
-      </div>
+    <div class="facts">
+      <div class="fact"><b>7</b><span>products, from live apps to a hardware prototype</span></div>
+      <div class="fact"><b>3</b><span>kinds of product: web, mobile and desktop, hardware</span></div>
+      <div class="fact"><b>30%</b><span>more output on a jewellery factory floor</span></div>
+      <div class="fact"><b>20%</b><span>fewer audit errors on the same floor</span></div>
     </div>
   </div>
 </section>
 
-<!-- ── PRODUCTS ── -->
-<section class="products-section" id="products">
-  <div class="products-header">
+<section id="products" aria-labelledby="products-h">
+  <div class="shelf-head wrap">
+    <h2 id="products-h">Seven things we’ve built.</h2>
+    <p>Our own products and a few client projects. Each started with a problem someone really had.</p>
+  </div>
+  <div class="stack">
+    <article class="panel" style="--i:0;--bg:#F2C230;--fg:#1A1405;">
+      <div class="panel-copy">
+        <span class="chip">Live</span>
+        <h3>FileSIGN</h3>
+        <p>Legally binding e-signatures, free to send. The people signing don’t need an account.</p>
+        <a class="btn" href="products/filesign.html">See how it works</a>
+      </div>
+      <div class="panel-visual"><div class="frame tilt-l"><div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="images/fs-documents.png" alt="FileSIGN documents dashboard" width="1680" height="1050" loading="lazy"></div></div>
+    </article>
+    <article class="panel" style="--i:1;--bg:#B5471B;--fg:#FFF4EC;">
+      <div class="panel-copy">
+        <span class="chip">Live</span>
+        <h3>BuddyAI</h3>
+        <p>An onboarding copilot for SaaS. Record a tour once. It guides new users, answers questions and hands off to a human.</p>
+        <a class="btn" href="products/buddyai.html">Meet BuddyAI</a>
+      </div>
+      <div class="panel-visual"><div style="position:relative;padding-bottom:10%"><div class="frame tilt-r"><div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="images/buddy-tours.png" alt="BuddyAI tours and guidebooks" width="1680" height="1050" loading="lazy"></div><img class="pop-widget" src="images/buddy-widget.png" alt="The BuddyAI chat widget" width="524" height="672" loading="lazy"></div></div>
+    </article>
+    <article class="panel" style="--i:2;--bg:#EFE6D4;--fg:#2A1D10;">
+      <div class="panel-copy">
+        <span class="chip">Live · Free for Mac</span>
+        <h3>Backside</h3>
+        <p>One hotkey flips your screen over onto an infinite canvas for notes, shapes and half-formed ideas.</p>
+        <a class="btn" href="products/backside.html">Get Backside</a>
+      </div>
+      <div class="panel-visual"><div class="canvas tilt-r" role="img" aria-label="Backside canvas with sticky notes">
+        <div class="note y">Ship the v1.1 build</div><div class="note p">Call Meera about the invoice</div>
+        <div class="note g">Idea: flip back with the same hotkey</div><div class="note t">Point anywhere. Start typing.</div>
+        <div class="mini"><i style="left:8px;top:8px"></i><i style="left:30px;top:14px"></i><i style="left:20px;top:32px"></i><i style="left:48px;top:30px"></i></div>
+      </div></div>
+    </article>
+    <article class="panel" style="--i:3;--bg:#4F46E5;--fg:#FFFFFF;">
+      <div class="panel-copy">
+        <span class="chip">Built to order</span>
+        <h3>Custom AI chatbots</h3>
+        <p>Agents that live in WhatsApp, Slack, Teams or your own app, wired to your systems. BeBe and Robin are two we made.</p>
+        <a class="btn" href="products/robin-copilot.html">See BeBe and Robin</a>
+      </div>
+      <div class="panel-visual"><div class="chat-stack" aria-hidden="true">
+  <div class="chat-card">
+    <div class="chat-who"><svg viewBox="0 0 120 150" aria-hidden="true"><defs>
+<radialGradient id="bb1" cx="42%" cy="28%" r="82%"><stop offset="0" stop-color="#fff"/><stop offset=".55" stop-color="#F4FDFF"/><stop offset="1" stop-color="#D7F4FB"/></radialGradient>
+<radialGradient id="bi1" cx="40%" cy="34%" r="74%"><stop offset="0" stop-color="#3CC6E0"/><stop offset=".52" stop-color="#0891B2"/><stop offset="1" stop-color="#155E75"/></radialGradient></defs>
+<line x1="60" y1="44" x2="60" y2="30" stroke="#0891B2" stroke-width="2.5" stroke-linecap="round"/><circle cx="60" cy="26" r="4.5" fill="#0891B2"/>
+<ellipse cx="60" cy="86" rx="44" ry="48" fill="url(#bb1)" stroke="rgba(8,145,178,.3)"/>
+<circle cx="60" cy="70" r="22" fill="url(#bi1)"/><circle cx="60" cy="70" r="11" fill="#15151A"/><circle cx="53" cy="63" r="5" fill="#fff"/>
+<path d="M48 108Q60 116 72 108" fill="none" stroke="#6E6E73" stroke-width="3" stroke-linecap="round"/></svg><span>BeBe</span><small>WhatsApp</small></div>
+    <div class="bubble u">Is it okay to wash my hair every day?</div>
+    <div class="bubble b">For most people, yes. Tell me how your scalp feels and I'll adjust. I remember what worked last time.</div>
+  </div>
+  <div class="chat-card">
+    <div class="chat-who"><span class="chat-av">R</span><span>Robin</span><small>Inside your app</small></div>
+    <div class="bubble u">Where do I approve a leave request?</div>
+    <div class="bubble b">Opening Leave, then Pending. I've highlighted the <mark>Approve</mark> button for you.</div>
+  </div>
+</div></div>
+    </article>
+    <article class="panel" style="--i:4;--bg:#17110A;--fg:#F6DDA5;">
+      <div class="panel-copy">
+        <span class="chip">Client project</span>
+        <h3>Ausum</h3>
+        <p>Operations software for a jewellery manufacturer, from the first order to the final audit.</p>
+        <a class="btn" href="products/ausum.html">Read the case study</a>
+      </div>
+      <div class="panel-visual"><div style="position:relative;padding-bottom:6%"><div class="frame tilt-l"><div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="images/ausum-screenshot.png" alt="Ausum operations dashboard" width="1680" height="1050" loading="lazy"></div><div class="stat-sticker" style="--accent:#D4960A;--accent-fg:#17110A;right:-2%;top:-6%">30%<small>more production</small></div><div class="stat-sticker" style="--accent:#F6DDA5;--accent-fg:#17110A;left:-2%;bottom:-2%">20%<small>fewer audit errors</small></div></div></div>
+    </article>
+    <article class="panel" style="--i:5;--bg:#06323D;--fg:#E4FAFF;">
+      <div class="panel-copy">
+        <span class="chip">Prototype</span>
+        <h3>Being Better</h3>
+        <p>Everyday tools, made smarter. Scalp Sentinel is a comb with a 60× camera, motion sensing and AI.</p>
+        <a class="btn" href="products/being-better.html">See the hardware</a>
+      </div>
+      <div class="panel-visual"><img src="images/bb-product.png" alt="Scalp Sentinel BB01, a smart comb" width="1376" height="768" loading="lazy" style="border-radius:22px;box-shadow:0 30px 60px -24px #000"></div>
+    </article>
+    <article class="panel" style="--i:6;--bg:#1F5C33;--fg:#EAF7EC;">
+      <div class="panel-copy">
+        <span class="chip">Coming soon</span>
+        <h3>Healthsum</h3>
+        <p>An AI health companion that reads your medical reports and tracks every body system, for the whole family.</p>
+        <a class="btn" href="products/healthsum.html">Join the waitlist</a>
+      </div>
+      <div class="panel-visual"><div class="phone tilt-r"><img src="images/healthsum-app.png" alt="Healthsum app screen" width="1179" height="2556" loading="lazy"></div></div>
+    </article>
+  </div>
+</section>
+
+<section class="section on-paper2" id="services">
+  <div class="wrap split">
+    <header>
+      <h2>What we can build for you.</h2>
+      <p>Our own products are the proof. Bring a problem and we’ll tell you honestly whether it’s worth building.</p>
+    </header>
+    <ul class="rows">
+      <li><h3>AI products and agents</h3><div><p>From one smart feature to a full AI product. Assistants that work from your data, with a person approving anything that matters.</p><p class="tools">Claude, GPT, Gemini, retrieval, agents</p></div></li>
+      <li><h3>Chatbots where your team already works</h3><div><p>Agents inside WhatsApp, Slack or Microsoft Teams, so adoption takes a day, not a quarter. <a class="textlink" href="products/robin-copilot.html">See BeBe and Robin</a>.</p></div></li>
+      <li><h3>Web and mobile apps</h3><div><p>Fast, clean apps on real backends, shipped in weeks.</p><p class="tools">Flutter, Next.js, Supabase, Firebase</p></div></li>
+      <li><h3>Hardware with AI inside</h3><div><p>Sensors, firmware, cameras and the companion app, designed as one product.</p><p class="tools">IoT, computer vision, firmware</p></div></li>
+      <li><h3>Automation and internal tools</h3><div><p>Replace the spreadsheet and the late-night WhatsApp group with workflows that run themselves.</p><p class="tools">n8n, Zapier, Make, Airtable, Appsmith</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section on-night on-dark" id="how-we-work">
+  <div class="wrap split">
+    <header>
+      <h2>Six steps, no black boxes.</h2>
+      <p>You’re in the room for every decision, and every trade-off gets explained.</p>
+      <p style="margin-top:24px"><a class="btn btn-lemon" href="process.html">Read the full process</a></p>
+    </header>
+    <ol class="steps"><li><h3>Understand the problem</h3><p>We go deep on where it started, what keeps feeding it, and the workarounds you already tried.</p></li><li><h3>Explore your ideas</h3><p>Mockups, sketches, a voice note, a chit of paper. We treat all of it as a clue to what success looks like.</p></li><li><h3>Debate and refine</h3><p>The team argues honestly: is this the right fix? We come back with a recommendation, not a quote.</p></li><li><h3>Agree on the approach</h3><p>One shared scope and one set of milestones. No ambiguity left.</p></li><li><h3>Build the system</h3><p>Architecture and business logic first, then the interface, then the AI on top.</p></li><li><h3>Adopt and grow</h3><p>We train your people, watch adoption and send you the numbers after launch.</p></li></ol>
+  </div>
+</section>
+
+<section class="section hiring" id="careers">
+  <div class="wrap hiring-in">
     <div>
-      <div class="label reveal">Portfolio</div>
-      <h2 class="display reveal reveal-d1">Products we've<br><em>built & shipped.</em></h2>
+      <h2>We’re hiring a marketing and growth intern.</h2>
+      <p>Help grow Bluemoon’s products and brand. You’ll work directly with the founders on content, launches and getting the first thousand users. Real ownership, real impact.</p>
+      <div class="meta"><span>Bangalore or remote</span><span>3 to 6 months</span><span>Growth, content, social</span></div>
     </div>
-    <p style="font-size:14px;font-weight:300;color:var(--muted);max-width:260px;line-height:1.7;" class="reveal reveal-d2">Seven products. Each solving a real problem, elegantly.</p>
-  </div>
-  <div class="products-grid">
-
-    <a href="products/filesign.html" class="product-card reveal" style="--card-accent:#B8860B;">
-      <div class="p-thumb" style="padding:0;overflow:hidden;">
-        <img src="images/fs-landing.png" style="width:100%;height:180px;object-fit:cover;object-position:center top;display:block;">
-      </div>
-      <div class="p-num">01</div>
-      <div class="p-cat">Document SaaS</div>
-      <div class="p-name">FileSIGN</div>
-      <p class="p-desc">Legally-binding e-signatures for anyone. Sign documents for free, in minutes. Signers don't need an account.</p>
-      <div class="p-link">filesign.ink</div>
-    </a>
-
-    <a href="products/ausum.html" class="product-card reveal reveal-d1" style="--card-accent:#D4960A;--thumb-bg:#0F0A02;">
-      <div class="p-thumb" style="background:linear-gradient(135deg,#0F0A02,#1A1005);display:flex;flex-direction:column;align-items:flex-start;padding:20px 22px;gap:8px;">
-        <div style="font-family:var(--serif);font-size:18px;font-weight:800;color:#D4960A;letter-spacing:.02em;">AUSUM</div>
-        <div style="display:flex;gap:6px;flex-wrap:wrap;">
-          <span style="background:rgba(212,150,10,.15);border:1px solid rgba(212,150,10,.3);color:#D4960A;padding:3px 10px;font-family:var(--mono);font-size:8px;letter-spacing:.1em;">↑30% PRODUCTION</span>
-          <span style="background:rgba(212,150,10,.15);border:1px solid rgba(212,150,10,.3);color:#D4960A;padding:3px 10px;font-family:var(--mono);font-size:8px;letter-spacing:.1em;">↓20% ERRORS</span>
-        </div>
-        <div style="height:2px;width:100%;background:linear-gradient(90deg,#D4960A,transparent);margin-top:4px;opacity:.4;"></div>
-      </div>
-      <div class="p-num">02</div>
-      <div class="p-cat">Manufacturing · Enterprise</div>
-      <div class="p-name">Ausum</div>
-      <p class="p-desc">Operations intelligence for a jewellery manufacturer. Reduced audit errors by 20%, boosted production by 30%.</p>
-      <div class="p-link">View Case Study</div>
-    </a>
-
-    <a href="products/healthsum.html" class="product-card reveal reveal-d2" style="--card-accent:#3A7D44;--thumb-bg:#071020;">
-      <div class="p-thumb" style="background:linear-gradient(160deg,#071020,#0D1E30);display:flex;align-items:center;justify-content:center;gap:12px;">
-        <div style="width:52px;height:90px;background:#0D1E35;border-radius:10px;border:2px solid rgba(58,125,68,.4);box-shadow:0 0 20px rgba(58,125,68,.15);display:flex;flex-direction:column;align-items:center;padding-top:8px;gap:4px;">
-          <div style="width:28px;height:4px;background:rgba(255,255,255,.1);border-radius:2px;"></div>
-          <div style="width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,#3A7D44,#2196F3);margin-top:4px;"></div>
-          <div style="width:34px;height:3px;background:rgba(58,125,68,.4);border-radius:2px;margin-top:4px;"></div>
-          <div style="width:34px;height:3px;background:rgba(58,125,68,.25);border-radius:2px;"></div>
-          <div style="width:34px;height:3px;background:rgba(58,125,68,.15);border-radius:2px;"></div>
-        </div>
-        <div style="font-family:var(--mono);font-size:9px;color:rgba(58,125,68,.7);letter-spacing:.15em;text-transform:uppercase;">AI Health<br>Companion</div>
-      </div>
-      <div class="p-num">03</div>
-      <div class="p-cat">AI Health Tech · Mobile</div>
-      <div class="p-name">Healthsum</div>
-      <p class="p-desc">An AI health companion that reads your reports, tracks body systems, and guides you to better health with Healio AI.</p>
-      <div class="p-link">Coming Soon</div>
-    </a>
-
-    <a href="products/buddyai.html" class="product-card reveal reveal-d3" style="--card-accent:#C0622F;">
-      <div class="p-thumb" style="padding:0;overflow:hidden;">
-        <img src="images/buddy-tours.png" style="width:100%;height:180px;object-fit:cover;object-position:top;display:block;">
-      </div>
-      <div class="p-num">04</div>
-      <div class="p-cat">AI SaaS · Onboarding</div>
-      <div class="p-name">BuddyAI</div>
-      <p class="p-desc">An intelligent onboarding copilot for SaaS products. Generate tours, chat with users, escalate to humans. Chrome extension included.</p>
-      <div class="p-link">getbuddyai.com</div>
-    </a>
-
-    <a href="products/robin-copilot.html" class="product-card reveal reveal-d4" style="--card-accent:#4F46E5;--thumb-bg:#0A0B1A;">
-      <div class="p-thumb" style="background:linear-gradient(135deg,#0A0B1A,#0F1130);display:flex;flex-direction:column;align-items:flex-start;padding:20px 22px;gap:10px;position:relative;overflow:hidden;">
-        <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,rgba(79,70,229,.2) 0%,transparent 70%);pointer-events:none;"></div>
-        <div style="display:flex;gap:6px;position:relative;z-index:1;">
-          <div style="background:rgba(37,211,102,.15);border:1px solid rgba(37,211,102,.4);border-radius:6px;padding:4px 10px;font-family:monospace;font-size:7.5px;letter-spacing:.08em;color:rgba(37,211,102,.9);">WhatsApp</div>
-          <div style="background:rgba(79,70,229,.2);border:1px solid rgba(79,70,229,.5);border-radius:6px;padding:4px 10px;font-family:monospace;font-size:7.5px;letter-spacing:.08em;color:rgba(149,144,255,.9);">Slack</div>
-          <div style="background:rgba(0,120,215,.15);border:1px solid rgba(0,120,215,.4);border-radius:6px;padding:4px 10px;font-family:monospace;font-size:7.5px;letter-spacing:.08em;color:rgba(100,180,255,.9);">Teams</div>
-        </div>
-        <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:8px;padding:9px 12px;width:100%;position:relative;z-index:1;">
-          <div style="font-size:7px;color:rgba(149,144,255,.6);letter-spacing:.1em;margin-bottom:5px;">AI AGENT</div>
-          <div style="font-size:8.5px;color:rgba(255,255,255,.7);line-height:1.55;">Ask me anything — I'll handle it or escalate to a human.</div>
-        </div>
-        <div style="display:flex;gap:4px;position:relative;z-index:1;">
-          <span style="background:#4F46E5;color:white;padding:3px 10px;border-radius:3px;font-size:7px;font-family:monospace;">Approve</span>
-          <span style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.4);padding:3px 10px;border-radius:3px;font-size:7px;font-family:monospace;">Reject</span>
-        </div>
-      </div>
-      <div class="p-num">05</div>
-      <div class="p-cat">AI Chatbot · Custom Integrations</div>
-      <div class="p-name">Custom AI Chatbots</div>
-      <p class="p-desc">AI chat agents that live inside WhatsApp, Slack, or Teams — so your team adopts them instantly without changing how they work. Human-in-the-loop included.</p>
-      <div class="p-link">Let's Build Yours</div>
-    </a>
-
-    <a href="products/being-better.html" class="product-card reveal reveal-d5" style="--card-accent:#0891B2;--thumb-bg:#06090F;">
-      <div class="p-thumb" style="background:linear-gradient(160deg,#06090F,#0A111C);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
-        <div style="position:absolute;width:120px;height:120px;border-radius:50%;border:1px solid rgba(8,145,178,.15);"></div>
-        <div style="position:absolute;width:90px;height:90px;border-radius:50%;border:1px solid rgba(8,145,178,.2);"></div>
-        <div style="width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,#0A1825,#0D2035);border:2px solid rgba(8,145,178,.4);box-shadow:0 0 24px rgba(8,145,178,.2);display:flex;align-items:center;justify-content:center;font-size:24px;position:relative;z-index:2;">🔬</div>
-        <div style="position:absolute;bottom:16px;font-family:var(--mono);font-size:8px;color:rgba(8,145,178,.6);letter-spacing:.15em;text-transform:uppercase;">Scalp Sentinel BB01</div>
-      </div>
-      <div class="p-num">06</div>
-      <div class="p-cat">AI Hardware · Consumer</div>
-      <div class="p-name">Being Better</div>
-      <p class="p-desc">Everyday tools, made smarter. Scalp Sentinel (BB01) — 60× magnification, 3D scalp mapping, AI follicle analysis.</p>
-      <div class="p-link">getbeingbetter.com</div>
-    </a>
-
-    <a href="products/backside.html" class="product-card reveal reveal-d1" style="--card-accent:#A47148;--thumb-bg:#F1ECE2;">
-      <div class="p-thumb" style="background-image:radial-gradient(rgba(17,17,17,.08) 1px,transparent 1px);background-size:16px 16px;position:relative;overflow:hidden;">
-        <div style="position:absolute;top:24px;left:20px;width:70px;height:44px;background:#29292E;border-radius:8px;transform:rotate(-6deg);box-shadow:0 8px 20px rgba(17,17,17,.15);"></div>
-        <div style="position:absolute;top:34px;left:34px;width:70px;height:44px;background:#FFFFFF;border:1px solid rgba(17,17,17,.08);border-radius:8px;transform:rotate(5deg);box-shadow:0 8px 20px rgba(17,17,17,.1);display:flex;flex-direction:column;justify-content:center;gap:4px;padding:0 10px;">
-          <div style="height:3px;width:70%;background:rgba(17,17,17,.2);border-radius:2px;"></div>
-          <div style="height:3px;width:50%;background:rgba(17,17,17,.2);border-radius:2px;"></div>
-        </div>
-        <div style="position:absolute;bottom:18px;right:22px;font-family:var(--mono);font-size:8px;letter-spacing:.15em;color:rgba(164,113,72,.8);text-transform:uppercase;">⇧↑ to flip</div>
-      </div>
-      <div class="p-num">07</div>
-      <div class="p-cat">macOS App · Productivity</div>
-      <div class="p-name">Backside</div>
-      <p class="p-desc">Flip your screen into an infinite canvas with one hotkey. Point-and-type notes, sticky ideas, shapes, and quick capture — always a flip away.</p>
-      <div class="p-link">Download for Mac</div>
-    </a>
-
+    <div class="pay"><b>₹15K</b><span>monthly stipend</span><a class="btn btn-ink" href="mailto:affrid@gmail.com?subject=Marketing%20Intern%20Application">Apply by email</a></div>
   </div>
 </section>
 
-<!-- ── SERVICES ── -->
-<section class="services" id="services">
-  <div class="services-inner">
-    <div class="label reveal">Services</div>
-    <h2 class="display reveal reveal-d1">What we<br><em>offer.</em></h2>
-    <div class="services-grid">
-      <div class="svc reveal reveal-d1">
-        <div class="svc-icon">_AI</div>
-        <div class="svc-name">AI SaaS Development</div>
-        <p class="svc-desc">From LLM-powered assistants to full AI SaaS products. We architect, build, and deploy AI applications that scale.</p>
-        <div class="svc-tools">
-          <span class="tool">Claude</span><span class="tool">GPT-4</span><span class="tool">Gemini</span><span class="tool">RAG</span><span class="tool">Agents</span>
-        </div>
-      </div>
-      <div class="svc reveal reveal-d2">
-        <div class="svc-icon">[]</div>
-        <div class="svc-name">Mobile Apps</div>
-        <p class="svc-desc">Native-quality cross-platform apps with Flutter. Beautiful UX, robust backends, shipped fast.</p>
-        <div class="svc-tools">
-          <span class="tool">Flutter</span><span class="tool">Dart</span><span class="tool">Supabase</span><span class="tool">Firebase</span>
-        </div>
-      </div>
-      <div class="svc reveal reveal-d3">
-        <div class="svc-icon">/\/</div>
-        <div class="svc-name">Hardware + AI</div>
-        <p class="svc-desc">Smart hardware from the ground up — sensors, firmware, AI inference, and companion apps.</p>
-        <div class="svc-tools">
-          <span class="tool">IoT</span><span class="tool">CV</span><span class="tool">Sensors</span><span class="tool">Firmware</span>
-        </div>
-      </div>
-      <div class="svc reveal reveal-d4">
-        <div class="svc-icon">⚡</div>
-        <div class="svc-name">No-Code & Automation</div>
-        <p class="svc-desc">Build and automate without writing a line — or combine with custom code for maximum leverage.</p>
-        <div class="svc-tools">
-          <span class="tool">Airtable</span><span class="tool">Zapier</span><span class="tool">n8n</span><span class="tool">Make</span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="nocode-strip">
-    <div class="nocode-strip-inner">
-      <span class="nocode-label">Platforms we use</span>
-      <div class="nocode-tools">
-        <span class="nocode-tool">Airtable</span>
-        <span class="nocode-tool">StackerHQ</span>
-        <span class="nocode-tool">Budibase</span>
-        <span class="nocode-tool">Appsmith</span>
-        <span class="nocode-tool">Zapier</span>
-        <span class="nocode-tool">n8n</span>
-        <span class="nocode-tool">Make.com</span>
-      </div>
-    </div>
+<section class="section on-blue on-dark contact" id="contact">
+  <div class="wrap">
+    <h2>Got a problem worth solving?</h2>
+    <p class="lede">Tell us what’s broken. We’ll reply within a day with an honest view.</p>
+    <div class="actions"><a class="btn btn-lemon" href="https://wa.me/919003626854?text=Hey%2C%20I%20checked%20out%20your%20website%20and%20would%20like%20to%20talk%20about%20a%20project%20I%20want%20to%20brainstorm%20and%20build%20with%20you%20guys." target="_blank" rel="noopener">Chat on WhatsApp</a><a class="btn btn-line" href="mailto:affrid@gmail.com">Email us</a><a class="btn btn-line" href="https://www.linkedin.com/company/bluemoon-innovations/" target="_blank" rel="noopener">LinkedIn</a></div>
+    <dl class="contact-info">
+      <div><dt>Phone</dt><dd><a href="tel:+919003626854">+91 900 362 6854</a></dd></div>
+      <div><dt>Email</dt><dd><a href="mailto:affrid@gmail.com">affrid@gmail.com</a></dd></div>
+      <div><dt>Bangalore</dt><dd>JP Nagar, Bangalore 560076</dd></div>
+      <div><dt>Headquarters</dt><dd>Moovendhar Nagar, Bagalur Road,<br>Hosur 635109</dd></div>
+    </dl>
   </div>
 </section>
 
-<!-- ── PROCESS OVERVIEW ── -->
-<section class="process-overview" id="how-we-work">
-  <div class="process-overview-inner">
-    <div class="process-overview-header">
-      <div>
-        <div class="label reveal">How We Work</div>
-        <h2 class="display reveal reveal-d1">Six steps from<br><em>problem to live.</em></h2>
-      </div>
-      <a href="process.html" class="process-cta-link reveal reveal-d2">Full Process &amp; Expertise →</a>
-    </div>
-
-    <div class="process-steps-grid">
-
-      <div class="ps-card reveal">
-        <div class="ps-step-num">01</div>
-        <div class="ps-icon">
-          <svg width="36" height="36" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="17" cy="17" r="11"/><line x1="25" y1="25" x2="36" y2="36"/>
-            <line x1="17" y1="10" x2="17" y2="24"/><line x1="10" y1="17" x2="24" y2="17"/>
-            <circle cx="17" cy="17" r="3" stroke-opacity="0.35"/>
-          </svg>
-        </div>
-        <div class="ps-title">Understand the <em>Problem</em></div>
-        <p class="ps-desc">We go deep — the origin, the root causes, the stopgaps already in place. A well-defined problem is half the solution.</p>
-      </div>
-
-      <div class="ps-card reveal reveal-d1">
-        <div class="ps-step-num">02</div>
-        <div class="ps-icon">
-          <svg width="36" height="36" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 6C13.4 6 8 11.4 8 18c0 4.2 2.2 7.9 5.5 10.1V32h13v-3.9C29.8 25.9 32 22.2 32 18 32 11.4 26.6 6 20 6z"/>
-            <line x1="13.5" y1="35" x2="26.5" y2="35"/><line x1="15" y1="32" x2="25" y2="32"/>
-            <line x1="20" y1="6" x2="20" y2="3"/><line x1="6" y1="18" x2="3" y2="18"/>
-            <line x1="34" y1="18" x2="37" y2="18"/>
-          </svg>
-        </div>
-        <div class="ps-title">Explore Your <em>Ideas</em></div>
-        <p class="ps-desc">Mockups, sketches, a voice note, ideas on a chit — we take everything and treat it as a signal about what success looks like to you.</p>
-      </div>
-
-      <div class="ps-card reveal reveal-d2">
-        <div class="ps-step-num">03</div>
-        <div class="ps-icon">
-          <svg width="36" height="36" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 7h22a2 2 0 012 2v10a2 2 0 01-2 2H8l-6 5V9a2 2 0 012-2z"/>
-            <path d="M28 15h6a2 2 0 012 2v9a2 2 0 01-2 2h-2v4l-6-4h-6a2 2 0 01-2-2v-2"/>
-          </svg>
-        </div>
-        <div class="ps-title">Debate &amp; <em>Refine</em></div>
-        <p class="ps-desc">Our team debates honestly — right solution? needs iteration? something better? We come back with a clear recommendation, not just a yes.</p>
-      </div>
-
-      <div class="ps-card reveal reveal-d3">
-        <div class="ps-step-num">04</div>
-        <div class="ps-icon">
-          <svg width="36" height="36" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 4L36 20L20 36L4 20L20 4z"/>
-            <polyline points="13,20 18,26 27,13"/>
-          </svg>
-        </div>
-        <div class="ps-title">Agree on <em>Approach</em></div>
-        <p class="ps-desc">Once both sides are genuinely happy, we lock in the plan. Shared scope, shared milestones, zero ambiguity.</p>
-      </div>
-
-      <div class="ps-card reveal reveal-d4">
-        <div class="ps-step-num">05</div>
-        <div class="ps-icon">
-          <svg width="36" height="36" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="20,5 36,13 20,21 4,13"/>
-            <polyline points="4,20 20,28 36,20"/>
-            <polyline points="4,27 20,35 36,27"/>
-          </svg>
-        </div>
-        <div class="ps-title">Build the <em>System</em></div>
-        <p class="ps-desc">Architecture first, then business systems, then UI and AI layers. We build from the ground up so everything holds at scale.</p>
-      </div>
-
-      <div class="ps-card reveal reveal-d5">
-        <div class="ps-step-num">06</div>
-        <div class="ps-icon">
-          <svg width="36" height="36" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="4,30 13,19 21,23 34,9"/>
-            <polyline points="27,9 34,9 34,16"/>
-            <circle cx="13" cy="19" r="2.2" fill="currentColor" stroke="none"/>
-            <circle cx="21" cy="23" r="2.2" fill="currentColor" stroke="none"/>
-            <line x1="4" y1="36" x2="36" y2="36" stroke-opacity="0.2"/>
-          </svg>
-        </div>
-        <div class="ps-title">Adopt &amp; <em>Thrive</em></div>
-        <p class="ps-desc">We stay after launch — training, monitoring, adoption metrics to your inbox, and automated nudges to keep users engaged.</p>
-      </div>
-
-    </div>
+</main>
+<footer class="foot on-dark">
+  <div class="foot-in">
+    <a class="brand" href="index.html" aria-label="Bluemoon Innovations, home"><svg viewBox="655 400 620 785" aria-hidden="true"><path fill-rule="evenodd" d="M663 405H826V573H663Z M826 576H966A302 302 0 0 1 966 1180A302 302 0 0 1 664 878V735H826Z M1105 878A139 139 0 1 0 827 878A139 139 0 1 0 1105 878Z"/></svg><span>Bluemoon</span></a>
+    <nav aria-label="Products"><a href="products/filesign.html">FileSIGN</a><a href="products/buddyai.html">BuddyAI</a><a href="products/backside.html">Backside</a><a href="products/robin-copilot.html">Custom AI chatbots</a><a href="products/ausum.html">Ausum</a><a href="products/being-better.html">Being Better</a><a href="products/healthsum.html">Healthsum</a></nav>
+    <small>© 2026 Bluemoon Innovations. Built in India.</small>
   </div>
-</section>
-
-<!-- ── NUMBERS ── -->
-<section class="numbers" id="numbers">
-  <div class="numbers-inner">
-    <div class="label reveal">Impact</div>
-    <h2 class="display reveal reveal-d1">Numbers that<br><em>matter.</em></h2>
-    <div class="numbers-grid">
-      <div class="num-item reveal reveal-d1">
-        <div class="num-big">6<span>+</span></div>
-        <div class="num-label">Products Shipped</div>
-      </div>
-      <div class="num-item reveal reveal-d2">
-        <div class="num-big">30<span>%</span></div>
-        <div class="num-label">Production Boost</div>
-      </div>
-      <div class="num-item reveal reveal-d3">
-        <div class="num-big">20<span>%</span></div>
-        <div class="num-label">Audit Error Reduction</div>
-      </div>
-      <div class="num-item reveal reveal-d4">
-        <div class="num-big">3</div>
-        <div class="num-label">Product Verticals</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── CAREERS ── -->
-<section class="careers" id="careers">
-  <div class="careers-inner">
-    <div class="label reveal">Join Us</div>
-    <h2 class="display reveal reveal-d1">Build the future<br><em>with us.</em></h2>
-    <div class="career-card reveal reveal-d2">
-      <div>
-        <div class="career-open">Now Hiring</div>
-        <div class="career-title">Marketing &amp; <em>Growth Intern</em></div>
-        <p class="career-desc">Help us grow Bluemoon's products and brand. You'll work directly with the founding team on content, launches, and user acquisition. Real ownership. Real impact.</p>
-        <div class="career-meta">
-          <span>Bangalore / Remote</span>
-          <span>3–6 Months</span>
-          <span>Growth · Content · Social</span>
-        </div>
-      </div>
-      <div class="career-right">
-        <div class="stipend-num">₹15K</div>
-        <div class="stipend-label">Monthly Stipend</div>
-        <a href="mailto:affrid@gmail.com?subject=Marketing Intern Application" class="btn-ink">Apply Now →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── CONTACT ── -->
-<section class="contact" id="contact">
-  <div class="contact-inner">
-    <div class="contact-grid">
-      <div class="contact-left reveal">
-        <div class="label">Contact</div>
-        <h2 class="display">Let's build<br><em>something</em><br>extraordinary.</h2>
-        <p>Whether you have a product idea, need a tech partner, or want to digitize your operations — we'd love to hear from you.</p>
-        <div class="contact-actions">
-          <a href="mailto:affrid@gmail.com" class="btn-cream">Send a Message</a>
-          <a href="https://wa.me/919003626854?text=Hey%2C%20I%20checkout%20out%20your%20website%20and%20would%20like%20to%20talk%20about%20a%20project%20i%20want%20to%20brainstorm%20and%20build%20with%20you%20guys." target="_blank" class="btn-whatsapp">Chat Now ↗</a>
-          <a href="https://www.linkedin.com/company/bluemoon-innovations/" target="_blank" class="btn-outline-cream">LinkedIn →</a>
-        </div>
-      </div>
-      <div class="contact-info reveal reveal-d2">
-        <div class="info-row">
-          <span class="info-key">Phone</span>
-          <span class="info-val"><a href="tel:+919003626854">+91 900 362 6854</a></span>
-        </div>
-        <div class="info-row">
-          <span class="info-key">Email</span>
-          <span class="info-val"><a href="mailto:affrid@gmail.com">affrid@gmail.com</a></span>
-        </div>
-        <div class="info-row">
-          <span class="info-key">Bangalore</span>
-          <span class="info-val">JP Nagar, Bangalore — 560076</span>
-        </div>
-        <div class="info-row">
-          <span class="info-key">HQ · Hosur</span>
-          <span class="info-val">Moovendhar Nagar, Bagalur Road,<br>Hosur — 635109</span>
-        </div>
-        <div class="info-row">
-          <span class="info-key">LinkedIn</span>
-          <span class="info-val"><a href="https://www.linkedin.com/company/bluemoon-innovations/" target="_blank">Bluemoon Innovations</a></span>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bar">
-      <span class="footer-brand">Bluemoon Innovations</span>
-      <span class="footer-copy">© 2026 · Built with care in India</span>
-      <div class="footer-links">
-        <a href="products/filesign.html">FileSIGN</a>
-        <a href="products/ausum.html">Ausum</a>
-        <a href="products/buddyai.html">BuddyAI</a>
-        <a href="products/being-better.html">Being Better</a>
-        <a href="products/backside.html">Backside</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── ASKADE LEAD CAPTURE POP-UP ── -->
-
-<!-- Teaser Pill -->
-<div id="bm-teaser">
-  <button id="bm-teaser-dismiss" title="Dismiss">×</button>
-  <div id="bm-teaser-icon">🎮</div>
-  <div id="bm-teaser-text">
-    <strong>Got an idea worth building?</strong>
-    <span>Play 2 mins · Get a free analysis</span>
-  </div>
-  <div id="bm-teaser-cta">Try it →</div>
+</footer>
+<div id="bm-teaser" role="button" tabindex="0" aria-label="Open the free idea analysis game">
+  <button id="bm-teaser-dismiss" aria-label="Dismiss">×</button>
+  <div id="bm-teaser-icon" aria-hidden="true">🎮</div>
+  <div><strong>Got an idea worth building?</strong><span>Play for 2 minutes. Get a free analysis.</span></div>
+  <div id="bm-teaser-cta">Play</div>
 </div>
-
-<!-- Modal Overlay -->
 <div id="bm-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="bm-modal-title-text">
   <div id="bm-modal">
     <div id="bm-modal-header">
-      <div id="bm-modal-header-text">
-        <div id="bm-modal-label">Free Idea Analysis</div>
-        <div id="bm-modal-title"><span id="bm-modal-title-text">Tell us what you<br>want to <em>build.</em></span></div>
-        <p id="bm-modal-sub">Play a 2-minute game, share your idea — and we'll send you a free architecture sketch, feasibility analysis, and delivery estimate. To your inbox. In 1 business day.</p>
+      <div>
+        <div id="bm-modal-label">Free idea analysis</div>
+        <div id="bm-modal-title"><span id="bm-modal-title-text">Tell us what you want to build.</span></div>
+        <p id="bm-modal-sub">Play a 2-minute game and share your idea. We’ll email you a free architecture sketch, feasibility analysis and delivery estimate within 1 business day.</p>
       </div>
       <button id="bm-modal-close" aria-label="Close">×</button>
     </div>
-    <iframe
-      id="bm-modal-game"
-      src="about:blank"
-      data-src="https://askade.vercel.app/play/542d067a-4241-45ec-91e5-b8d097321aa9/bubble"
-      title="Share your idea — Askade by Bluemoon"
-      allowfullscreen
-    ></iframe>
-    <div id="bm-modal-footer">
-      <div id="bm-modal-footer-badge"></div>
-      <p>No spam. No sales calls. Just a free, genuine assessment — sent straight to your inbox.</p>
-    </div>
+    <iframe id="bm-modal-game" src="about:blank" data-src="https://askade.vercel.app/play/542d067a-4241-45ec-91e5-b8d097321aa9/bubble" title="Share your idea, Askade by Bluemoon" allowfullscreen></iframe>
+    <div id="bm-modal-footer">No spam and no sales calls. Just an honest assessment, sent to your inbox.</div>
   </div>
 </div>
-
-<script>
-/* ── CURSOR ── */
-const cur = document.getElementById('cur');
-const dot = document.getElementById('dot');
-let cx=0,cy=0,ax=0,ay=0;
-document.addEventListener('mousemove',e=>{ax=e.clientX;ay=e.clientY;dot.style.left=ax+'px';dot.style.top=ay+'px';});
-(function loop(){cx+=(ax-cx)*.12;cy+=(ay-cy)*.12;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(loop);})();
-document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>cur.classList.add('hover'));el.addEventListener('mouseleave',()=>cur.classList.remove('hover'));});
-
-/* ── NAV ── */
-window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);});
-
-/* ── SCROLL REVEAL ── */
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-/* ── MOON ORBIT (JS-driven so orbit is flat and moon passes through card area) ── */
-(function(){
-  const moon   = document.querySelector('.moon-el');
-  const visual = document.querySelector('.hero-visual');
-  if (!moon || !visual) return;
-
-  const PERIOD = 10000; // ms per revolution
-  let t0 = null;
-
-  function animate(ts) {
-    if (!t0) t0 = ts;
-    const frac  = ((ts - t0) % PERIOD) / PERIOD;
-    const angle = frac * Math.PI * 2;          // 0 → 2π
-
-    const W  = visual.offsetWidth;
-    const H  = visual.offsetHeight;
-    const Rx = W * 0.48;                        // wide horizontal sweep
-    const Ry = H * 0.16;                        // flat — stays within card half-height
-
-    const x = W / 2 + Rx * Math.cos(angle);
-    const y = H / 2 + Ry * Math.sin(angle);
-
-    moon.style.left = x + 'px';
-    moon.style.top  = y + 'px';
-
-    // sin > 0  → bottom arc → moon is in FRONT of cards (z above cards-stack z:5)
-    // sin ≤ 0  → top arc    → moon is BEHIND cards (z below cards-stack z:5)
-    moon.style.zIndex = (Math.sin(angle) > 0) ? '8' : '1';
-
-    requestAnimationFrame(animate);
-  }
-  requestAnimationFrame(animate);
-})();
-
-/* ── HERO CARD CYCLING ── */
-(function(){
-  const POSITIONS = [
-    { t:'rotate(0deg) translate(0px,0px) scale(1)',         z:6, o:1    },
-    { t:'rotate(4deg) translate(32px,10px) scale(.97)',     z:5, o:.97  },
-    { t:'rotate(1deg) translate(8px,22px) scale(.94)',      z:4, o:.92  },
-    { t:'rotate(-3deg) translate(-24px,40px) scale(.91)',   z:3, o:.85  },
-    { t:'rotate(-7deg) translate(-48px,64px) scale(.86)',   z:2, o:.76  },
-    { t:'rotate(-11deg) translate(-74px,88px) scale(.82)',  z:1, o:.68  },
-  ];
-  const cards = [...document.querySelectorAll('.cards-stack .s-card')];
-  const N = cards.length;
-  let front = 0;
-  function applyPositions(){
-    cards.forEach((card,i)=>{
-      const p = POSITIONS[(i - front + N) % N];
-      card.style.transform = p.t;
-      card.style.zIndex    = p.z;
-      card.style.opacity   = p.o;
-    });
-  }
-  setInterval(()=>{ front = (front + 1) % N; applyPositions(); }, 2000);
-})();
-
-/* ── PRODUCT CARD 3D TILT ── */
-document.querySelectorAll('.product-card').forEach(card=>{
-  card.addEventListener('mousemove',e=>{
-    const r=card.getBoundingClientRect();
-    const x=(e.clientX-r.left)/r.width-.5;
-    const y=(e.clientY-r.top)/r.height-.5;
-    card.style.transform=`perspective(900px) rotateY(${x*10}deg) rotateX(${-y*7}deg) scale3d(1.015,1.015,1.015)`;
-  });
-  card.addEventListener('mouseleave',()=>{card.style.transform='perspective(900px) rotateY(0) rotateX(0) scale3d(1,1,1)';});
-  card.style.transition='transform .4s cubic-bezier(.2,0,0,1), box-shadow .4s ease';
-});
-
-/* ── ASKADE LEAD POP-UP ── */
-(function(){
-  const STORAGE_KEY = 'bm_lead_dismissed';
-
-  const teaser  = document.getElementById('bm-teaser');
-  const overlay = document.getElementById('bm-modal-overlay');
-  const iframe  = document.getElementById('bm-modal-game');
-  const bar     = document.getElementById('bm-bar');
-  const nav     = document.getElementById('nav');
-
-  if (!teaser || !overlay || !iframe) return;
-  const dismissed = () => sessionStorage.getItem(STORAGE_KEY);
-
-  function showBar() {
-    if (dismissed() || !bar) return;
-    bar.classList.add('show');
-    if (nav) nav.style.top = '42px';
-  }
-
-  function hideBar() {
-    if (!bar) return;
-    bar.classList.remove('show');
-    if (nav) nav.style.top = '0';
-  }
-
-  function showTeaser() {
-    if (dismissed()) return;
-    teaser.classList.add('show');
-    [teaser].forEach(el=>{ el.addEventListener('mouseenter',()=>cur.classList.add('hover')); el.addEventListener('mouseleave',()=>cur.classList.remove('hover')); });
-  }
-
-  function openModal() {
-    if (iframe.src === 'about:blank' || !iframe.src.includes('askade')) {
-      iframe.src = iframe.dataset.src;
-    }
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    teaser.classList.remove('show');
-    hideBar();
-  }
-
-  function closeModal() {
-    overlay.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  function dismiss() {
-    teaser.classList.remove('show');
-    hideBar();
-    sessionStorage.setItem(STORAGE_KEY, '1');
-  }
-
-  // Bar: show after 1 s (always visible until dismissed)
-  setTimeout(showBar, 1000);
-
-  // Teaser pill: show after 7 s
-  let teaserTimer = setTimeout(showTeaser, 7000);
-
-  // Scroll trigger: show teaser at 35% page depth
-  let scrollFired = false;
-  window.addEventListener('scroll', function onScroll() {
-    if (scrollFired || dismissed()) return;
-    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-    if (pct >= 0.35) {
-      scrollFired = true;
-      clearTimeout(teaserTimer);
-      showTeaser();
-    }
-  }, { passive: true });
-
-  // Exit intent
-  document.addEventListener('mouseleave', function onLeave(e) {
-    if (e.clientY <= 0 && !dismissed()) {
-      clearTimeout(teaserTimer);
-      showTeaser();
-      document.removeEventListener('mouseleave', onLeave);
-    }
-  });
-
-  // Bar CTA → open modal
-  if (bar) {
-    document.getElementById('bm-bar-cta').addEventListener('click', openModal);
-    document.getElementById('bm-bar-close').addEventListener('click', function(e) {
-      e.stopPropagation(); dismiss();
-    });
-  }
-
-  // Teaser click → open modal
-  teaser.addEventListener('click', function(e) {
-    if (e.target === document.getElementById('bm-teaser-dismiss')) return;
-    openModal();
-  });
-  document.getElementById('bm-teaser-dismiss').addEventListener('click', function(e) {
-    e.stopPropagation(); dismiss();
-  });
-
-  // Close modal
-  document.getElementById('bm-modal-close').addEventListener('click', closeModal);
-  overlay.addEventListener('click', function(e) { if (e.target === overlay) closeModal(); });
-  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
-})();
-
-</script>
+<script src="assets/site.js"></script>
 </body>
 </html>
