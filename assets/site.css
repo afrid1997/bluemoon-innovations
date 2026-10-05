@@ -418,3 +418,4 @@ p { max-width: 62ch; text-wrap: pretty; }
   .hero > .ship { order: 11; align-self: center; }
 }
 @media (prefers-reduced-motion: reduce) { .hcard, .need b { transition: none; } }
+.rows p strong { color: var(--night); font-weight: 600; } .rows p + p { margin-top: 10px; }
